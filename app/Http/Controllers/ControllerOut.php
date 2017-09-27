@@ -21,4 +21,15 @@ class ControllerOut extends Controller
         return view('/contato');
     }
 
+    public function cursosEventos()
+    {
+        return view('/curso-evento');
+    }
+
+    public function curso()
+    {
+        return view('/curso');
+    }
+
+
 }

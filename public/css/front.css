@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 *{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 
@@ -228,9 +227,10 @@ header #custom-bootstrap-menu{
 
 
 #equipe{
-    background-image: url("https://static1.squarespace.com/static/517b07d4e4b01510f82e0217/t/5693fe8a05f8e2382dd6907c/1452539531228/2016-bg.png");
+    /*background-image: url("https://static1.squarespace.com/static/517b07d4e4b01510f82e0217/t/5693fe8a05f8e2382dd6907c/1452539531228/2016-bg.png");*/
     height: 800px;
     width: 100%;
+    background-color: #002f4c;
 
 }
 #equipe h1, p{
@@ -382,7 +382,8 @@ header #custom-bootstrap-menu{
 
 
 #cursos{
-    background-image: url("../imagens/fundo_papel.jpg");
+    /*background-image: url("../imagens/fundo_papel.jpg");*/
+    /*background-color: #0A64C8;*/
     height: 800px;
     width: 100%;
 }
@@ -400,10 +401,11 @@ header #custom-bootstrap-menu{
 #cursos .contorno{
     float: left;
     /*width: 260px;*/
+
     margin-left: 0;
     padding: 40px 20px;
-    background: rgba(255,255,255,.5) repeat-x left bottom;
-    box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 1);
+    background: rgba(210, 210, 210, 0.5) repeat-x left bottom;
+    box-shadow: inset 0 0 1px 1px rgb(28, 172, 235);
     outline-offset: -10px;
     border-radius: 10px;
 }
@@ -662,14 +664,12 @@ header #custom-bootstrap-menu{
 #portfolio .texto{
     color: #fff;
     text-align: center;
-    font-family: 'Raleway';
     margin-top: 40px;
     font-weight: bold;
 }
 #portfolio .texto p{
     color: #000;
     text-align: justify;
-    font-family: 'Raleway';
     font-weight: 500;
     text-indent: 3em;
 }
@@ -712,22 +712,8 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     width: 100%;
     height: 700px;
     margin-top: -20px;
-    background: rgba(0, 94, 137,0.3);
+    background-color: rgba(191, 191, 191, 0.38);
 }
-#portfolio-realizados::after {
-    content: "";
-    background: url("http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-meier-table-seat-1-1500x999.jpg");
-    opacity: 0.2;
-    width: 100%;
-    height: 700px;
-    top: 10px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
-
 
 @media (max-width: 720px){
     #portfolio-realizados .btn-port {
@@ -743,21 +729,22 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 }
 
 #portfolio-realizados .texto{
-    color: #fff;
+    color: #0094e1;
     text-align: center;
     margin-top: 40px;
-    font-weight: bold;
+    font-weight: 700;
 }
 #portfolio-realizados .espacamento{
     margin-top: 40px;
 }
 #portfolio-realizados #owl-demo-portfolio .bordas{
     background: rgba(0,0,0, .5) repeat-x left bottom;
-    box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 1);
+    box-shadow: inset 0px 0px 1px 1px rgb(0, 47, 76);
 }
 
 #portfolio-realizados #owl-demo-portfolio a{
     text-align: center;
+    font-weight: 600;
     color: #fff;
 }
 #portfolio-realizados #owl-demo-portfolio a:link {
@@ -813,21 +800,9 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 
 /* SOBRE EMPRESA JUNIOR */
 #empresa-junior{
-    background: rgba(0, 94, 137,0.3);
+    background-color: #002f4c;
 }
-#empresa-junior::after {
-    content: "";
-    background: url("http://salleedesign.com/assets/home/photo-top.jpg");
-    opacity: 0.4;
-    width: 100%;
-    height: 700px;
-    top: 712px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
+
 #empresa-junior .texto{
     color: #fff;
     text-align: center;
@@ -839,11 +814,12 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     text-align: justify;
     font-size: 15px;
     margin-top: 20px;
-    color: #000;
+    color: #fff;
     font-weight: 500;
 }
 #empresa-junior .sobre p{
     text-indent: 3em;
+    color: #fff;
 }
 #empresa-junior .info{
     margin-top: 40px;
@@ -867,7 +843,8 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     height: 1700px;
     margin-top: -20px;
     /*background: rgba(0, 94, 137,0.3);*/
-    background-image: url("../imagens/fundo_papel.jpg");
+    /*background-image: url("../imagens/fundo_papel.jpg");*/
+    background-color: rgba(191, 191, 191, 0.38);
 }
 
 #p-cursos .texto{
@@ -953,8 +930,229 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 
 
 
+/* ------------------------------------------------------------------------------------------------------------ */
+/*                                             PAGINA DO CURSO                                                  */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+#p-cursos{
+    width: 100%;
+    height: auto;
+    margin-top: -20px;
+    /*background: rgba(0, 94, 137,0.3);*/
+    /*background-image: url("../imagens/fundo_papel.jpg");*/
+    background-color: rgba(191, 191, 191, 0.38);
+}
+
+#p-cursos .texto{
+    color: rgba(0, 94, 137, 1);
+    text-align: center;
+    font-weight: 500;
+    margin-top: 40px;
+
+}
+@media (max-width: 600px){
+    #p-cursos .texto h1{
+        font-size: 24px;
+    }
+    #p-cursos .texto h2{
+        font-size: 18px;
+    }
+}
+#p-cursos .espacamento{
+    margin-top: 40px;
+}
+#p-cursos .blocos{
+    width: 100%;
+    height: 240px;
+    margin-top: 20px;
+}
+#p-cursos .bordas{
+    background: rgba(0,0,0, .4) repeat-x left bottom;
+    box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 1);
+    border-radius: 20px;
+}
 
 
+
+/*
+#p-cursos .espacamento-curso{
+    margin-top: 50px;
+}
+#p-cursos #bloco-cursos .col-custom{
+    margin-bottom: 15px;
+}
+#p-cursos #bloco-cursos .cursos-conteudo{
+    text-align: justify;
+    border: 2px solid #0f0f0f;
+    background-color: rgba(249, 248, 246, 0.3);
+}
+#p-cursos #bloco-cursos .cursos-conteudo:hover{
+    background-color: rgba(0, 94, 137, 1);
+
+}
+#p-cursos #bloco-cursos .cursos-conteudo p:hover{
+    color: #fff;
+}
+#p-cursos a:link{
+    text-decoration: none;
+}
+#p-cursos #bloco-cursos .cursos-conteudo .titulo-curso{
+    color: #007bff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+*/
+
+
+.thumbnail {
+    position: relative;
+    padding: 0px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+.thumbnail > h4 {
+    padding: 7px 5px 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.thumbnail h4 .info {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 0.6em;
+    padding-left: 15px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 4px;
+    border-radius: 0px;
+    border-bottom-left-radius: 5px;
+    cursor:  pointer;
+}
+.thumbnail h4 .info > span {
+    margin-right: 10px;
+}
+.thumbnail a.btn {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    color: #fff;
+}
+
+#p-cursos .espacamento{
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+#p-cursos .thumbnail h4{
+    text-align: center;
+    color: #007bff;
+    font-size: 20px;
+    font-weight: bold;
+}
+#p-cursos .thumbnail .descricao-curso{
+    text-align: center;
+}
+#p-cursos .thumbnail .descricao-avancada{
+    text-align: center;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+
+
+#p-cursos-outros{
+    width: 100%;
+    height: 260px;
+    background-color: #007bff!important;
+    margin-top: -20px;
+}
+
+.disabled-custom{
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+    background-color: #c3c3c3!important;
+    color: #000!important; font-weight: bold;
+    border-color: #000!important;
+}
+
+@media (max-width: 600px){
+    #p-cursos-outros {
+        height: 330px;
+    }
+}
+
+#p-cursos-outros .espacamento{
+    margin-top: 40px;
+}
+#p-cursos-outros .row h1{
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+}
+#p-cursos-outros button {
+    width: 210px;
+    margin: 15px auto;
+    font-size: 2.0rem;
+    padding: 1.25rem 2.5rem;
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    color: #005e89;
+    font-weight: 300;
+    font-weight: bold;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#p-cursos-outros button:hover {
+    background-color: #005e89;
+    color: #ffffff;
+    border-color: #005e89;
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/*                                        PAGINA DE CADASTRO CURSOS                                             */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+#info-curso{
+    width: 100%;
+    height: 270px;
+    background-color: #007bff!important;
+    text-align: center;
+    margin-top: -20px;
+}
+
+@media only screen and (max-width: 480px){
+    #info-curso{
+        height: 770px;
+    }
+}
+
+#contato-insc{
+    background-color: #007bff;
+    margin-bottom: 0px;
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 480px){
+    #conteudo-cursos .bloco-inscri button p {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    #conteudo-cursos .dentro-inscri p {
+        font-size: 27px;
+    }
+}
 
 
 /* ------------------------------------------------------------------------------------------------------------ */
@@ -966,23 +1164,9 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     width: 100%;
     height: 1080px;
     margin-left: 10px;
-    background: rgba(255, 255, 255,0.4);
+    background-color: rgba(191, 191, 191, 0.38);
     margin-top: -20px;
 }
-#contato::after {
-    content: "";
-    background: url("http://salleedesign.com/assets/home/photo-top.jpg");
-    opacity: 0.2;
-    width: 100%;
-    height: 1080px;
-    top: 116px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
-
 #contato .texto{
     color: #000;
     text-align: justify;
@@ -1019,7 +1203,7 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     background: #f4f7f8;
     margin: -20px auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.3);
+    /*background: rgba(255, 255, 255, 0.3);*/
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -1056,8 +1240,8 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    background-color: #e8eeef;
-    color:#8a97a0;
+    background-color: #FFF;
+    color:#000;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;

@@ -114,7 +114,7 @@
                     <div class="col-md-9 espacamento">
                         <span class="contato-top">Email: empresa.tecjr@gmail.com </br></span>
                         <span class="contato-subtop">Telefone ou Whatsapp: 87 8122-7402</br></span>
-                        <span class="contato-bottom">Ou procure algum funcionario da empresa, contato disponivel na Home.</span>
+                        <span class="contato-subtop">Ou procure algum funcionario da empresa, contato disponivel na Home.</span>
                     </div>
 
 

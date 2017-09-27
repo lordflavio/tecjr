@@ -46,10 +46,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav nav-custom navbar-nav navbar-nav-custom navbar-right">
                     <li class="hvr-underline-from-left"><a href="/">HOME</a></li>
-                    <li class="hvr-underline-from-left"><a href="/portifolio">PORTFOLIO</a></li>
-                    <li class="hvr-underline-from-left"><a href="#equipe">EQUIPE</a></li>
-                    <li class="hvr-underline-from-left"><a href="#cursos">CURSOS/EVENTOS</a></li>
-                    <li class="hvr-underline-from-left"><a href="/contato">CONTATOS</a></li>
+                    <li class="hvr-underline-from-left"><a href="{{route('portifolio')}}">PORTFOLIO</a></li>
+                    <li class="hvr-underline-from-left"><a href="/#equipe">EQUIPE</a></li>
+                    <li class="hvr-underline-from-left"><a href="{{route('cursoEvento')}}">CURSOS/EVENTOS</a></li>
+                    <li class="hvr-underline-from-left"><a href="{{route('contato')}}">CONTATOS</a></li>
                     <li class="hvr-underline-from-left"><a href="/login">LOGIN</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -60,6 +60,7 @@
 <main>
 @yield('content')
 </main>
+
 <footer>
     <div class="rodape-claro">
         <div class="col-md-3">
@@ -70,6 +71,7 @@
         <span class="pull-right"><p>Created by Denis de Gois in TEC JR</p></span>
     </div>
 </footer>
+
 <div class="container">
     <a class=" pull-right subir" title="Subir" href="#inicio"> <i class="fa fa-angle-double-up" aria-hidden="true"></i> </a>
 </div>

@@ -21,17 +21,17 @@
                     <img src="https://images.pexels.com/photos/48726/pexels-photo-48726.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider"  class="slide-image"/>
                     <div class="bs-slider-overlay"></div>
 
-                    <div class="container">
-                        <div class="row">
-                            <!-- Slide Text Layer -->
-                            <div class="slide-text slide_style_left">
-                                <h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>
-                                <p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>
-                                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
-                                <a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInRight">select two</a>
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="container">--}}
+                        {{--<div class="row">--}}
+                            {{--<!-- Slide Text Layer -->--}}
+                            {{--<div class="slide-text slide_style_left">--}}
+                                {{--<h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>--}}
+                                {{--<p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>--}}
+                                {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>--}}
+                                {{--<a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInRight">select two</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
                 <!-- End of Slide -->
 
@@ -42,12 +42,12 @@
                     <img src="https://images.pexels.com/photos/207990/pexels-photo-207990.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider"  class="slide-image"/>
                     <div class="bs-slider-overlay"></div>
                     <!-- Slide Text Layer -->
-                    <div class="slide-text slide_style_center">
-                        <h1 data-animation="animated flipInX">Bootstrap touch slider</h1>
-                        <p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>
-                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>
-                        <a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInDown">select two</a>
-                    </div>
+                    {{--<div class="slide-text slide_style_center">--}}
+                        {{--<h1 data-animation="animated flipInX">Bootstrap touch slider</h1>--}}
+                        {{--<p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>--}}
+                        {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>--}}
+                        {{--<a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInDown">select two</a>--}}
+                    {{--</div>--}}
                 </div>
                 <!-- End of Slide -->
 
@@ -57,13 +57,13 @@
                     <!-- Slide Background -->
                     <img src="imagens/3.png" alt="Bootstrap Touch Slider"  class="slide-image"/>
                     <div class="bs-slider-overlay"></div>
-                    <!-- Slide Text Layer -->
-                    <div class="slide-text slide_style_right">
-                        <h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>
-                        <p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>
-                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
-                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>
-                    </div>
+                    {{--<!-- Slide Text Layer -->--}}
+                    {{--<div class="slide-text slide_style_right">--}}
+                        {{--<h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>--}}
+                        {{--<p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>--}}
+                        {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>--}}
+                        {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>--}}
+                    {{--</div>--}}
                 </div>
                 <!-- End of Slide -->
 
@@ -325,44 +325,13 @@
                         </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
                     </div>
                 </div>
-                <div class="item center-block ">
-                    <div class="contorno">
-                        <img src="https://yata.ostr.locaweb.com.br/9740eb07a0b7733a522b435e9b25789a5a7992345727fcb9ae6a205620e89aba" alt="pessoa1" class="img-responsive center-block">
-                        <h4> INFORMATICA BÁSICA 1 </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the trut,</span>
-                        </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
+
                 <div class="item center-block">
                     <div class="contorno">
-                        <img src="https://camo.githubusercontent.com/62043de0c3dec54f8a7fcc46e515dc7574a62ef7/68747470733a2f2f73332d75732d776573742d322e616d617a6f6e6177732e636f6d2f7465737464726976656e6c6561726e696e676275636b65742f68746d6c6373732e6a7067" alt="pessoa1" class="img-responsive center-block">
-                        <h4> HTML / CSS MODULO 1 </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth</span>
-                        </br><div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="https://d2tycqyw09ngo1.cloudfront.net/be-content/uploads/2015/11/10115301/curso-online-de-logica-de-programacao-BECODE-new-1-460x281.png" alt="pessoa1" class="img-responsive">
-                        <h4> LÓGICA DE PROGRAMAÇÃO </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth</span>
-                        </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="https://static1.scirra.net/avatars/256/166daea6244fd93c4a74fd819c8e5235.png?dateline=1419330007" alt="pessoa1" class="img-responsive">
-                        <h4> DESENVOLVIMENTO DE JOGOS </h4>
+                        <img src="https://www.sololearn.com/Icons/Courses/1073.png" alt="pessoa1" class="img-responsive center-block">
+                        <h4> PYTHON - MODULO 1 </h4>
                         <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
-                        <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
-                <div class="item center-block ">
-                    <div class="contorno">
-                        <img src="imagens/logo.png" alt="pessoa1" class="img-responsive">
-                        <h4> VEJA MAIS </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
-                        <div class="buttom-custom-2 center-block"><p class="texto-button-2"> - SAIBA MAIS - </p></div>
+                        </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
                     </div>
                 </div>
 

@@ -183,6 +183,10 @@ window.Modernizr=function(a,b,c){function w(a){j.cssText=a}function x(a,b){retur
         $('.float-label-control').floatLabels();
     });
     // FIM do FORMULARIO
+
+    // BLOCO DOS CURSOS
+    $('[data-toggle="tooltip"]').tooltip();
+    // FIM DO BLOCO DE CURSOS
 })( window );
 
 
@@ -215,6 +219,28 @@ $(window).load(function() {
     var triggerheight = Math.round(boxheight/itemlength+1);
     $('#myCarousel .list-group-item').outerHeight(triggerheight);
 });
+
+
+function openDescri(evt, evento) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(evento).style.display = "block";
+    evt.currentTarget.className += " active";
+}
 
 
 
