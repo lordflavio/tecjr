@@ -1200,7 +1200,8 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     /*max-width: 650px;*/
     /*min-width: 600px;*/
     /*padding: 10px 20px;*/
-    background: #f4f7f8;
+    height: 500px;
+    background: #c6c9ca;
     margin: -20px auto;
     padding: 20px;
     /*background: rgba(255, 255, 255, 0.3);*/

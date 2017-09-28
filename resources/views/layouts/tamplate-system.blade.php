@@ -26,7 +26,7 @@
         <aside id="sidebar">
             <ul id="sidemenu" class="sidebar-nav">
                 <li>
-                    <a href="">
+                    <a href="{{route('home.index')}}">
                         <span class="sidebar-icon"><i class="fa fa-home"></i></span>
                         <span class="sidebar-title">Home</span>
                     </a>
