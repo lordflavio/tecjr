@@ -17,9 +17,9 @@ class ParticipanteHasAtividades extends Migration
             $table->integer('participanteId')->unsigned();
             $table->integer('eventosId')->unsigned();
             $table->integer('atividadeId')->unsigned();
-            $table->foreign('participanteId')->references('id')->on('participante')->onDelete('cascade');;
-            $table->foreign('eventosId')->references('id')->on('eventos')->onDelete('cascade');;
-            $table->foreign('atividadeId')->references('id')->on('atividades')->onDelete('cascade');;
+            $table->foreign('participanteId')->references('id')->on('participante')->onDelete('cascade');
+            $table->foreign('eventosId')->references('id')->on('eventos')->onDelete('cascade');
+            $table->foreign('atividadeId')->references('id')->on('atividades')->onDelete('cascade');
             $table->timestamps();
         });
     }

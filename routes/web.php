@@ -38,6 +38,11 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
     Route::get('/system/evento-atividade/{id}/{id2}','System\AtividadeController@delete')->name('evento-atividade.delete');
     Route::resource('/system/admin','System\AdminController');
     Route::match(['get','post'],'/system/admin-perfil/{id}','System\AdminController@update')->name('perfil.update');
+    Route::post('/system/patrocinio','System\HomeController@patrocinio')->name('home.patrocinio');
+    Route::post('/system/baner','System\HomeController@baner')->name('home.baner');
+    Route::post('/system/h-delete/{id}','System\HomeController@deletePatrocinio')->name('home.delete');
+    Route::post('/system/noticias','System\HomeController@noticias')->name('home.noticias');
+    Route::post('/system/noticias-d/{id}','System\HomeController@deleteNoticia')->name('home.noticias.delete');
 //    Route::resource('/system/home','System\HomeController');
 });
 

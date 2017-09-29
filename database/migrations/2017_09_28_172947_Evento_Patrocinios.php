@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Eventos extends Migration
+class EventoPatrocinios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class Eventos extends Migration
      */
     public function up()
     {
-        Schema::create('eventos', function (Blueprint $table) {
+        Schema::create('evento_patrocinio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome',150);
-            $table->text('sobre');
-            $table->date('dateInicioIns');
-            $table->date('dateFimIns');
-            $table->date('dateInicioEx');
-            $table->date('dateFimEx');
-            $table->string('status');
+            $table->integer('eventoid')->unsigned();
             $table->string('img');
+            $table->foreign('eventoid')->references('id')->on('eventos')->onDelete('cascade');;
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class Eventos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventos');
+        Schema::dropIfExists('evento_patrocinio');
     }
 }

@@ -354,6 +354,7 @@
 .fa.fa-calendar{
     margin-top: 8px;
 }
+
 .fa.fa-edit{
   margin-top: 8px;
 }
@@ -399,29 +400,29 @@
 .btn-success.btn-success-custom {
     background-color: #222D32;
     border-color: #FFF;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     margin-top: 10px;
     margin-left: 80px;
 }
 .btn-success.btn-success-custom:hover {
-    background-color: #fff;
-    border-color: #1DC3FF;
+    background-color: transparent;
+    border-color: #3bff17;
     color: #1e3f64;
 }
 .btn-success.btn-success-custom:focus{
     background-color: #fff;
-    border-color: #1DC3FF;
+    border-color: #3bff17;
     color: #1e3f64;
 }
 .btn-success.btn-success-custom:active{
-    background-color: #fff;
-    border-color: #1DC3FF;
+    background-color: transparent;
+    border-color: #3bff17;
     color: #1e3f64;
 }
 .btn-success.btn-success-custom.active.focus, .btn-success.btn-success-custom.active:focus, .btn-success.btn-success-custom.active:hover, .btn-success.btn-success-custom:active.focus, .btn-success.btn-success-custom:active:focus, .btn-success.btn-success-custom:active:hover, .open>.dropdown-toggle.btn-success.btn-success-custom.focus, .open>.dropdown-toggle.btn-success.btn-success-custom:focus, .open>.dropdown-toggle.btn-success.btn-success-custom:hover {
-    background-color: #fff;
-    border-color: #1DC3FF;
+    background-color: transparent;
+    border-color: #3bff17;
     color: #1e3f64;
 }
 .pro img {
@@ -464,6 +465,24 @@
 .progress {
     margin-right: 10px;
 }
+
+
+.home-patrocinio p button {
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: black;
+    margin-top: 5px;
+
+}
+.noticias p button {
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: black;
+    margin-top: 5px;
+}
+
 
 
 /*

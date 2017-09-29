@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Eventos extends Migration
+class Patrocinio extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,8 @@ class Eventos extends Migration
      */
     public function up()
     {
-        Schema::create('eventos', function (Blueprint $table) {
+        Schema::create('patrocinio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome',150);
-            $table->text('sobre');
-            $table->date('dateInicioIns');
-            $table->date('dateFimIns');
-            $table->date('dateInicioEx');
-            $table->date('dateFimEx');
-            $table->string('status');
             $table->string('img');
             $table->timestamps();
         });
@@ -34,6 +27,6 @@ class Eventos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventos');
+        Schema::dropIfExists('patrocinio');
     }
 }
