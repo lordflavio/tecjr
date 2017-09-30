@@ -18,20 +18,20 @@
                 <div class="item active">
 
                     <!-- Slide Background -->
-                    <img src="https://images.pexels.com/photos/48726/pexels-photo-48726.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider"  class="slide-image"/>
+                    <img src="/imagens/baner/01.jpg" alt="BANNER 01"  class="slide-image"/>
                     <div class="bs-slider-overlay"></div>
 
-                    {{--<div class="container">--}}
-                        {{--<div class="row">--}}
-                            {{--<!-- Slide Text Layer -->--}}
-                            {{--<div class="slide-text slide_style_left">--}}
-                                {{--<h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>--}}
-                                {{--<p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>--}}
+                    <div class="container">
+                        <div class="row">
+                            <!-- Slide Text Layer -->
+                            <div class="slide-text slide_style_left">
+                                <h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>
+                                <p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>
                                 {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>--}}
                                 {{--<a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInRight">select two</a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- End of Slide -->
 
@@ -39,15 +39,15 @@
                 <div class="item">
 
                     <!-- Slide Background -->
-                    <img src="https://images.pexels.com/photos/207990/pexels-photo-207990.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider"  class="slide-image"/>
+                    <img src="/imagens/baner/02.jpg" alt="BANNER 02"  class="slide-image"/>
                     <div class="bs-slider-overlay"></div>
                     <!-- Slide Text Layer -->
-                    {{--<div class="slide-text slide_style_center">--}}
-                        {{--<h1 data-animation="animated flipInX">Bootstrap touch slider</h1>--}}
-                        {{--<p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>--}}
+                    <div class="slide-text slide_style_center">
+                        <h1 data-animation="animated flipInX">Bootstrap touch slider</h1>
+                        <p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>
                         {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>--}}
                         {{--<a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInDown">select two</a>--}}
-                    {{--</div>--}}
+                    </div>
                 </div>
                 <!-- End of Slide -->
 
@@ -55,15 +55,15 @@
                 <div class="item">
 
                     <!-- Slide Background -->
-                    <img src="imagens/3.png" alt="Bootstrap Touch Slider"  class="slide-image"/>
+                    <img src="/imagens/baner/03.jpg" alt="BANNER 03"  class="slide-image"/>
                     <div class="bs-slider-overlay"></div>
-                    {{--<!-- Slide Text Layer -->--}}
-                    {{--<div class="slide-text slide_style_right">--}}
-                        {{--<h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>--}}
-                        {{--<p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>--}}
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_right">
+                        <h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>
+                        <p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>
                         {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>--}}
                         {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>--}}
-                    {{--</div>--}}
+                    </div>
                 </div>
                 <!-- End of Slide -->
 
@@ -99,26 +99,26 @@
                 <div class="carousel-inner">
 
                     <div class="item active">
-                        <img src="http://placehold.it/760x400/cccccc/ffffff">
+                        <img src="{{$noticias[0]->img}}" width="760" height="400">
                         <div class="carousel-caption">
-                            <h4><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
+                            <h4>{{$noticias[0]->titulo}}</h4>
+                            <p> {{$noticias[0]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
                         </div>
                     </div><!-- End Item -->
 
                     <div class="item">
-                        <img src="http://placehold.it/760x400/999999/cccccc">
+                        <img src="{{$noticias[1]->img}}" width="760" height="400">
                         <div class="carousel-caption">
-                            <h4><a href="#">consetetur sadipscing elitr, sed diam nonumy eirmod</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
+                            <h4>{{$noticias[1]->titulo}}</h4>
+                            <p> {{$noticias[1]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
                         </div>
                     </div><!-- End Item -->
 
                     <div class="item">
-                        <img src="http://placehold.it/760x400/dddddd/333333">
+                        <img src="{{$noticias[2]->img}}" width="760" height="400">
                         <div class="carousel-caption">
-                            <h4><a href="#">tempor invidunt ut labore et dolore</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
+                            <h4>{{$noticias[2]->titulo}}</h4>
+                            <p> {{$noticias[2]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
                         </div>
                     </div><!-- End Item -->
 
@@ -161,8 +161,6 @@
 
             </div><!-- End Carousel -->
         </div>
-
-        </div>
     </section><!-- OK -->
 
     <section id="equipe">
@@ -177,112 +175,23 @@
 
             <div id="owl-demo" class="espacamento">
 
+                @foreach($gestao as $ges)
                 <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
+                    <img src="{{$ges->img}}" alt="pessoa1" class="img-responsive img-thumbnail">
                     <div class="descricao-membros">
-                        <h4> Jose Carlos Felix </h4>
-                        <span class="funcao"> - Diretor da Empresa - </span>
+                        <h4> {{$ges->nome}} </h4>
+                        <span class="funcao"> - {{$ges->cargo}} - </span>
                         <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        <ul class="social-nav col-md-offset-2  col-sm-offset-2 col-xs-offset-1 ">
+                            <li><a href="{{$ges->twitter}}" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{$ges->face}}" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{$ges->gmail}}" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="{{$ges->twitter}}" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-whatsapp"></i></a></li>
+                            {{--<li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
                         </ul>
                     </div>
                 </div>
-                <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
-                    <div class="descricao-membros">
-                        <h4> Arianne Sarmento Torquate </h4>
-                        <span class="funcao"> - Diretor de Recursos Humanos - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
-                    <div class="descricao-membros">
-                        <h4> Denis de Gois Marques </h4>
-                        <span class="funcao"> - Diretor de Projetos - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
-                    <div class="descricao-membros">
-                        <h4> José Flavio Vieira Melo </h4>
-                        <span class="funcao"> - Diretor de Projetos - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
-                    <div class="descricao-membros">
-                        <h4> Ramon Marques </h4>
-                        <span class="funcao"> - Diretor de Finanças - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
-                    <div class="descricao-membros">
-                        <h4> Nicollas Ivanno </h4>
-                        <span class="funcao"> - Diretor Administrativo - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <img src="imagens/pessoa.jpg" alt="pessoa1" class="img-responsive">
-                    <div class="descricao-membros">
-                        <h4> Ailson Telles </h4>
-                        <span class="funcao"> - Diretor de Marketing - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav">
-                            <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
 
@@ -304,7 +213,7 @@
                 <div class="item  center-block">
                     <div class="contorno">
                         <img src="http://1.bp.blogspot.com/-LBPMhqvvas4/VXYmKRqGTRI/AAAAAAAAG0A/98RuYbdVfoE/s1600/logo%2Bevento.jpg" alt="pessoa1" class="img-responsive center-block">
-                        <h4> COMBINATIVIDADE </h4>
+                        <h4 class="text-center"> COMBINATIVIDADE </h4>
                         <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
                         </br><div class="center-block buttom-custom-1 "><p class="texto-button"> - SAIBA MAIS - </p></div>
                     </div>
@@ -312,7 +221,7 @@
                 <div class="item center-block">
                     <div class="contorno">
                         <img src="https://s-media-cache-ak0.pinimg.com/originals/d4/26/9c/d4269cb720d3e94bf55a62f0c35faaf7.jpg" alt="pessoa1" class="img-responsive center-block">
-                        <h4> JAVA - MODULO 1 </h4>
+                        <h4 class="text-center"> JAVA - MODULO 1 </h4>
                         <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
                         </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
                     </div>
@@ -320,7 +229,7 @@
                 <div class="item center-block">
                     <div class="contorno">
                         <img src="https://www.sololearn.com/Icons/Courses/1073.png" alt="pessoa1" class="img-responsive center-block">
-                        <h4> PYTHON - MODULO 1 </h4>
+                        <h4 class="text-center"> PYTHON - MODULO 1 </h4>
                         <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
                         </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
                     </div>
@@ -329,7 +238,7 @@
                 <div class="item center-block">
                     <div class="contorno">
                         <img src="https://www.sololearn.com/Icons/Courses/1073.png" alt="pessoa1" class="img-responsive center-block">
-                        <h4> PYTHON - MODULO 1 </h4>
+                        <h4 class="text-center"> PYTHON - MODULO 1 </h4>
                         <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
                         </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
                     </div>
@@ -354,16 +263,9 @@
 
             <div class="col-md-8">
                 <div id="owl-demo-apoio" class="espacamento">
-
-                    <div class="item center-block item-custom"><img src="imagens/logo.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/upe-logo.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/img_lc.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="https://sites.google.com/site/imagensdositedatecjr/home/logotipo_thr3ap.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/upe-logo.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/logo.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/upe-logo.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/logo.png" alt="Owl Image"></div>
-                    <div class="item center-block item-custom"><img src="imagens/upe-logo.png" alt="Owl Image"></div>
+                    @foreach($patrocinio as $p)
+                    <div class="item center-block item-custom"><img src="{{$p->img}}" alt="APOIO"></div>
+                    @endforeach
 
                 </div>
             </div>

@@ -145,7 +145,8 @@ class AdminController extends Controller
             }
 
         }else{
-            Session::flash('info','Carregar uma imagem!');
+            Session::flash('success','Atualizado');
+            $admin->save();
             return back();
         }
     }

@@ -31,9 +31,9 @@ class CursosController extends Controller
      */
     public function create(){
 
-            $title = 'Tecjr novo Cursos';
-            return view('system/cursos/novo-curso',compact('title'));
-
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr novo Cursos';
+        return view('system/cursos/novo-curso',compact('cursos','title','admin'));
     }
 
     /**
@@ -56,10 +56,11 @@ class CursosController extends Controller
                 $n_date =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->data)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
 
                 $curso = new curso();
-                $curso->nome = $request->nome;
                 $curso->data = $request->data;
+                $curso->valorInscricao = $request->valorInscricao;
                 $curso->horario = $request->horario;
                 $curso->titulo = $request->titulo;
+                $curso->duracao = $request->duracao;
                 $curso->discricao = $request->discricao;
                 $curso->ministrante = $request->ministrante;
                 $curso->img  = '/imagens/cursos/'.$n_nome.'-'.$n_date.'.'.$extencao;

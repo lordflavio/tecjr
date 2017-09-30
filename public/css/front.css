@@ -254,21 +254,20 @@ header #custom-bootstrap-menu{
     text-align: center;
 }
 #equipe .container .item img{
-    width: 350px;
+    /*width: 350px;*/
     height: 290px;
-    margin: 10px;
+    /*margin: 10px;*/
 }
 #equipe .descricao-membros{
     margin: 9px;
 }
 #equipe .descricao-membros h4{
     font-size: 16px;
-    line-height: 0.5;
-    margin-top: 20px;
+    line-height: 0.3;
+    /*margin-top: 20px;*/
     color: #fff;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 25px;
 }
 #equipe .descricao-membros .funcao{
     font-style: italic;
@@ -296,13 +295,36 @@ header #custom-bootstrap-menu{
 
 
 /* SOCIAL LINKS = ICONES DAS REDES SOCIAIS DA EQUIPE*/
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
-.social-nav {
+.social-nav  {
     padding: 0;
     list-style: none;
     margin: -10px 0 0 -10px;
-    margin-left: 25px;
 }
+
+@media(max-width: 450px) {
+    .social-nav  {
+        margin-left: 60px;
+    }
+}
+
+/*@media(max-width: 320px) {*/
+    /*.social-nav  {*/
+        /*margin-left: 10px;*/
+    /*}*/
+/*}*/
+
+@media(max-width: 360px) {
+    .social-nav  {
+        margin-left: 35px;
+    }
+}
+
+@media(max-width: 375px) {
+    .social-nav  {
+        margin-left: 40px;
+    }
+}
+
 .social-nav li {
     float: left;
     margin: 10px 0 0 10px;
@@ -357,11 +379,11 @@ header #custom-bootstrap-menu{
     color: #DD4A3A;
 }
 .social-nav .linkedin {
-    background: #007BB6;
-    text-shadow: 0px 0px #005983, 1px 1px #005983, 2px 2px #005983, 3px 3px #005983, 4px 4px #005983, 5px 5px #005983, 6px 6px #005983, 7px 7px #005983, 8px 8px #005983, 9px 9px #005983, 10px 10px #005983, 11px 11px #005983, 12px 12px #005983, 13px 13px #005983, 14px 14px #005983, 15px 15px #005983, 16px 16px #005983, 17px 17px #005983, 18px 18px #005983, 19px 19px #005983, 20px 20px #005983, 21px 21px #005983, 22px 22px #005983, 23px 23px #005983, 24px 24px #005983, 25px 25px #005983, 26px 26px #005983, 27px 27px #005983, 28px 28px #005983, 29px 29px #005983, 30px 30px #005983;
+    background: #18b621;
+    text-shadow: 0px 0px #17830f, 1px 1px #17830f, 2px 2px #17830f, 3px 3px #17830f, 4px 4px #17830f, 5px 5px #17830f, 6px 6px #005983, 7px 7px #17830f, 8px 8px #17830f, 9px 9px #17830f, 10px 10px #005983, 11px 11px #005983, 12px 12px #17830f, 13px 13px #17830f, 14px 14px #17830f, 15px 15px #17830f, 16px 16px #005983, 17px 17px #005983, 18px 18px #005983, 19px 19px #17830f, 20px 20px #17830f, 21px 21px #17830f, 22px 22px #17830f, 23px 23px #17830f, 24px 24px #17830f, 25px 25px #17830f, 26px 26px #17830f, 27px 27px #17830f, 28px 28px #17830f, 29px 29px #17830f, 30px 30px #17830f;
 }
 .social-nav .linkedin:hover {
-    color: #007BB6;
+    color: #24b639;
 }
 .social-nav .pinterest {
     background: #CB2026;
@@ -399,8 +421,8 @@ header #custom-bootstrap-menu{
     margin-top: 20px;
 }
 #cursos .contorno{
-    float: left;
-    /*width: 260px;*/
+    /*float: left;*/
+    width: 260px;
 
     margin-left: 0;
     padding: 40px 20px;
@@ -410,8 +432,32 @@ header #custom-bootstrap-menu{
     border-radius: 10px;
 }
 
-@media screen and (min-width: 768px) {
-    #cursos .contorno {  margin-left: 10px;}
+@media (max-width: 768px) {
+    #cursos .contorno {
+        margin-left: 30px;
+        width: 290px;
+
+
+    }
+}
+
+@media(max-width: 412px) {
+    #cursos .contorno {
+        margin-left: 40px;
+    }
+}
+
+@media(max-width: 360px) {
+    #cursos .contorno {
+        margin-left: 20px;
+    }
+}
+
+@media(max-width: 320px) {
+    #cursos .contorno {
+        margin-left: 20px;
+        width: 270px;
+    }
 }
 
 
@@ -1583,29 +1629,159 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 /* ------------------------------------------------------------------------------------------------------------ */
 
 
-footer .rodape-claro{
-    background-color: #1a1a1a;
-    height: 150px;
+.full {
     width: 100%;
 }
-footer .logotipo{
-    width: 160px;
-    height: 110px;
-    margin-top: 5px;
-    margin: 20px;
-    margin-left: 120px;
+.gap {
+    height: 30px;
+    width: 100%;
+    clear: both;
+    display: block;
+}
+.footer {
+    background: #fff;
+    height: auto;
+    padding-bottom: 30px;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #DDDDDD;
+}
+.footer p {
+    margin: 0;
+}
+.footer img {
+    max-width: 100%;
+    margin-top: 50px;
+}
+.footer h3 {
+    border-bottom: 1px solid #002f4c;
+    color: #030307;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    padding: 40px 0 10px;
+    text-transform: uppercase;
 }
 
-footer .rodape-escuro{
-    background-color: #0f0f0f;
-    height: 40px;
+.footer ul {
+    font-size: 13px;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 15px;
+    color: #030307;
+}
+.footer ul li a {
+    padding: 0 0 5px 0;
+    display: block;
+}
+.footer a {
+    color: #002f4c
+}
+.supportLi h4 {
+    font-size: 20px;
+    font-weight: lighter;
+    line-height: normal;
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+}
+.newsletter-box input#appendedInputButton {
+    background: #FFFFFF;
+    display: inline-block;
+    float: left;
+    height: 30px;
+    clear: both;
     width: 100%;
 }
-footer .rodape-escuro span{
+.newsletter-box .btn {
+    border: medium none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    height: 40px;
+    padding: 0;
+    width: 100%;
+    color: #fff;
+}
+.newsletter-box {
+    overflow: hidden;
+}
+/*.bg-gray {*/
+    /*background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);*/
+    /*box-shadow: 0 1px 0 #B4B3B3;*/
+/*}*/
+.social li {
+    background: none repeat scroll 0 0 #B5B5B5;
+    border: 2px solid #949494;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 8px 0 0;
+    padding: 0;
+    text-align: center;
+    width: 36px;
+    transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+}
+
+/*.social .f-m{*/
+    /*margin-left: 80px;*/
+/*}*/
+
+/*@media (max-width: 600px){*/
+    /*.social .f-m{*/
+        /*margin-left: 50px;*/
+    /*}*/
+/*}*/
+
+.social li:hover {
+    transform: scale(1.15) rotate(360deg);
+    -webkit-transform: scale(1.1) rotate(360deg);
+    -moz-transform: scale(1.1) rotate(360deg);
+    -ms-transform: scale(1.1) rotate(360deg);
+    -o-transform: scale(1.1) rotate(360deg);
+}
+.fa.fa-google-plus{
+    margin-top: 6px;
+}
+
+.social li a {
+    color: #EDEFF1;
+}
+.social li:hover {
+    border: 2px solid #2c3e50;
+    background: #2c3e50;
+}
+.social li a i {
     font-size: 16px;
-    margin-top: 5px;
-    margin-right: 15px;
-    color: #195f91;
+    margin: 0 0 0 5px;
+    color: #EDEFF1 !important;
+}
+.footer-bottom {
+    background: #005E89;
+    border-top: 1px solid #DDDDDD;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.footer-bottom p.pull-left {
+    padding-top: 6px;
+    color: #fff;
+}
+.payments {
+    font-size: 1.5em;
+    color: #fff;
 }
 
 .subir {

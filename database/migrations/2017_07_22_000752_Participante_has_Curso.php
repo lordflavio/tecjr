@@ -16,7 +16,6 @@ class ParticipanteHasCurso extends Migration
         Schema::create('participante_has_cursos', function (Blueprint $table) {
             $table->integer('participanteId')->unsigned();
             $table->integer('cursosId')->unsigned();
-            $table->float('custo', 8);
             $table->string('status');
             $table->foreign('participanteId')->references('id')->on('participante')->onDelete('cascade');;
             $table->foreign('cursosId')->references('id')->on('cursos')->onDelete('cascade');;

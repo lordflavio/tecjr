@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ControllerOut@welcome');
 
 Route::get('/portifolio', 'ControllerOut@portifolio')->name('portifolio');
 Route::get('/noticias', 'ControllerOut@noticias')->name('noticias');

@@ -15,10 +15,11 @@ class Curos extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome',250);
             $table->date('data');
+            $table->string('valorInscricao');
             $table->string('horario',20);
-            $table->string('titulo',150);
+            $table->string('titulo',250);
+            $table->string('duracao',30);
             $table->text('discricao');
             $table->string('ministrante');
             $table->string('img');
