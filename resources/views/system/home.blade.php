@@ -159,8 +159,9 @@
                                 </div>
 
                                 <div class="form-group col-md-8">
-                                    <label class="col-md-4 control-label" for="img">Upload Imagem</label>
-                                    <input id="img" name="img" class="input-file" type="file">
+                                    <label class="col-md-12 control-label" for="img">Upload Imagem: <small> Resolução indicada : 760 X 400 pixels </small></label>
+                                    <input id="img" name="img" class="input-file" type="file"></br>
+
                                 </div>
                             </div>
                         </section>

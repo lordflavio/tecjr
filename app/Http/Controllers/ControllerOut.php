@@ -17,7 +17,7 @@ class ControllerOut extends Controller
         $noticias = Noticias::all();
         $gestao = Admin::all();
         $cursos = curso::orderBy('id', 'desc')->get();
-        $evento = evento::orderBy('id', 'desc')->get();;
+        $evento = evento::orderBy('id', 'desc')->get();
         return view('/welcome',compact('patrocinio','noticias','gestao','cursos','evento'));
     }
     public function portifolio()
@@ -37,12 +37,17 @@ class ControllerOut extends Controller
 
     public function cursosEventos()
     {
-        return view('/curso-evento');
+        $cursos = curso::orderBy('id', 'desc')->get();
+        $evento = evento::orderBy('id', 'desc')->get();
+        $title = 'Tecjr Cursos/Eventos';
+        return view('/curso-evento',compact('cursos','evento'));
     }
 
-    public function curso()
+    public function curso($curso)
     {
-        return view('/curso');
+        $curso = curso::where('titulo','=',$curso)->get();
+        $title = $title = 'Tecjr'.$curso->nome;
+        return view('/curso',compact('curso'));
     }
 
 

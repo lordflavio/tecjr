@@ -17,7 +17,7 @@ Route::get('/portifolio', 'ControllerOut@portifolio')->name('portifolio');
 Route::get('/noticias', 'ControllerOut@noticias')->name('noticias');
 Route::get('/contato', 'ControllerOut@contato')->name('contato');
 Route::get('/cursos-e-eventos', 'ControllerOut@cursosEventos')->name('cursoEvento');
-Route::get('/curso', 'ControllerOut@curso')->name('curso');
+Route::get('/curso/{curso}', 'ControllerOut@curso')->name('curso');
 
 
 Auth::routes();

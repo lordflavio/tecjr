@@ -168,8 +168,14 @@ class HomeController extends Controller
 
         if(isset($img)){
             $extencao = $img->getClientOriginalExtension();
+            $ideal_size = getimagesize($img);
             if($extencao != 'jpg' && $extencao != 'png'){
                 Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            if($ideal_size[0] != 760 && $ideal_size[1] != 400){
+                Session::flash('update','Tamanho da imagem invalido!');
                 return back();
             }
 

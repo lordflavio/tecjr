@@ -93,6 +93,7 @@
                 <p id="subtitulo">If you are going to use a passage of Lorem Ipsum, you need to be </p>
             </div>
 
+            @if(isset($noticias[0]))
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
                 <!-- Wrapper for slides -->
@@ -106,48 +107,45 @@
                         </div>
                     </div><!-- End Item -->
 
-                    <div class="item">
-                        <img src="{{$noticias[1]->img}}" width="760" height="400">
-                        <div class="carousel-caption">
-                            <h4>{{$noticias[1]->titulo}}</h4>
-                            <p> {{$noticias[1]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
-                        </div>
-                    </div><!-- End Item -->
-
-                    <div class="item">
-                        <img src="{{$noticias[2]->img}}" width="760" height="400">
-                        <div class="carousel-caption">
-                            <h4>{{$noticias[2]->titulo}}</h4>
-                            <p> {{$noticias[2]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
-                        </div>
-                    </div><!-- End Item -->
-
-                    <div class="item">
-                        <img src="http://placehold.it/760x400/999999/cccccc">
-                        <div class="carousel-caption">
-                            <h4><a href="#">magna aliquyam erat, sed diam voluptua</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                        </div>
-                    </div><!-- End Item -->
-
-                    <div class="item">
-                        <img src="http://placehold.it/760x400/dddddd/333333">
-                        <div class="carousel-caption">
-                            <h4><a href="#">tempor invidunt ut labore et dolore magna aliquyam erat</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                        </div>
-                    </div><!-- End Item -->
+                    @if(count($noticias) < 5)
+                        @for($i = 1; $i < count($noticias); $i++)
+                        <div class="item">
+                            <img src="{{$noticias[$i]->img}}" width="760" height="400">
+                            <div class="carousel-caption">
+                                <h4>{{$noticias[$i]->titulo}}</h4>
+                                <p> {{$noticias[$i]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
+                            </div>
+                        </div><!-- End Item -->
+                        @endfor
+                    @elseif(count($noticias) > 5)
+                        @for($j = 1; $j < 5; $j++)
+                        <div class="item">
+                            <img src="{{$noticias[$j]->img}}" width="760" height="400">
+                            <div class="carousel-caption">
+                                <h4>{{$noticias[$j]->titulo}}</h4>
+                                <p> {{$noticias[$j]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
+                            </div>
+                        </div><!-- End Item -->
+                        @endfor
+                    @endif
 
                 </div><!-- End Carousel Inner -->
 
 
                 <ul class="list-group col-sm-4">
-                    <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><h4>Lorem ipsum dolor sit amet consetetur sadipscing</h4></li>
-                    <li data-target="#myCarousel" data-slide-to="1" class="list-group-item"><h4>consetetur sadipscing elitr, sed diam nonumy eirmod</h4></li>
-                    <li data-target="#myCarousel" data-slide-to="2" class="list-group-item"><h4>tempor invidunt ut labore et dolore</h4></li>
-                    <li data-target="#myCarousel" data-slide-to="3" class="list-group-item"><h4>magna aliquyam erat, sed diam voluptua</h4></li>
-                    <li data-target="#myCarousel" data-slide-to="4" class="list-group-item"><h4>tempor invidunt ut labore et dolore magna aliquyam erat</h4></li>
+                    <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><h4>{{$noticias[0]->subtitulo}}</h4></li>
+                    @if(count($noticias) < 5)
+                        @for($i = 1; $i < count($noticias); $i++)
+                            <li data-target="#myCarousel" data-slide-to="{{$i}}" class="list-group-item"><h4>{{$noticias[$i]->subtitulo}}</h4></li>
+                        @endfor
+                    @elseif(count($noticias) > 5)
+                        @for($j = 1; $j < 5; $j++)
+                            <li data-target="#myCarousel" data-slide-to="{{$j}}" class="list-group-item"><h4>{{$noticias[$j]->subtitulo}}</h4></li>
+                        @endfor
                 </ul>
+
+
+            @endif
 
                 <!-- Controls -->
                 <div class="carousel-controls">
@@ -160,6 +158,7 @@
                 </div>
 
             </div><!-- End Carousel -->
+            @endif
         </div>
     </section><!-- OK -->
 
@@ -174,7 +173,7 @@
             {{--<button  type="button" id="b-equipe-right"><i class="fa fa-chevron-right"></i></button>--}}
 
             <div id="owl-demo" class="espacamento">
-
+             @if(count($gestao) > 0)
                 @foreach($gestao as $ges)
                 <div class="item center-block">
                     <img src="{{$ges->img}}" alt="pessoa1" class="img-responsive img-thumbnail">
@@ -192,6 +191,7 @@
                     </div>
                 </div>
                 @endforeach
+             @endif
             </div>
         </div>
 
@@ -263,10 +263,11 @@
 
             <div class="col-md-8">
                 <div id="owl-demo-apoio" class="espacamento">
+                 @if(count($patrocinio) > 0)
                     @foreach($patrocinio as $p)
                     <div class="item center-block item-custom"><img src="{{$p->img}}" alt="APOIO"></div>
                     @endforeach
-
+                 @endif
                 </div>
             </div>
         </div>

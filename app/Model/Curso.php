@@ -9,6 +9,7 @@ class curso extends Model
     protected $table = "cursos";
     protected $fillable = [
         'id',
+        'nome',
         'data',
         'valorInscricao',
         'horario',
@@ -16,6 +17,9 @@ class curso extends Model
         'duracao',
         'discricao',
         'ministrante',
+        'publicoAlvo',
+        'preRequisitos',
+        'objetivo',
         'img'
     ];
 }

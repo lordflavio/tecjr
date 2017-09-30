@@ -12,6 +12,20 @@ body {
     font-weight: 500;
 }
 
+.h-custom{
+    border-top: 1px solid #002f4c;
+}
+
+.thumbnail img {
+    width: 340px;
+}
+
+/*@media(max-width: 720px) {*/
+    /*.thumbnail img {*/
+        /*height: auto;*/
+    /*}*/
+/*}*/
+
 /*
  * Css logo e Menu
  * -----------------
@@ -1174,6 +1188,11 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     background-color: #007bff!important;
     text-align: center;
     margin-top: -20px;
+    color: #fff;
+}
+
+#info-curso .bloco-center{
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 480px){
@@ -1189,6 +1208,196 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
     height: auto;
 }
 
+#conteudo-cursos{
+    width: 100%;
+    height: auto;
+    background-color: rgba(211,211,211, .5);
+}
+#conteudo-cursos .texto-espacamento{
+    text-align: center;
+    margin-top: 50px;
+}
+#conteudo-cursos .texto-espacamento h1{
+    font-size: 2.2em;
+    text-transform: uppercase;
+    color: rgb(51, 51, 51);
+}
+#conteudo-cursos .texto-espacamento h1 span{
+    color: #007bff;
+}
+#conteudo-cursos .texto-espacamento p{
+    font-size: 1.2em;
+}
+#conteudo-cursos .espacamento-conteudo{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+/* Style the buttons inside the tab */
+div.tab button {
+    width: 105px;
+    font-weight: bold;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: rgba(0, 123, 255, .7);
+}
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    margin-bottom: 55px;
+}
+
+
+
+#conteudo-cursos .descri-interna{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#conteudo-cursos .descri-interna .desc-tab{
+    color: #007bff;
+    font-size: 20px;
+    margin-top: 15px;
+}
+#conteudo-cursos .descri-interna i{
+    color: #007bff;
+}
+#conteudo-cursos .divisoria{
+    border-top: 1px solid #007bff;
+    width: 70%;
+}
+#conteudo-cursos .descri-interna .texto-descri{
+    text-align: justify;
+    font-size: 18px;
+    color: #000!important;
+}
+#conteudo-cursos .descri{
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: justify;
+    font-size: 16px;
+    color: #000!important;
+}
+#conteudo-cursos .descri .ini{
+    font-size: 18px;
+    color: #007bff!important;
+}
+
+#conteudo-cursos .conteudo .conteudos-prog {
+    text-align: justify;
+    font-size: 18px;
+    color: #000!important;
+}
+#conteudo-cursos .conteudo .conteudos-prog ul{
+    list-style-type: none;
+    font-weight: 400;
+}
+#conteudo-cursos #info .descri .desc p{
+    text-align: justify;
+    font-size: 18px;
+    color: #000!important;
+}
+
+#conteudo-cursos .bloco-inscri{
+    border: 1px solid rgba(68, 68, 68, 0.50);
+    border-radius: 4px;
+    margin-bottom: 50px;
+}
+#conteudo-cursos .bloco-inscri button{
+    width: 100%;
+    height: 100px;
+}
+#conteudo-cursos .bloco-inscri button p{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+#conteudo-cursos .dentro-inscri{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #007bff;
+
+}
+#conteudo-cursos .dentro-inscri p{
+    font-size: 40px;
+}
+#conteudo-cursos .fa.fa-ticket{
+    font-size: 50px;
+}
+
+
+
+
+
+address #contato-insc{
+    width: 100%;
+    height: 200px;
+    background-color: red;!important;
+}
+address{
+    background-color: #007bff;
+    margin-bottom: 0px;
+    width: 100%;
+    height: auto;
+}
+
+#contato-insc .espacamento{
+    margin-top: 40px;
+}
+#contato-insc .row h1{
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+}
+
+#contato-insc button {
+    width: 210px;
+    margin: 15px auto;
+    font-size: 2.0rem;
+    padding: 1.25rem 2.5rem;
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    color: #005e89;
+    font-weight: 300;
+    font-weight: bold;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#contato-insc button:hover {
+    background-color: #005e89;
+    color: #ffffff;
+    border-color: #005e89;
+}
+
+
 @media only screen and (max-width: 480px){
     #conteudo-cursos .bloco-inscri button p {
         color: #fff;
@@ -1199,7 +1408,6 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
         font-size: 27px;
     }
 }
-
 
 /* ------------------------------------------------------------------------------------------------------------ */
 /*                                             PAGINA DE CONTATO                                                */

@@ -52,10 +52,11 @@ class CursosController extends Controller
                 Session::flash('warning','Tipo de imagem invalido!');
                 return back();
             }
-                $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+                $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->titulo)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
                 $n_date =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->data)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
 
                 $curso = new curso();
+                $curso->nome = $n_nome;
                 $curso->data = $request->data;
                 $curso->valorInscricao = $request->valorInscricao;
                 $curso->horario = $request->horario;
@@ -63,6 +64,9 @@ class CursosController extends Controller
                 $curso->duracao = $request->duracao;
                 $curso->discricao = $request->discricao;
                 $curso->ministrante = $request->ministrante;
+                $curso->publicoAlvo = $request->publicoAlvo;
+                $curso->preRequisitos = $request->preRequisitos;
+                $curso->objetivo = $request->objetivo;
                 $curso->img  = '/imagens/cursos/'.$n_nome.'-'.$n_date.'.'.$extencao;
 
                 $curso->save();

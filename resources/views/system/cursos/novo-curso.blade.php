@@ -48,10 +48,27 @@
                                 <span class="fa fa-clock-o form-control-feedback form-control-feedback-custom"></span>
                             </div>
 
+                            <div class="form-group col-lg-6 has-feedback ">
+                                <label>Pré-requisitos:</label>
+                                <textarea  name="preRequisitos" class="form-control" style="height: 100px"  id="preRequisitos" placeholder="Descrição..."></textarea>
+                                {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                            </div>
 
-                            <div class="form-group col-lg-12 has-feedback ">
+                            <div class="form-group col-lg-6 has-feedback ">
+                                <label>Publico Alvo:</label>
+                                <textarea  name="publicoAlvo" class="form-control" style="height: 100px"  id="publicoAlvo" placeholder="Descrição..."></textarea>
+                                {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                            </div>
+
+                            <div class="form-group col-lg-6 has-feedback ">
+                                <label >Objetivo:</label>
+                                <textarea  name="objetivo" class="form-control" style="height: 100px"  id="objetivo" placeholder="Descrição..."></textarea>
+                                {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                            </div>
+
+                            <div class="form-group col-lg-6 has-feedback ">
                                 <label >Descrição:</label>
-                                <textarea  name="discricao" class="form-control" style="height: 150px"  id="discricao" placeholder="Descrição..."></textarea>
+                                <textarea  name="discricao" class="form-control" style="height: 100px"  id="discricao" placeholder="Descrição..."></textarea>
                                 {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                             </div>
 
