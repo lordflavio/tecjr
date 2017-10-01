@@ -46,10 +46,12 @@ class ControllerOut extends Controller
 
     public function curso($curso)
     {
-        $curso = curso::where('nome','=',$curso);
-//        $conteudo = Curso_conteudo::where('cursosId','=',$curso->id);
-        $title = $title = 'Tecjr';
+        $curso = curso::all()->where('nome','=',$curso);
+        $conteudo = Curso_conteudo::all()->where('cursosId','=',$curso[0]->id);
+        $title = $title = 'Tecjr '.$curso[0]->nome;
         return view('/curso',compact('curso','title','conteudo'));
+
+
     }
 
 

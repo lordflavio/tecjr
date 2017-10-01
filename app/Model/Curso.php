@@ -11,6 +11,7 @@ class curso extends Model
         'id',
         'nome',
         'data',
+        'inscricoes',
         'valorInscricao',
         'horario',
         'titulo',

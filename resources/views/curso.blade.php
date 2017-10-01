@@ -44,7 +44,7 @@
             <div class="row texto-espacamento">
 
                 <h1>O QUE VOU APRENDER <span>NESSE CURSO!</span></h1>
-                <p>Conteúdo completo para você aprender tudo sobre {{$curso->title}}</p>
+                <p>Conteúdo completo para você aprender tudo sobre {{$curso[0]->titulo}}</p>
 
             </div>
 
@@ -63,7 +63,7 @@
                             <p class="desc-tab">Descrição de Curso</p>
                             <hr class="divisoria">
                             <div class="descri">
-                                <p class="texto-descri"> {{$curso->discricao}} </p>
+                                <p class="texto-descri"> {{$curso[0]->discricao}} </p>
                             </div>
                         </div>
                     </div>
@@ -75,9 +75,9 @@
                             <hr class="divisoria">
                             <div class="conteudos-prog">
                                 <ul>
-                                    {{--@foreach($conteudo as $cont)--}}
-                                    {{--<li>- {{$cont->conteudo}}</li>--}}
-                                    {{--@endforeach--}}
+                                    @foreach($conteudo as $cont)
+                                    <li class="text-left"> {{$cont->conteudo}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -90,13 +90,13 @@
                             <hr class="divisoria">
                             <div class="descri">
 
-                                <p class="desc"><span class="ini">Carga Horária do Certificado:</span> {{$curso->duracao}} horas</p>
+                                <p class="desc"><span class="ini">Carga Horária do Certificado:</span> {{$curso[0]->duracao}} horas</p>
 
-                                <p class="desc"><span class="ini">Público Alvo:</span> {{$curso->publicoAlvo}} </p>
+                                <p class="desc"><span class="ini">Público Alvo:</span> {{$curso[0]->publicoAlvo}} </p>
 
-                                <p class="desc"><span class="ini">Pré-requisitos:</span> {{$curso->preRequisitos}} </p>
+                                <p class="desc"><span class="ini">Pré-requisitos:</span> {{$curso[0]->preRequisitos}} </p>
 
-                                <p class="desc"><span class="ini">Objetivo:</span> {{$curso->objetico}}</p>
+                                <p class="desc"><span class="ini">Objetivo:</span> {{$curso[0]->objetico}}</p>
 
                                 <p class="desc"><span class="ini">Certificado:</span> O Certificado de Conclusão do Curso é válido em todo o Brasil.</p>
 
@@ -108,9 +108,9 @@
 
                 <div class="col-md-4">
                     <div class="bloco-inscri">
-                        <button type="button" class="btn btn-success"><p>MATRICULAR NESSE CURSO</p><small>COMECE A ESTUDAR AGORA</small></button>
+                        <button type="button" {{($curso[0]->inscricoes == true) ? '' : 'disabled'}}  class="btn btn-success"><p>MATRICULAR NESSE CURSO</p><small>{{($curso[0]->inscricoes == true) ? 'COMECE A ESTUDAR AGORA' : 'ISCRIÇÕES NÃO DISPONIVEIS NO MOMENTO'}} </small></button>
                         <div class="dentro-inscri">
-                            <p><i class="fa fa-ticket" aria-hidden="true"></i><span> R$ XX,XX</span></p>
+                            <p><i class="fa fa-ticket" aria-hidden="true"></i><span> {{$curso[0]->valorInscricao}} </span></p>
                             <p><i class="fa fa-file-text-o" aria-hidden="true"></i><span> C/ Certificado</span></p>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                 <h1>Ficou com alguma dúvida? <br>Entre em contato conosco!</h1>
             </div>
             <div style="margin-bottom: 45px;">
-                <button id="js-trigger-overlay" type="button">Contato</button>
+                <a class="text-center" href="/contato" id="js-trigger-overlay" type="button">Contato</a>
             </div>
         </div>
     </address>

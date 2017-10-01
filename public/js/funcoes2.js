@@ -192,6 +192,8 @@ window.Modernizr=function(a,b,c){function w(a){j.cssText=a}function x(a,b){retur
 
 $(document).ready(function(){
 
+    document.getElementById("defaultOpen").click();
+
     var clickEvent = false;
     $('#myCarousel').carousel({
         interval:   4000
@@ -213,17 +215,19 @@ $(document).ready(function(){
     });
 })
 
-$(window).load(function() {
-    var boxheight = $('#myCarousel .carousel-inner').innerHeight();
-    var itemlength = $('#myCarousel .item').length;
-    var triggerheight = Math.round(boxheight/itemlength+1);
-    $('#myCarousel .list-group-item').outerHeight(triggerheight);
-});
+// $(window).load(function() {
+//     var boxheight = $('#myCarousel .carousel-inner').innerHeight();
+//     var itemlength = $('#myCarousel .item').length;
+//     var triggerheight = Math.round(boxheight/itemlength+1);
+//     $('#myCarousel .list-group-item').outerHeight(triggerheight);
+// }( window ));
 
 
 function openDescri(evt, evento) {
     // Declare all variables
     var i, tabcontent, tablinks;
+
+
 
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");

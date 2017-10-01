@@ -17,6 +17,7 @@ class Curos extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->date('data');
+            $table->boolean('inscricoes');
             $table->string('valorInscricao',20);
             $table->string('horario',20);
             $table->string('titulo',250);

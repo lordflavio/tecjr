@@ -59,6 +59,7 @@ class CursosController extends Controller
                 $curso = new curso();
                 $curso->nome = $n_nome;
                 $curso->data = $request->data;
+                $curso->inscricoes = false;
                 $curso->valorInscricao = $request->valorInscricao;
                 $curso->horario = $request->horario;
                 $curso->titulo = $request->titulo;
@@ -183,6 +184,8 @@ class CursosController extends Controller
 
     }
 
+    /* Deletar Curso */
+
     public function delete($id){
         unlink(public_path().curso::find($id)->img);
         curso::destroy($id);
@@ -190,7 +193,7 @@ class CursosController extends Controller
         Session::flash('warning','Curso Removido!');
         return redirect()->route('curso.index');
     }
-
+    /* Add Conteudo ao Curso */
     public function addConteudo(Request $request, $id){
 
         $c = new Curso_conteudo();
@@ -200,11 +203,30 @@ class CursosController extends Controller
         Session::flash('success','Conteudo registrado!');
         return redirect(route('curso.show',$id));
     }
-
+    /* Deletar Conteudo */
     public function deleteConteudo($id, $id2){
 
         Curso_conteudo::destroy($id);
         Session::flash('warning','Conteudo Removido!');
         return redirect()->route('curso.show',$id2);
+    }
+
+    /* Ativar Curso */
+    public function ative($id){
+
+        $curso = curso::find($id);
+        $curso->inscricoes = true;
+        $curso->save();
+        Session::flash('success','Ativado!');
+        return redirect()->route('curso.show',$id);
+    }
+    /* Ativar Curso */
+    public function desative($id){
+
+        $curso = curso::find($id);
+        $curso->inscricoes = false;
+        $curso->save();
+        Session::flash('warning','Desativado!');
+        return redirect()->route('curso.show',$id);
     }
 }

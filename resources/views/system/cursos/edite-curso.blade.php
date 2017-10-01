@@ -5,6 +5,10 @@
         <div class="row">
             <div class="hast">
                 <h1 style="margin-top: -50px;" class="text-center h1-curso"> Editar Curso: {{$curso->titulo}} </h1>
+                <div style="padding-bottom: 20px">
+                    <button data-toggle="modal" data-target="#ative" class=" {{($curso->inscricoes == true) ? 'btn-success' : 'btn-danger'}} col-md-offset-11 col-sm-offset-10 col-xs-offset-9">{{($curso->inscricoes == true) ? 'Ativo' : 'Não Ativo'}}</button>
+                </div>
+
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#editar">Editar</a></li>
                     <li><a data-toggle="tab" href="#add_conteudo">Add Conteudo</a></li>
@@ -132,12 +136,36 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
 
+                    <div id="inscritos" class="tab-pane fade">
+                        <h1>Em breve</h1>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </div>
+    </br>
+
+    {{-- Modal Ativar Curso --}}
+    <div class="modal fade" id="ative" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> {{($curso->inscricoes == true) ? 'Desativar' : 'Ativar'}} {{$curso->titulo}} </h4>
+                </div>
+                <div class="panel-body">
+                    <p> Você deseja {{($curso->inscricoes == true) ? 'desativar' : 'ativa'}} as inscrições para esse curso ? </p>
+                    <div class="row">
+                        <div class="col-12-xs text-center">
+                            <a href="{{($curso->inscricoes == true) ? route('curso.desative',$curso->id) : route('curso.ative',$curso->id)}}"><button class="btn btn-success btn-md">Sim</button></a>
+                            <button class="btn btn-danger btn-md " data-dismiss="modal">Não</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </br>
 @endsection

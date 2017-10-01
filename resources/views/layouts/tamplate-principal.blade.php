@@ -1,3 +1,5 @@
+
+@php(set_include_path('http://127.0.0.1:8000'))
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
@@ -8,7 +10,7 @@
     <title>{{ $title or 'Tecjr' }}</title>
 
     <!-- Icon -->
-    <link rel="shortcut icon" href="{{asset('/imagens/ico.png')}}" />
+    <link rel="shortcut icon" href="{{asset(get_include_path().'/imagens/ico.png')}}" />
 
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-touch-slider.css')}}">
@@ -38,7 +40,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <img src="imagens/logo1.png" width="150" height="79" alt="Logo da Empresa">
+                <img src="{{get_include_path().'/imagens/logo1.png'}}" width="150" height="79" alt="Logo da Empresa">
 
             </div>
 
@@ -66,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3  col-md-3 col-sm-6 col-xs-8">
-                    <img src="/imagens/logo1.png" class="img-responsive" width="400" alt="Logo">
+                    <img src="{{get_include_path().'/imagens/logo1.png'}}" class="img-responsive" width="400" alt="Logo">
                 </div>
                 <div class="col-lg-2  col-md-3 col-sm-3 col-xs-6">
                     <h3 class="text-center"> Tecjr </h3>
