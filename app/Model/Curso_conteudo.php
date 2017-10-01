@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso_conteudo extends Model
 {
-    protected $table = "cursos";
+    protected $table = "curso_conteudo";
     protected $fillable = [
+        'id',
         'cursosId',
         'conteudo'
     ];

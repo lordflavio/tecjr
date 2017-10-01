@@ -25,11 +25,11 @@
                                 <p><b> Horario:</b> {{$curso->horario}}</p>
                                 <p><b> Duração:</b> {{$curso->duracao}}</p>
                                 <p><b> Custo:</b> {{$curso->valorInscricao}}</p>
-                                {{--<div class="more">--}}
-                                    {{--<a href="#" title="Title Link">--}}
-                                        {{--Read More <i class="fa fa-angle-double-right"></i>--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
+                                <div class="more">
+                                    <a href="{{route('curso.show',$curso->id)}}" title="Title Link">
+                                        Edite
+                                    </a>
+                                </div>
                                 <div class="col-md-offset-10">
                                     <a href="{{route('cursoex.delete',$curso->id)}}" title="Remover">
                                         <i class="fa fa-bitbucket"></i>

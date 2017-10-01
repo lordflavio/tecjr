@@ -10,7 +10,6 @@
                         <i class="fa fa-building-o fa-5x" aria-hidden="true"></i>
                         <div class="espacamento-interno">
                             <p class="icons-descri">Curso Presencial</p>
-                            <p class="icons-sub-descri">asdasdasdasdasdasdasdasds</p>
                         </div>
                     </div>
                 </div>
@@ -19,7 +18,6 @@
                         <i class="fa fa-ticket fa-5x" aria-hidden="true"></i>
                         <div class="espacamento-interno">
                             <p class="icons-descri">Preços Acessiveis</p>
-                            <p class="icons-sub-descri">asdasdasdasdasdasdasdasds</p>
                         </div>
                     </div>
                 </div>
@@ -27,14 +25,12 @@
                     <div class="bloco-center">
                         <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
                         <p class="icons-descri">Carga Horaria: XX Horas</p>
-                        <p class="icons-sub-descri">asdasdasdasdasdasdasdasds</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="bloco-center">
                         <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                         <p class="icons-descri">Profissionais Qualificado</p>
-                        <p class="icons-sub-descri">asdasdasdasdasdasdasdasds</p>
                     </div>
                 </div>
 
@@ -48,7 +44,7 @@
             <div class="row texto-espacamento">
 
                 <h1>O QUE VOU APRENDER <span>NESSE CURSO!</span></h1>
-                <p>Conteúdo completo para você aprender tudo sobre XXXXXXXXXXXXXXXXX</p>
+                <p>Conteúdo completo para você aprender tudo sobre {{$curso->title}}</p>
 
             </div>
 
@@ -67,7 +63,7 @@
                             <p class="desc-tab">Descrição de Curso</p>
                             <hr class="divisoria">
                             <div class="descri">
-                                <p class="texto-descri">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias architecto assumenda corporis dolorem ea, est expedita, laboriosam libero maiores odio possimus, praesentium provident quaerat quasi quidem rerum sit voluptatum? Ab aliquid deserunt dolore ducimus itaque maiores neque odio possimus, quia similique sint tempora. Alias distinctio esse explicabo fugiat libero magni placeat quam, quia rem, repellendus temporibus ullam voluptatibus voluptatum?</p>
+                                <p class="texto-descri"> {{$curso->discricao}} </p>
                             </div>
                         </div>
                     </div>
@@ -79,18 +75,9 @@
                             <hr class="divisoria">
                             <div class="conteudos-prog">
                                 <ul>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
-                                    <li>- asdasdasd</li>
+                                    {{--@foreach($conteudo as $cont)--}}
+                                    {{--<li>- {{$cont->conteudo}}</li>--}}
+                                    {{--@endforeach--}}
                                 </ul>
                             </div>
                         </div>
@@ -103,13 +90,13 @@
                             <hr class="divisoria">
                             <div class="descri">
 
-                                <p class="desc"><span class="ini">Carga Horária do Certificado:</span> 35 horas</p>
+                                <p class="desc"><span class="ini">Carga Horária do Certificado:</span> {{$curso->duracao}} horas</p>
 
-                                <p class="desc"><span class="ini">Público Alvo:</span> Este Curso é direcionado para jovens em busca de qualificação profissional, secretários e diretores de obra, gestores de obras, estudantes de arquitetura e engenharia, profissionais da área da construção civil que desejam aperfeiçoar seus conhecimentos e demais interessados.</p>
+                                <p class="desc"><span class="ini">Público Alvo:</span> {{$curso->publicoAlvo}} </p>
 
-                                <p class="desc"><span class="ini">Pré-requisitos:</span> Não há exigência de escolaridade ou idade mínima para participar dos Cursos. Os Cursos poderão ser feitos por pessoas de qualquer idade e grau escolar.</p>
+                                <p class="desc"><span class="ini">Pré-requisitos:</span> {{$curso->preRequisitos}} </p>
 
-                                <p class="desc"><span class="ini">Objetivo:</span> Este curso objetiva capacitar profissionais de diversas áreas do conhecimento e estudantes que desejam atualizar-se no assunto, que estão em busca de novos desafios, e desejam obter maior aprendizado sobre o tema.</p>
+                                <p class="desc"><span class="ini">Objetivo:</span> {{$curso->objetico}}</p>
 
                                 <p class="desc"><span class="ini">Certificado:</span> O Certificado de Conclusão do Curso é válido em todo o Brasil.</p>
 

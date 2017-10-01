@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Admin;
 use App\Model\curso;
+use App\Model\Curso_conteudo;
 use App\Model\evento;
 use App\Model\Noticias;
 use App\Model\Patrocinio;
@@ -45,9 +46,10 @@ class ControllerOut extends Controller
 
     public function curso($curso)
     {
-        $curso = curso::where('titulo','=',$curso)->get();
-        $title = $title = 'Tecjr'.$curso->nome;
-        return view('/curso',compact('curso'));
+        $curso = curso::where('nome','=',$curso);
+//        $conteudo = Curso_conteudo::where('cursosId','=',$curso->id);
+        $title = $title = 'Tecjr';
+        return view('/curso',compact('curso','title','conteudo'));
     }
 
 

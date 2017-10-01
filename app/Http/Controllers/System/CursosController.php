@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\System;
 
 use App\Model\curso;
+use App\Model\Curso_conteudo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -96,7 +97,11 @@ class CursosController extends Controller
      */
     public function show($id)
     {
-        //
+        $curso = curso::find($id);
+        $conteudo = Curso_conteudo::where('cursosId','=',$id)->get();
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr '.$curso->nome;
+        return view('system/cursos/edite-curso',compact('title','curso','admin','conteudo'));
     }
 
     /**
@@ -119,7 +124,52 @@ class CursosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $img = $request->file('img');
 
+        $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->titulo)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+        $n_date =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->data)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+
+        $curso = curso::find($id);
+
+        $curso->nome = $n_nome;
+        $curso->valorInscricao = $request->valorInscricao;
+        $curso->horario = $request->horario;
+        $curso->titulo = $request->titulo;
+        $curso->duracao = $request->duracao;
+        $curso->discricao = $request->discricao;
+        $curso->ministrante = $request->ministrante;
+        $curso->publicoAlvo = $request->publicoAlvo;
+        $curso->preRequisitos = $request->preRequisitos;
+        $curso->objetivo = $request->objetivo;
+
+        if(isset($request->data)){
+            $curso->data = $request->data;
+        }
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            unlink(public_path().$curso->img);
+
+            if( $img->move(public_path().'/imagens/cursos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+                $curso->img  = '/imagens/cursos/'.$n_nome.'-'.$n_date.'.'.$extencao;
+                $curso->save();
+                Session::flash('update','Atualiado!');
+                return redirect(route('curso.show',$id));
+            }else{
+                Session::flash('warning','Problema no cadastro!');
+                return back();
+            }
+
+        }else{
+            $curso->save();
+            Session::flash('update','Atualiado!');
+            return redirect(route('curso.show',$id));
+        }
     }
 
     /**
@@ -139,5 +189,22 @@ class CursosController extends Controller
 
         Session::flash('warning','Curso Removido!');
         return redirect()->route('curso.index');
+    }
+
+    public function addConteudo(Request $request, $id){
+
+        $c = new Curso_conteudo();
+        $c->cursosId = $id;
+        $c->conteudo = $request->conteudo;
+        $c->save();
+        Session::flash('success','Conteudo registrado!');
+        return redirect(route('curso.show',$id));
+    }
+
+    public function deleteConteudo($id, $id2){
+
+        Curso_conteudo::destroy($id);
+        Session::flash('warning','Conteudo Removido!');
+        return redirect()->route('curso.show',$id2);
     }
 }

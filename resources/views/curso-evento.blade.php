@@ -16,7 +16,7 @@
                             <p><i class="fa fa-ticket fa-lg" aria-hidden="true"> {{$curso->valorInscricao}} Reais</i></p>
                         </div>
                         <br>
-                        <a href="#" class="btn btn-primary col-xs-12" role="button">Increver-se</a>
+                        <a href="/curso/{{$curso->nome}}" class="btn btn-primary col-xs-12" role="button">Increver-se</a>
                         <div class="clearfix"></div>
                     </div>
                 </div>

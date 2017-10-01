@@ -14,6 +14,7 @@ class CursoConteudo extends Migration
     public function up()
     {
         Schema::create('curso_conteudo', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('cursosId')->unsigned();
             $table->string('conteudo');
             $table->foreign('cursosId')->references('id')->on('cursos')->onDelete('cascade');;
