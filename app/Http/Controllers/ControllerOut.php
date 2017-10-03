@@ -54,5 +54,11 @@ class ControllerOut extends Controller
 
     }
 
+    public function evento ($evento){
+
+        return view('/eventos');
+
+    }
+
 
 }

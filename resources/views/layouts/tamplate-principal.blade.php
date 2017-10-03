@@ -121,7 +121,7 @@
 </footer>
 
 <div class="container">
-    <a class=" pull-right subir" title="Subir" href="#inicio"> <i class="fa fa-angle-double-up" aria-hidden="true"></i> </a>
+    <a class=" pull-right subir " title="Subir" href="#inicio"> <i class="fa fa-angle-double-up" aria-hidden="true"></i> </a>
 </div>
 
 
