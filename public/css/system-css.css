@@ -355,6 +355,11 @@
     margin-top: 8px;
 }
 
+.fa.fa-envelope{
+    margin-top: 5px;
+    font-size: 18px;
+}
+
 .fa.fa-edit{
   margin-top: 8px;
 }
@@ -400,6 +405,20 @@
 }
 
 .fa.fa-clock-o{
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.fa.fa-map-marker{
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.fa.fa-phone{
+    margin-top: 5px;
+    font-size: 20px;
+}
+.fa.fa-thumb-tack{
     margin-top: 5px;
     font-size: 20px;
 }

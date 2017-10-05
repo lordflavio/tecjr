@@ -124,22 +124,19 @@
     <a class=" pull-right subir " title="Subir" href="#inicio"> <i class="fa fa-angle-double-up" aria-hidden="true"></i> </a>
 </div>
 
-
-
-
 <!-- Scripts -->
 <!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script src="{{asset('bootstrap-3/js/bootstrap.min.js' )}}"></script>
 <script src="{{asset('OwlCarousel-master/owl-carousel/owl.carousel.min.js' )}}"></script>
-<script src="{{asset('js/myjs.js' )}}"></script>
 <script src="{{asset('js/funcoes2.js' )}}"></script>
 <script src="{{asset('js/bootstrap-touch-slider.js' )}}"></script>
+
+
 <script>
     $('#bootstrap-touch-slider').bsTouchSlider();
 </script>
-
 
 </body>
 </html>

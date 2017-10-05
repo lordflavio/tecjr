@@ -16,11 +16,11 @@ class Atividades extends Migration
         Schema::create('atividades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('area',80);
-            $table->string('categoria',80);
-            $table->text('resumo');
+            $table->string('modalidade',80);
             $table->string('titulo',150);
             $table->date('data');
-            $table->string('horario',10);
+            $table->string('horario',150);
+            $table->string('local',150);
             $table->integer('eventoId')->unsigned();
             $table->foreign('eventoId')->references('id')->on('eventos')->onDelete('cascade');
             $table->timestamps();

@@ -32,7 +32,9 @@ class EventoController extends Controller
      */
     public function create()
     {
-        return view('system/eventos/novo-evento');
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr Eventos';
+        return view('system/eventos/novo-evento',compact('admin','title'));
     }
 
     /**
@@ -56,17 +58,30 @@ class EventoController extends Controller
 
             $evento = new evento();
 
-            $evento->nome = $request->nome;
+            $evento->nome = $n_nome;
+            $evento->endereco = $request->endereco;
+            $evento->numero = $request->numero;
+            $evento->bairro = $request->bairro;
+            $evento->cidade = $request->cidade;
+            $evento->estado = $request->estado;
+            $evento->cep = $request->cep;
+            $evento->email = $request->email;
+            $evento->fone = $request->fone;
+            $evento->sobre = $request->fone;
+            $evento->descIns = $request->descIns;
+            $evento->map = $request->map;
+            $evento->programacao = "";
+            $evento->banner = "";
             $evento->dateInicioIns = $request->dateInicioIns;
             $evento->dateFimIns = $request->dateFimIns;
             $evento->dateInicioEx = $request->dateInicioEx;
             $evento->dateFimEx = $request->dateFimEx;
-            $evento->status = $request->status;
             $evento->img  = '/imagens/eventos/'.$n_nome.'-'.$n_date.'.'.$extencao;
 
-            $evento->save();
-
             if( $img->move(public_path().'/imagens/eventos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+
+                $evento->save();
+
                 Session::flash('success','Novo evento registro!');
                 return redirect(route('evento.index'));
             }else{

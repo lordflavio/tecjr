@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="form-group">
-                        <p class="text-center"> <a href="{{route('register')}}"> Registra-se  </a> </p>
+                        {{--<p class="text-center"> <a  href="{{route('register')}}"> Registra-se  </a> </p>--}}
                     </div>
                     <div class="form-group">
                         <p class="text-center"> ©2017 TecJr</p>

@@ -16,12 +16,23 @@ class Eventos extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome',150);
+            $table->string('endereco');
+            $table->string('numero',20);
+            $table->string('bairro');
+            $table->string('cidade');
+            $table->string('estado',10);
+            $table->string('cep',10);
+            $table->string('email');
+            $table->string('fone',18);
             $table->text('sobre');
             $table->date('dateInicioIns');
             $table->date('dateFimIns');
             $table->date('dateInicioEx');
             $table->date('dateFimEx');
-            $table->string('status');
+            $table->string('programacao');
+            $table->text('descIns');
+            $table->text('map');
+            $table->string('banner');
             $table->string('img');
             $table->timestamps();
         });

@@ -4,7 +4,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <h1 class="text-center h1-curso"> Eventos  </h1>
+            <h1 class="col-md-offset-5 col-sm-offset-6 col-xs-offset-5 h1-curso"> Eventos  </h1>
+            <div class="col-md-offset-8 col-sm-offset-4 col-xs-offset-2 ">
+                <a type="button" href="{{route('evento.create')}}" class="btn btn-success btn-success-custom  "><i class="fa fa-archive"></i> Criar novo Evento  </a>
+            </div>
             <hr>
             <div class="hast">
                 <!-- Boxes de Acoes -->
@@ -39,9 +42,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="col-md-offset-4">
-                <a type="button" href="{{route('evento.create')}}" class="btn btn-success btn-success-custom  "><i class="fa fa-archive"></i> Criar novo Evento  </a>
-            </div></br>
+            </br>
         </div>
     </div>
 @endsection

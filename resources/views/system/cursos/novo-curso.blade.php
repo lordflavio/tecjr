@@ -32,19 +32,19 @@
                             </div>
                             <div class="form-group col-lg-4 has-feedback ">
                                 <label >Valor de Inscricao:</label>
-                                <input type="text" name="valorInscricao" class="form-control"   id="valorInscricao" placeholder="R$: 00,00">
+                                <input type="text" name="valorInscricao" class="form-control"   id="valorInscricao" >
                                 <span class="fa fa-money form-control-feedback form-control-feedback-custom"></span>
                             </div>
 
                             <div class="form-group col-lg-2 has-feedback ">
                                 <label >Horario:</label>
-                                <input type="text" name="horario" class="form-control"   id="horario" placeholder="HH:MM">
+                                <input type="text" name="horario" class="form-control"   id="horario">
                                 <span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>
                             </div>
 
                             <div class="form-group col-lg-2 has-feedback ">
                                 <label >Duração:</label>
-                                <input type="text" name="duracao" class="form-control"   id="duracao" placeholder="HH">
+                                <input type="text" name="duracao" class="form-control"   id="duracao" >
                                 <span class="fa fa-clock-o form-control-feedback form-control-feedback-custom"></span>
                             </div>
 

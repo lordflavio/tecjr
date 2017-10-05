@@ -133,7 +133,7 @@ class CursosController extends Controller
         $curso = curso::find($id);
 
         $curso->nome = $n_nome;
-        $curso->valorInscricao = $request->valorInscricao;
+        $curso->valorInscricao = "R$ ".$request->valorInscricao;
         $curso->horario = $request->horario;
         $curso->titulo = $request->titulo;
         $curso->duracao = $request->duracao;

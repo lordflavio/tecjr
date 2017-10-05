@@ -10,11 +10,23 @@ class evento extends Model
     protected $fillable = [
         'id',
         'nome',
+        'endereco',
+        'numero',
+        'bairro',
+        'cidade',
+        'estado',
+        'cep',
+        'email',
+        'fone',
+        'sobre',
         'dateInicioIns',
         'dateFimIns',
         'dateInicioEx',
         'dateFimEx',
-        'status',
+        'programacao',
+        'descIns',
+        'map',
+        'banner',
         'img'
     ];
 }

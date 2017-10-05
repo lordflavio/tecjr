@@ -204,7 +204,9 @@
 <script src="{{asset('js/toastr.min.js' )}}"></script>
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>--}}
 <script src="{{asset('bootstrap-3/js/bootstrap.min.js' )}}"></script>
+<script src="{{asset('js/jquery.mask.js' )}}"></script>
 <script src="{{asset('js/myjs.js' )}}"></script>
+
 
 <script>
     $(document).ready(function () {
