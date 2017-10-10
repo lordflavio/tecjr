@@ -5,6 +5,7 @@
             <div class="row espacamento">
                 <h1 class="text-center">Cursos Ofertados</h1>
                 <hr class="h-custom">
+                @if(count($cursos) > 0)
                 @foreach($cursos as $curso)
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
@@ -21,26 +22,29 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
                 <div class="col-md-12">
                     <h1 class="text-center">Eventos</h1>
                     <hr class="h-custom">
-                    @for($i = 0; $i < 3; $i++)
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img class="img-responsive" src="imagens/contato.png" alt="..." height="200px" width="320px">
-                                <h4>DESENVOLVIMENTO WEB <br> MÓDULO I</h4>
-                                <span class="descricao-curso">Amet assumenda ea eaque eius iusto minus pariatur. Aut consectetur consequatur cumque esse eum exercitationem facere id nisi ratione reiciendis. Mollitia, ut.</span>
-                                <div class="descricao-avancada">
-                                    <p><i class="fa fa-clock-o fa-lg" aria-hidden="true"> -- Horas</i></p>
-                                    <p><i class="fa fa-ticket fa-lg" aria-hidden="true"> --,-- Reais</i></p>
+                    @if(count($eventos) > 0)
+                        @foreach($eventos as $evento)
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img class="img-responsive" src="{{$evento->img}}" alt="LOGO" height="200px" width="320px">
+                                    <h4 style="text-transform: uppercase">{{$evento->titulo}}</h4>
+                                    <span class="descricao-curso">{{$evento->sobre}}</span>
+                                    <div class="descricao-avancada">
+                                        {{--<p><i class="fa fa-clock-o fa-lg" aria-hidden="true"> -- Horas</i></p>--}}
+                                        {{--<p><i class="fa fa-ticket fa-lg" aria-hidden="true"> --,-- Reais</i></p>--}}
+                                    </div>
+                                    <br>
+                                    <a href="/eventos/{{$evento->nome}}" class="btn btn-primary col-xs-12" role="button">Inscreva-se</a>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <br>
-                                <a href="#" class="btn btn-primary col-xs-12" role="button">View Snippet</a>
-                                <div class="clearfix"></div>
                             </div>
-                        </div>
-                    @endfor
-            </div>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
     </section>
@@ -52,7 +56,9 @@
                 <h1>Não encontrou o curso que deseja? <br>Entre em contato conosco!</h1>
             </div>
             <div>
-                <button id="js-trigger-overlay" type="button">Contato</button>
+                <a href="/contato" style="text-decoration: none">
+                    <button id="js-trigger-overlay" type="button">Contato</button>
+                </a>
             </div>
         </div>
     </section>

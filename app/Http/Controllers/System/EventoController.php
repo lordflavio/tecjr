@@ -4,6 +4,10 @@ namespace App\Http\Controllers\System;
 
 use App\Model\atividade;
 use App\Model\evento;
+use App\Model\Evento_palestrante;
+use App\Model\Evento_Patrocinios;
+use App\Model\Evento_submissao;
+use App\Model\Patrocinio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +63,7 @@ class EventoController extends Controller
             $evento = new evento();
 
             $evento->nome = $n_nome;
+            $evento->titulo = $request->nome;
             $evento->endereco = $request->endereco;
             $evento->numero = $request->numero;
             $evento->bairro = $request->bairro;
@@ -67,7 +72,7 @@ class EventoController extends Controller
             $evento->cep = $request->cep;
             $evento->email = $request->email;
             $evento->fone = $request->fone;
-            $evento->sobre = $request->fone;
+            $evento->sobre = $request->sobre;
             $evento->descIns = $request->descIns;
             $evento->map = $request->map;
             $evento->programacao = "";
@@ -107,8 +112,11 @@ class EventoController extends Controller
         $admin = Admin::find( Auth::user()->id);
         $atividades = atividade::all()->where('eventoId', '=', $id);
         $evento = evento::find($id);
+        $submissao = Evento_submissao::all()->where('eventoid','=',$id);
+        $patrocinio = Evento_Patrocinios::all()->where('eventoid','=',$id);
+        $palestrante = Evento_palestrante::all()->where('eventoid','=',$id);
         $title = 'Tecjr Eventos: ' . $evento->nome;
-        return view('system/eventos/eventos-atividades', compact('atividades', 'evento', 'title','admin'));
+        return view('system/eventos/eventos-atividades', compact('atividades', 'evento', 'title','admin','patrocinio','submissao','palestrante'));
     }
 
 
@@ -132,7 +140,72 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $img = $request->file('img');
+
+        $evento = evento::find($id);
+
+        $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+
+        $evento->nome = $n_nome;
+        $evento->titulo = $request->nome;
+        $evento->endereco = $request->endereco;
+        $evento->numero = $request->numero;
+        $evento->bairro = $request->bairro;
+        $evento->cidade = $request->cidade;
+        $evento->estado = $request->estado;
+        $evento->cep = $request->cep;
+        $evento->email = $request->email;
+        $evento->fone = $request->fone;
+        $evento->sobre = $request->sobre;
+        $evento->descIns = $request->descIns;
+        $evento->map = $request->map;
+
+        if(isset($request->dateInicioIns)){
+            $evento->dateInicioIns = $request->dateInicioIns;
+
+        }
+        if(isset($request->dateFimIns)){
+            $evento->dateFimIns = $request->dateFimIns;
+
+        }
+        if(isset($request->dateInicioEx)){
+            $evento->dateInicioEx = $request->dateInicioEx;
+
+        }
+        if(isset($request->dateFimEx)){
+            $evento->dateFimEx = $request->dateFimEx;
+
+        }
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            $n_date =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($evento->dateInicioEx)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+
+            unlink(public_path().$evento->img);
+
+            $evento->img  = '/imagens/eventos/'.$n_nome.'-'.$n_date.'.'.$extencao;
+
+            if( $img->move(public_path().'/imagens/eventos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+
+                $evento->save();
+
+                Session::flash('update','Evento Atualizado');
+                return redirect(route('evento.show',$id));
+            }else{
+                Session::flash('warning','Problema no cadastro!');
+                return back();
+            }
+
+        }else{
+            $evento->save();
+            Session::flash('update','Evento Atualizado');
+            return redirect(route('evento.show',$id));
+        }
     }
 
     /**
@@ -166,4 +239,205 @@ class EventoController extends Controller
         Session::flash('warning','Evento Removido!');
         return redirect()->route('evento.index');
     }
+
+    public function submissao(Request $request,$id)
+    {
+
+        $sub = new Evento_submissao();
+        $sub->link = $request->link;
+        $sub->descricao = $request->resumo;
+        $sub->eventoid = $id;
+
+        $sub->save();
+
+        Session::flash('success','Submissão  Ativada!');
+        return redirect()->route('evento.show',$id);
+//      return back();
+    }
+
+    public function patrocinio(Request $request,$id){
+
+        $img = $request->img;
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            $cont = Evento_Patrocinios::all();
+
+            $pat = new Evento_Patrocinios();
+            $pat->eventoid = $id;
+
+
+            $pat->img  = '/imagens/eventos/patrocinios/'.(count($cont)+ 1).'-'.$id.'.'.$extencao;
+
+            if( $img->move(public_path().'/imagens/eventos/patrocinios/',(count($cont)+ 1).'-'.$id.'.'.$extencao)){
+                 $pat->save();
+                Session::flash('success','Patrocinio Registrado!');
+                return redirect(route('evento.show',$id));
+            }else{
+                Session::flash('warning','Problema no Registro!');
+                return back();
+            }
+
+        }else{
+            Session::flash('info','Carregar uma imagem!');
+            return back();
+        }
+
+    }
+
+    public function palestrante(Request $request,$id){
+
+        $img = $request->img;
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+
+            $pal = new Evento_palestrante();
+            $pal->eventoid = $id;
+            $pal->nome = $request->nome;
+            $pal->atividade = $request->atividade;
+            $pal->formacao = $request->formacao;
+            $pal->lattes = $request->lattes;
+
+
+            $pal->img  = '/imagens/eventos/palestrantes/'.$n_nome.'-'.$id.'.'.$extencao;
+
+            if( $img->move(public_path().'/imagens/eventos/palestrantes/',$n_nome.'-'.$id.'.'.$extencao)){
+                 $pal->save();
+                Session::flash('success','Palestrante Registrado!');
+                return redirect(route('evento.show',$id));
+            }else{
+                Session::flash('warning','Problema no Registro!');
+                return back();
+            }
+
+        }else{
+            Session::flash('info','Carregar uma imagem!');
+            return back();
+        }
+
+    }
+
+    public function palestranteUpdate(Request $request,$id, $id2){
+
+        $pal = Evento_palestrante::find($id);
+        $pal->nome = $request->nome;
+        $pal->atividade = $request->atividade;
+        $pal->formacao = $request->formacao;
+        $pal->lattes = $request->lattes;
+
+        $img = $request->img;
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+
+            unlink(public_path().$pal->img);
+
+            $pal->img  = '/imagens/eventos/palestrantes/'.$n_nome.'-'.$id.'.'.$extencao;
+
+            if( $img->move(public_path().'/imagens/eventos/palestrantes/',$n_nome.'-'.$id.'.'.$extencao)){
+                 $pal->save();
+                Session::flash('update','Palestrante Atualizado!');
+                return redirect(route('evento.show',$id2));
+            }else{
+                Session::flash('warning','Problema no Registro!');
+                return back();
+            }
+
+        }else{
+            $pal->save();
+            Session::flash('update','Palestrante Atualizado!');
+            return redirect(route('evento.show',$id2));
+        }
+
+    }
+
+    public function patrocinioDelete($id,$id2){
+
+        unlink(public_path().Evento_Patrocinios::find($id)->img);
+        Evento_Patrocinios::destroy($id);
+        Session::flash('warning','Patrocinio Removido!');
+        return redirect()->route('evento.show',$id2);
+
+    }
+
+    public function palestranteDelete($id,$id2){
+
+        unlink(public_path().Evento_palestrante::find($id)->img);
+        Evento_palestrante::destroy($id);
+        Session::flash('warning','Palestrante Removido!');
+        return redirect()->route('evento.show',$id2);
+
+    }
+
+    public function programacao(Request $request, $id){
+
+        $evento = evento::find($id);
+        $evento->programacao = $request->programacao;
+        $evento->save();
+        Session::flash('success','Sucesso!');
+        return redirect()->route('evento.show',$id);
+    }
+
+    public function banner(Request $request, $id){
+
+        $evento = evento::find($id);
+
+        $img = $request->file('img');
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            $ideal_size = getimagesize($img);
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            if($ideal_size[0] != 1360 && $ideal_size[1] != 400){
+                Session::flash('warning','Tamanho da imagem invalido!');
+                return back();
+            }
+
+            if($evento->banner != ""){
+                unlink(public_path().$evento->banner);
+            }
+
+            $evento->banner  = '/imagens/eventos/'.$evento->nome.'-'.$evento->id.'.'.$extencao;
+
+
+            if( $img->move(public_path().'/imagens/eventos/',$evento->nome.'-'.$evento->id.'.'.$extencao)){
+
+                $evento->save();
+
+                Session::flash('success','Novo evento registro!');
+                return redirect(route('evento.show',$evento->id));
+            }else{
+                Session::flash('warning','Problema no cadastro!');
+                return back();
+            }
+
+        }else{
+            Session::flash('info','Carregar uma imagem!');
+            return back();
+        }
+
+    }
+
 }

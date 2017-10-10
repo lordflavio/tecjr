@@ -26,7 +26,7 @@
                                 <p><b> Duração:</b> {{$curso->duracao}}</p>
                                 <p><b> Custo:</b> {{$curso->valorInscricao}}</p>
                                 <div class="more">
-                                    <a href="{{route('curso.show',$curso->id)}}" title="Title Link">
+                                    <a href="{{route('curso.show',$curso->id)}}" title="Edite">
                                         Edite
                                     </a>
                                 </div>

@@ -16,6 +16,7 @@ class Eventos extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome',150);
+            $table->string('titulo',150);
             $table->string('endereco');
             $table->string('numero',20);
             $table->string('bairro');

@@ -29,8 +29,6 @@
                                 <i><img src="imagens/icons_port/Desen_WEB.png" alt="WEB"></i>
                             </span>
                                 <h4>DESENVOLVIMENTO WEB</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisitur cupierspiciatiquibusdam quis ratione ut voluptate? Beatae ea eniam voluptates?</p>
-
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-custom center-block">
@@ -40,8 +38,6 @@
                                 <i><img src="imagens/icons_port/Desen_SOFT.png" alt="SOFT"></i>
                             </span>
                                 <h4>DESENVOLVIMENTO DE SOFTWARE</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisitur cupierspiciatiquibusdam quis ratione ut voluptate? Beatae ea eniam voluptates?</p>
-
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-custom center-block">
@@ -51,8 +47,6 @@
                                 <i><img src="imagens/icons_port/Consultoria.png" alt=""></i>
                             </span>
                                 <h4 class="h4-custom">CONSULTORIA</h4>
-                                <p class="p-custom">Lorem ipsum dolor sit amet, consectetur adipisitur cupierspiciatiquibusdam quis ratione ut voluptate? Beatae ea eniam voluptates?</p>
-
                             </div>
                         </div>
                     </div>
@@ -64,8 +58,6 @@
                                 <i><img src="imagens/icons_port/R_Eventos.png" alt="EVENTOS"></i>
                             </span>
                                 <h4>REALIZAÇÃO DE EVENTOS</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisitur cupierspiciatiquibusdam quis ratione ut voluptate? Beatae ea eniam voluptates?</p>
-
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-custom center-block">
@@ -75,8 +67,6 @@
                                 <i><img src="imagens/icons_port/R_CURSOS.png" alt="CURSOS"></i>
                             </span>
                                 <h4>REALIZAÇÃO DE CURSOS</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisitur cupierspiciatiquibusdam quis ratione ut voluptate? Beatae ea eniam voluptates?</p>
-
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-custom center-block">
@@ -86,8 +76,6 @@
                                 <i><img src="imagens/icons_port/Recrutamento.png" alt="RECRUTAMENTO"></i>
                             </span>
                                 <h4 class="h4-custom">RECRUTAMENTO</h4>
-                                <p class="p-custom">Lorem ipsum dolor sit amet, consectetur adipisitur cupierspiciatiquibusdam quis ratione ut voluptate? Beatae ea eniam voluptates?</p>
-
                             </div>
                         </div>
                     </div>

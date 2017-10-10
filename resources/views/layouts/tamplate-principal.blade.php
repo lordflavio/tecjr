@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{$desc}}" >
+    <meta name="keywords"  content="{{$key}}">
 
     <title>{{ $title or 'Tecjr' }}</title>
 
@@ -14,8 +16,10 @@
 
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-touch-slider.css')}}">
+    <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet">
     <link href="{{asset('bootstrap-3/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('OwlCarousel-master/owl-carousel/owl.carousel.css')}}">
@@ -52,7 +56,7 @@
                     <li class="hvr-underline-from-left"><a href="/#equipe">EQUIPE</a></li>
                     <li class="hvr-underline-from-left"><a href="{{route('cursoEvento')}}">CURSOS/EVENTOS</a></li>
                     <li class="hvr-underline-from-left"><a href="{{route('contato')}}">CONTATOS</a></li>
-                    <li class="hvr-underline-from-left"><a href="/login">LOGIN</a></li>
+                    {{--<li class="hvr-underline-from-left"><a href="/login">LOGIN</a></li>--}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -90,12 +94,11 @@
                 </div>
                 <div class="col-lg-4  col-md-4 col-sm-8 col-xs-12 ">
                     <h3 class="text-center"> Siga-nos  </h3>
-                    <ul class="social" style="margin-left: 70px" >
-                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                    <ul class="social" style="margin-left: 115px" >
+                        <li> <a href="https://www.facebook.com/TecJrOficial"> <i class=" fa fa-facebook">   </i> </a> </li>
+                        {{--<li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>--}}
+                        <li> <a href="/contato"> <i class="fa fa-google-plus">   </i> </a> </li>
+                        <li> <a href="https://www.instagram.com/tecjr/"> <i class="fa fa-instagram">   </i> </a> </li>
                     </ul>
                 </div>
             </div>
@@ -130,12 +133,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script src="{{asset('bootstrap-3/js/bootstrap.min.js' )}}"></script>
 <script src="{{asset('OwlCarousel-master/owl-carousel/owl.carousel.min.js' )}}"></script>
+<script src="{{asset('js/toastr.min.js' )}}"></script>
 <script src="{{asset('js/funcoes2.js' )}}"></script>
+<script src="{{asset('js/myjs.js' )}}"></script>
 <script src="{{asset('js/bootstrap-touch-slider.js' )}}"></script>
 
 
 <script>
     $('#bootstrap-touch-slider').bsTouchSlider();
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 5000
+            };
+            @if(Session::has('success')) //store
+            toastr.success('{{ Session::get("success") }}');
+
+            @elseif(Session::has('update')) //Edit
+            toastr.warning('{{ Session::get("update") }}');
+
+            @elseif(Session::has('info')) //Edit
+            toastr.info('{{ Session::get("info") }}');
+
+            @elseif(Session::has('warning'))// Delete
+            toastr.error('{{ Session::get("warning") }}');
+            @endif
+        }, 1000);
+    });
 </script>
 
 </body>

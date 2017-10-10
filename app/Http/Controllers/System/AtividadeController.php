@@ -41,12 +41,57 @@ class AtividadeController extends Controller
      */
     public function store(Request $request)
     {
-            atividade::create($request->all());
-            $id = $request->eventoId;
+//            atividade::create($request->all());
 
-        Session::flash('success','Nova Atividade registrada!');
+           $atv = new atividade();
+           $atv->eventoId = $request->eventoId;
+           $atv->titulo = $request->titulo;
+           $atv->data = $request->data;
+           $atv->horario = $request->horario;
+           $atv->local = $request->local;
 
-        return redirect()->route('evento.show',$id);
+
+        if(isset($request->area)){
+            $atv->area = $request->area;
+        }else{
+            $atv->area = "";
+        }
+
+        if(isset($request->modalidade)){
+            $atv->modalidade = $request->modalidade;
+        }else{
+            $atv->modalidade = "";
+        }
+
+        if(isset($request->palestrante)){
+            $atv->palestrante = $request->palestrante;
+        }else{
+            $atv->palestrante = "";
+        }
+
+        if(isset($request->cordenacao)){
+            $atv->cordenacao = $request->cordenacao;
+        }else{
+            $atv->cordenacao = "";
+        }
+
+        if(isset($request->convidados)){
+            $atv->convidados = $request->convidados;
+        }else{
+            $atv->convidados = "";
+        }
+
+
+           if($atv->save()){
+               Session::flash('success','Nova Atividade registrada!');
+               return redirect()->route('evento.show',$atv->eventoId);
+           }else{
+               Session::flash('warning','Problema no registro');
+               return redirect()->route('evento.show',$atv->eventoId);
+           }
+
+
+
     }
 
     /**
@@ -80,7 +125,54 @@ class AtividadeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $atv = atividade::find($id);
+
+        $atv->titulo = $request->titulo;
+        $atv->horario = $request->horario;
+        $atv->local = $request->local;
+
+
+        if(isset($request->data)){
+            $atv->data = $request->data;
+        }
+        if(isset($request->area)){
+            $atv->area = $request->area;
+        }else{
+            $atv->area = "";
+        }
+
+        if(isset($request->modalidade)){
+            $atv->modalidade = $request->modalidade;
+        }else{
+            $atv->modalidade = "";
+        }
+
+        if(isset($request->palestrante)){
+            $atv->palestrante = $request->palestrante;
+        }else{
+            $atv->palestrante = "";
+        }
+
+        if(isset($request->cordenacao)){
+            $atv->cordenacao = $request->cordenacao;
+        }else{
+            $atv->cordenacao = "";
+        }
+
+        if(isset($request->convidados)){
+            $atv->convidados = $request->convidados;
+        }else{
+            $atv->convidados = "";
+        }
+
+
+        if($atv->save()){
+            Session::flash('update','Atividade Atualizada!');
+            return redirect()->route('evento.show',$atv->eventoId);
+        }else{
+            Session::flash('warning','Atividade Atualizada!');
+            return redirect()->route('evento.show',$atv->eventoId);
+        }
     }
 
     /**

@@ -120,11 +120,10 @@ $(document).ready(function() {
 
 // CURSO
 
-
 $(document).ready(function(){
     $('#fone').mask('(00)0000-0000');
-    $('#whatsapp').mask('(00)0000-0000');
-    $('#horario').mask('00:00');
+    $('#whatsapp').mask('(00)00000-0000');
+    // $('#horario').mask('00:00');
     $('#duracao').mask('00');
     // $('.date_time').mask('00/00/0000 00:00:00');
     $('#cep').mask('00000-000');
@@ -167,6 +166,25 @@ function somenteNumeros(num) {
         campo.value = "";
     }
 }
+
+// CLOSE MODALS
+$('.float-banner-close').click(function(){
+    $("#float-banner-close").hide();
+    $("#float-banner").hide();
+});
+//--------------------------------------------
+
+//  Banner Flutuante - MODAL
+jQuery(document).ready(function() {
+    $(window).scroll(function () {
+        set = $(document).scrollTop()+"px";
+        jQuery('#float-banner, #float-banner-close').animate(
+            {top:set},
+            {duration:1000, queue:false}
+        );
+    });
+
+});
 
 
 

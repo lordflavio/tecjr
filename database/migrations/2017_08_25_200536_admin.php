@@ -22,7 +22,7 @@ class Admin extends Migration
             $table->string('gmail');
             $table->string('whatsapp');
             $table->string('img');
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

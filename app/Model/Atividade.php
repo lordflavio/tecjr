@@ -10,12 +10,14 @@ class atividade extends Model
     protected $fillable = [
         'id',
         'area',
-        'categoria',
-        'resumo',
+        'cordenacao',
+        'palestrante',
+        'convidados',
+        'modalidade',
         'titulo',
         'data',
         'horario',
-        'img',
+        'local',
         'eventoId'
     ];
 }

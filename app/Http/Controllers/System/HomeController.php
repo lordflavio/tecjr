@@ -175,7 +175,7 @@ class HomeController extends Controller
             }
 
             if($ideal_size[0] != 760 && $ideal_size[1] != 400){
-                Session::flash('update','Tamanho da imagem invalido!');
+                Session::flash('warning','Tamanho da imagem invalido!');
                 return back();
             }
 
@@ -216,6 +216,33 @@ class HomeController extends Controller
         Session::flash('warning','Noticia Removido!');
         return redirect()->route('home.index');
 
+    }
+
+    public function folder (Request $request){
+
+        $img = $request->file('folder');
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            unlink(public_path().'/imagens/folder.'.$extencao);
+
+            if( $img->move(public_path().'/imagens/','folder'.'.'.$extencao)){
+                Session::flash('success','Novo patrocinio registrado!');
+                return redirect(route('home.index'));
+            }else{
+                Session::flash('warning','Problema no envio!');
+                return back();
+            }
+
+        }else{
+            Session::flash('info','Carregar uma imagem!');
+            return back();
+        }
     }
 
 

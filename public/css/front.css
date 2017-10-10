@@ -1413,197 +1413,149 @@ address{
 /*                                             PAGINA DE CONTATO                                                */
 /* ------------------------------------------------------------------------------------------------------------ */
 
-
 #contato{
+    /*background-image: url("../imagens/site-interno/backg.jpg");*/
+    background-color: #f8f8f8;
+    height: auto;
     width: 100%;
-    height: 1080px;
-    margin-left: 10px;
-    background-color: rgba(191, 191, 191, 0.38);
-    margin-top: -20px;
+    margin-top: -15px;
 }
-#contato .texto{
-    color: #000;
-    text-align: justify;
-    /*font-family: 'Raleway';*/
-    margin-top: 40px;
-    font-weight: 700;
-    font-size: 1.25em;
+#parent{
+    display: flex;
 }
-#contato .texto h3{
-    margin-top: -20px;
-
-}
-#contato .texto h1 {
-    margin-top: 25px;
-}
-#contato img{
-    margin-left: 30px;
-    margin-top: 30px;
-}
-
-#contato article{
-    margin-top: 80px;
-}
-#contato article h1{
+#contato .contato-title{
+    padding-top: 40px;
+    color: #007bff;
     text-align: center;
-    margin-bottom: -20px;
 }
 
+#tip {
+    display:none;
+}
 
-.form-style-5{
-    /*max-width: 650px;*/
-    /*min-width: 600px;*/
-    /*padding: 10px 20px;*/
-    height: 500px;
-    background: #c6c9ca;
-    margin: -20px auto;
-    padding: 20px;
-    /*background: rgba(255, 255, 255, 0.3);*/
-    border-radius: 8px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+.fadeIn {
+    animation-duration: 3s;
 }
-.form-style-5 fieldset{
-    border: none;
-}
-.form-style-5 legend {
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
-.form-style-5 label {
-    display: block;
-    margin-bottom: 8px;
-}
-.form-style-5 input[type="text"],
-.form-style-5 input[type="date"],
-.form-style-5 input[type="datetime"],
-.form-style-5 input[type="email"],
-.form-style-5 input[type="number"],
-.form-style-5 input[type="search"],
-.form-style-5 input[type="time"],
-.form-style-5 input[type="url"],
-.form-style-5 textarea,
-.form-style-5 select {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    background: rgba(255,255,255,.1);
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    margin: 0;
-    outline: 0;
-    padding: 7px;
-    width: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    background-color: #FFF;
-    color:#000;
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
 
+.form-control {
+    border-radius:0px;
+    border:1px solid #EDEDED;
 }
-.form-style-5 input[type="text"]:focus,
-.form-style-5 input[type="date"]:focus,
-.form-style-5 input[type="datetime"]:focus,
-.form-style-5 input[type="email"]:focus,
-.form-style-5 input[type="number"]:focus,
-.form-style-5 input[type="search"]:focus,
-.form-style-5 input[type="time"]:focus,
-.form-style-5 input[type="url"]:focus,
-.form-style-5 textarea:focus,
-.form-style-5 select:focus{
-    background: #d2d9dd;
+
+.form-control:focus {
+    border:1px solid #007bff;
 }
-.form-style-5 select{
-    -webkit-appearance: menulist-button;
-    height:35px;
+
+.textarea-contact {
+    resize:none;
 }
-.form-style-5 .number {
-    background: #22AADD;
-    color: #fff;
-    height: 30px;
-    width: 30px;
+.btn.btn-custom {
     display: inline-block;
-    font-size: 0.8em;
-    margin-right: 4px;
-    line-height: 30px;
+    width: 100%;
+    height: 50px;
+    font-weight: 400;
     text-align: center;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-    border-radius: 15px 15px 15px 0px;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 15rem;
+    font-size: 2rem;
+    line-height: 1.25;
+    border-radius: .25rem;
+    transition: all .15s ease-in-out;
 }
-.form-style-5 input[type="submit"],
-.form-style-5 input[type="button"]{
-    position: relative;
-    display: block;
-    padding: 19px 39px 18px 39px;
-    color: #FFF;
-    margin: 0 auto;
-    background: #22AADD;
+
+.btn-send {
+    border-radius: 0px;
+    border:1px solid #007bff;
+    background:#007bff;
+    color:#fff;
+}
+
+.btn-send:hover {
+    border:1px solid #007bff;
+    background:#fff;
+    color:#007bff;
+    transition:background 0.5s;
+}
+
+.second-portion {
+    margin-top:50px;
+}
+
+@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
+
+.box > .icon { text-align: center; position: relative; }
+.box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #007bff; vertical-align: middle; }
+.box > .icon:hover > .image { background: #333; }
+.box > .icon > .image > i { font-size: 36px !important; color: #fff !important; }
+.box > .icon:hover > .image > i { color: white !important; }
+.box > .icon > .info { margin-top: 0px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; min-height:163px;}
+.box > .icon:hover > .info { background: rgba(0, 0, 0, 0.04); border-color: #e0e0e0; color: white; }
+.box > .icon > .info > h3.title {
     font-size: 18px;
-    text-align: center;
-    font-style: normal;
+    color: #000;
+    font-weight: 700;
+}
+.box > .icon > .info > p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.5em;
+    margin: 20px;
+}
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { color: #222; }
+.box > .icon > .info > .more a {font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
+.box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #63B76C; }
+.box .space { height: 30px; }
+
+.intrinsic-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+}
+
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+    padding-bottom: 56.25%;
+}
+
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+    padding-bottom: 75%;
+}
+
+.intrinsic-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
     width: 100%;
-    border: 1px solid #22AADD;
-    border-width: 1px 1px 3px;
-    margin-bottom: 10px;
-}
-.form-style-5 input[type="submit"]:hover,
-.form-style-5 input[type="button"]:hover {
-    background: #0A64C8;
-    border: #0A64C8;
-    padding-bottom: 22px;
+    height: 60%;
 }
 
-
-#info-contato{
-    width: 100%;
-    height: 200px;
-    margin-top: 65px;
-}
-#info-contato .icon{
-    color: #22AADD;
-    width: 120px;
-    height: 120px;
-}
-#info-contato .espacamento{
-    margin-top: 11px;
-}
-#info-contato .contato-top{
-    font-size: 20px;
-}
-#info-contato .contato-top, .contato-subtop{
-    color: #22AADD;
-    font-style: oblique;
-    text-align: left;
-}
-
-
-
-#map iframe{
-    width: 100%;
-    height: 500px;
-}
-
-
-@media only screen and (max-width: 480px){
-    #contato .texto h1{
-        text-align: center;
+@media only screen and (max-width: 768px) {
+    .contact-form {
+        margin-top:25px;
     }
-    #contato .texto h3{
-        margin-right: 0px;
+    .btn-send {
+        width: 100%;
+        padding:10px;
     }
-    #info-contato{
-        margin-top: 20px;
-        text-align: center;
+    .second-portion {
+        margin-top:25px;
+    }
+    #parent{
+        display: block;
+    }
+
+    .intrinsic-container iframe {
+        height: 100%;
     }
 }
-
-
-
-
-
-
-
 
 
 
@@ -1964,6 +1916,10 @@ address{
 .fa.fa-google-plus{
     margin-top: 6px;
 }
+.fa.fa-instagram{
+    margin-left: 8px;
+    font-size: 16px;
+}
 
 .social li a {
     color: #EDEFF1;
@@ -2013,5 +1969,41 @@ address{
 
 .subir:hover{
     color: #1caceb;
+}
+
+
+#modal #float-banner-close i{
+    color: red;
+}
+.float-banner {
+    z-index: 100;
+    top: 700px;
+    position: absolute;
+    left: 80%;
+    width: 390px;
+    height: 290px;
+    margin-top: 200px;
+    margin-left: -200px;
+}
+.float-banner-close {
+    z-index: 101;
+    top: 700px;
+    position: absolute;
+    left: 98%;
+    margin-top: 185px;
+    margin-left: -80px;
+}
+@media screen and (max-width: 600px){
+    .float-banner img{
+        width: 270px;
+        height: 170px;
+    }
+    .float-banner{
+        left: 70%;
+        width: 390px;
+        height: 290px;
+        margin-top: 200px;
+        margin-left: -200px;
+    }
 }
 

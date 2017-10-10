@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> COMBINATIVIDADE</title>
 
+    <meta name="description" content="{{$desc}}" >
+    <meta name="keywords"  content="{{$key}}">
+
+    <title style="text-transform: uppercase"> {{ $title }}</title>
+
+    <link rel="shortcut icon" href="{{asset('/imagens/ico.png')}}" />
     <link rel="stylesheet" href="{{asset('css/estilo.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -14,9 +19,9 @@
 
 </head>
 <body>
-<header>
+<header style="background-image: url('{{($even[0]->banner != "" ? $even[0]->banner : '/imagens/eventos/a.png')}}');">
     <div class="col-md-12 text-center">
-        <img src="../imagens/site-interno/logo-juntas.fw.png" alt="Logos" class="img-responsive" style="max-width: 500px; max-height: 190px;">
+        <img src="{{$even[0]->img}}" alt="Logos" class="img-responsive" style="max-width: 500px; max-height: 190px;">
     </div>
     <nav>
         <div class="container">
@@ -24,12 +29,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 
                     <div class="list-group-custom list-group-horizontal">
-                        <a href="#" class="list-group-item">Sobre</a>
-                        <a href="#" class="list-group-item">Inscrição</a>
-                        <a href="#" class="list-group-item">Cronograma</a>
-                        <a href="#" class="list-group-item">Galeria</a>
-                        <a href="#" class="list-group-item">Submissão</a>
-                        <a href="#" class="list-group-item">Contato</a>
+                        <a href="#sobre-evento" class="list-group-item">Sobre</a>
+                        <a href="#incricoes" class="list-group-item">Inscrição</a>
+                        <a href="#palestrantes" class="list-group-item">Cronograma</a>
+                        {{--<a href="#" class="list-group-item">Galeria</a>--}}
+                        <a href="#submissao" class="list-group-item">Submissão</a>
+                        <a href="/contato" class="list-group-item">Contato</a>
                     </div>
 
                 </div>
@@ -39,7 +44,10 @@
 
 </header>
 
+@if(strtotime($even[0]->dateInicioEx) > strtotime(date('y-m-d')))
 <section id="cr">
+    <div id="inicio" style="display:none"><?php echo $contagem; ?></div>
+
     <div class="container">
         <div class="espacamento">
             <h1>Venha participar! </h1>
@@ -59,11 +67,7 @@
         </div>
     </section>
 </section>
-
-
-
-
-
+@endif
 
 <section id="sobre-evento">
     <div class="container">
@@ -74,7 +78,7 @@
 
         <div class="sobre">
             <div class="col-md-12 col-sm-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad aliquid asperiores beatae consequuntur dicta dolor iure magnam mollitia natus qui reprehenderit, sequi, sit? Aliquam est eum explicabo ratione tenetur?  commodi consequatur debitis dolore dolorem earum excepturi, hic illo ipsa ipsam itaque iure, maxime mollitia nihil non odit perferendis quam qui repellat sapiente. Amet cupiditate quo sequi unde vel? Accusantium amet aperiam at cum expedita, illum, incidunt iure mollitia necessitatibus non omnis provident quibusdam reiciendis rem repudiandae sit vel veniam voluptate! Culpa delectus ducimus optio quis ratione vel vero!</p>
+                <p>{{$even[0]->sobre}}</p>
             </div>
         </div>
     </div>
@@ -90,14 +94,14 @@
 
         <div class="descricao-inscricao">
             <div class="col-md-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ducimus, explicabo fugiat ipsum minima minus, molestiae molestias neque, odit quis sapiente similique sit veniam. Dolores fuga fugiat minima nostrum rem. Beatae deserunt expedita officia provident tenetur. Aperiam aut beatae blanditiis corporis debitis distinctio dolores ducimus eos est illum incidunt minima, optio quo quos sequi ut vitae voluptatem voluptates voluptatibus voluptatum? Accusantium consequuntur cum dignissimos dolores dolorum facilis in iusto laboriosam minima minus, nam nisi nobis officiis optio quidem reiciendis sed sit voluptates. Animi ducimus, perferendis? Cum fuga hic quibusdam veritatis!</p>
+                <p>{{$even[0]->descIns}}</p>
             </div>
             <div class="col-md-12">
-                <button id="js-trigger-overlay" type="button">Fazer Inscrição</button>
+                <a style="text-decoration: none" href="https://docs.google.com/forms/d/e/1FAIpQLSdf8v6RKPhxLoCUCXt1a5v5nOlhIQL7T-UO3RyiHJEHQldC5A/viewform"><button id="js-trigger-overlay" type="button">Fazer Inscrição</button></a>
             </div>
         </div>
     </div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.954206041181!2d-36.498557685765874!3d-8.883849893550412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7070cc21055ecdd%3A0xb208d979910ba4dc!2sGaranhuns+Campus%7CUPE+-+Garanhuns+Campus!5e0!3m2!1spt-BR!2sbr!4v1506652673046" width="600" height="270" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <?php echo $even[0]->map ?>
 </section>
 
 <section id="palestrantes">
@@ -114,117 +118,40 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-justified" id="nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#dustin" aria-controls="dustin" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
+                                <a href="#{{'p'.$palestrante[0]->id}}" aria-controls="#{{'p'.$palestrante[0]->id}}" role="tab" data-toggle="tab">
+                                    <img class="img-circle" src="{{$palestrante[0]->img}}" width="120" height="120" />
                                 </a>
                             </li>
-                            <li role="presentation" class="">
-                                <a href="#daksh" aria-controls="daksh" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
-                                </a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#anna" aria-controls="anna" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" />
-                                </a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#wafer" aria-controls="wafer" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                                </a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#teste1" aria-controls="wafer" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                                </a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#teste2" aria-controls="wafer" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                                </a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#teste3" aria-controls="wafer" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                                </a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#teste4" aria-controls="wafer" role="tab" data-toggle="tab">
-                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                                </a>
-                            </li>
+                            @for($i = 1; $i < count($palestrante); $i++)
+                                <li role="presentation" class="">
+                                    <a href="#{{'p'.$palestrante[$i]->id}}" aria-controls="#{{'p'.$palestrante[$i]->id}}" role="tab" data-toggle="tab">
+                                        <img class="img-circle" src="{{$palestrante[$i]->img}}" width="120" height="120" />
+                                    </a>
+                                </li>
+                            @endfor
                         </ul>
                     </div>
                     <div class="col-xs-8 col-sm-12">
                         <!-- Tab panes -->
                         <div class="tab-content" id="tabs-collapse">
-                            <div role="tabpanel" class="tab-pane active" id="dustin">
+                            <div role="tabpanel" class="tab-pane active" id="{{'p'.$palestrante[0]->id}}">
                                 <div class="tab-inner">
-                                    <p class="lead">Etiam tincidunt enim et pretium efficitur. Donec auctor leo sollicitudin eros iaculis sollicitudin.</p>
+                                    <p class="lead">{{$palestrante[0]->atividade}}</p>
                                     <hr>
-                                    <p><strong class="text-uppercase">Dustin Lamont</strong></p>
-                                    <p><em class="text-capitalize"> Senior web developer</em> at <a href="#">Apple</a></p>
+                                    <p><strong class="text-uppercase">{{$palestrante[0]->nome}}</strong></p>
+                                    <p><em class="text-capitalize"> {{$palestrante[0]->formacao}} </em> - <a href="{{$palestrante[0]->lattes}}">Lattes</a></p>
                                 </div>
                             </div>
-
-                            <div role="tabpanel" class="tab-pane" id="daksh">
-                                <div class="tab-inner">
-                                    <p class="lead">Suspendisse dictum gravida est, nec consequat tortor venenatis a. Suspendisse vitae venenatis sapien.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">Daksh Bhagya</strong></p>
-                                    <p><em class="text-capitalize"> UX designer</em> at <a href="#">Google</a></p>
+                            @for($i = 1; $i < count($palestrante); $i++)
+                                <div role="tabpanel" class="tab-pane" id="{{'p'.$palestrante[$i]->id}}">
+                                    <div class="tab-inner">
+                                        <p class="lead"></p>
+                                        <hr>
+                                        <p><strong class="text-uppercase">{{$palestrante[$i]->nome}}</strong></p>
+                                        <p><em class="text-capitalize"> {{$palestrante[$i]->formacao}} -  </em>  <a href="{{$palestrante[$i]->lattes}}">Lattes</a></p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane" id="anna">
-                                <div class="tab-inner">
-                                    <p class="lead">Nullam suscipit ante ac arcu placerat, nec sagittis quam volutpat. Vestibulum aliquam facilisis velit ut ultrices.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">Anna Pickard</strong></p>
-                                    <p><em class="text-capitalize"> Master web developer</em> at <a href="#">Intel</a></p>
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane" id="wafer">
-                                <div class="tab-inner">
-                                    <p class="lead"> Fusce erat libero, fermentum quis sollicitudin id, venenatis nec felis. Morbi sollicitudin gravida finibus.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">Wafer Baby</strong></p>
-                                    <p><em class="text-capitalize"> Web designer</em> at <a href="#">Microsoft</a></p>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="teste1">
-                                <div class="tab-inner">
-                                    <p class="lead"> Fusce erat libero, fermentum quis sollicitudin id, venenatis nec felis. Morbi sollicitudin gravida finibus.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">11111</strong></p>
-                                    <p><em class="text-capitalize"> Web designer</em> at <a href="#">Microsoft</a></p>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="teste2">
-                                <div class="tab-inner">
-                                    <p class="lead"> Fusce erat libero, fermentum quis sollicitudin id, venenatis nec felis. Morbi sollicitudin gravida finibus.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">2222</strong></p>
-                                    <p><em class="text-capitalize"> Web designer</em> at <a href="#">Microsoft</a></p>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="teste3">
-                                <div class="tab-inner">
-                                    <p class="lead"> Fusce erat libero, fermentum quis sollicitudin id, venenatis nec felis. Morbi sollicitudin gravida finibus.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">333333</strong></p>
-                                    <p><em class="text-capitalize"> Web designer</em> at <a href="#">Microsoft</a></p>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="teste4">
-                                <div class="tab-inner">
-                                    <p class="lead"> Fusce erat libero, fermentum quis sollicitudin id, venenatis nec felis. Morbi sollicitudin gravida finibus.</p>
-                                    <hr>
-                                    <p><strong class="text-uppercase">4444444</strong></p>
-                                    <p><em class="text-capitalize"> Web designer</em> at <a href="#">Microsoft</a></p>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -239,141 +166,103 @@
 
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Menu')" id="defaultOpen">Evento</button>
-                <button class="tablinks" onclick="openTab(event, '16')">Dia 16</button>
-                <button class="tablinks" onclick="openTab(event, '17')">Dia 17</button>
-                <button class="tablinks" onclick="openTab(event, '18')">Dia 18</button>
+                @foreach($dias as $dia)
+                <button class="tablinks" onclick="openTab(event, '{{$dia}}')">Dia {{$dia}}</button>
+                @endforeach
             </div>
 
             <div id="Menu" class="tabcontent">
                 <div class="descricao">
-                    <h2>III COMBINATIVIDADE e VI SEMINÁRIO INTERDISCIPLINAR DE FORMAÇÃO PROFISSIONAL</h2>
-                    <h3>16, 17 e 18 de Outubro de 2017</h3>
+                    <h2 style="text-transform: uppercase">{{$even[0]->titulo}}</h2>
+                    <?php $data = "";
+                       for ($i = 0; $i < count($dias); $i++){
+                          if($i == (count($dias) - 2)){
+                              $data .= $dias[$i].' e ';
+                          }else if($i == (count($dias) - 1)){
+                              $data .= $dias[$i];
+                          }else{
+                              $data .= $dias[$i].', ';
+                          }
+                       }
+                    ?>
+                    <h3>{{$data}} de {{$mes}} de {{$ano}}</h3>
                 </div>
                 <div class="infos">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore iusto, quibusdam. Accusamus et molestias soluta vero. Ab adipisci at consectetur dolores esse expedita laudantium maxime modi numquam, omnis quisquam temporibus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore iusto, quibusdam. Accusamus et molestias soluta vero. Ab adipisci at consectetur dolores esse expedita laudantium maxime modi numquam, omnis quisquam temporibus.</p>
-                    <p>DOWNLOAD <a href="#">PROGRAMAÇÃO COMPLETA</a></p>
-                    <p>DOWNLOAD <a href="#">FOLDER</a></p>
+                    <p class="text-center">DOWNLOAD <a href="{{$even[0]->programacao}}">PROGRAMAÇÃO COMPLETA</a></p>
                 </div>
             </div>
-            <div id="16" class="tabcontent">
+
+            @foreach($dias as $dia)
+            <div id="{{$dia}}" class="tabcontent">
                 <div class="descricao">
-                    <h1>Dia 16 de Outubro</h1>
-                    <h2>Segunda-Feira</h2>
+                    <h1>Dia {{$dia}} de {{$mes}}</h1>
+                    {{--<h2>Segunda-Feira</h2>--}}
                 </div>
-                <div class="dupla-coluna">
+
+                <?php $size = round((count($atividades[$dia]) / 2));
+                      $cont = 0;
+                ?>
+
+
+                <div class="row">
+
                     <div class="col-md-6 linha">
 
-                        <div class="programacao-completa">
+                        @for( $i = 0; $i < count($atividades[$dia]); $i++ )
+                            @if($cont < $size)
+                                <div class="programacao-completa">
+                                    <b>{{$atividades[$dia][$i]->horario}}</b><br>
+                                    <b>Tema :</b> {{($atividades[$dia][$i]->titulo. ' - '. $atividades[$dia][$i]->modalidade)}}  <br>
+                                    @if(isset($atividades[$dia][$i]->area))
+                                    <b>Area :</b> {{$atividades[$dia][$i]->area}} <br>
+                                    @endif
 
-                            <p class="horario">7:30h às 10:00h: Cadastramento</p>
-                            <hr>
+                                    @if(isset($atividades[$dia][$i]->palestrante))
+                                    <b>Palestrante :</b> {{$atividades[$dia][$i]->palestrante}} <br>
+                                    @endif
 
-                            <b>8:00h às 8:30h – Abertura</b><br>
-                            <b>Coordenação da Solenidade:</b> Sônia Fortes e Tec Jr.<br>
-                            <b>Local:</b> Auditório<br>
-                            <hr>
-                            <p class="horario">8:30h às 9:30h</p>
+                                    @if(isset($atividades[$dia][$i]->cordenacao))
+                                    <b>Coordenação :</b> {{$atividades[$dia][$i]->cordenacao}}  <br>
+                                    @endif
 
-                            <b>Tema:</b> Perspectivas do Ensino de Computação e das Tecnologias Digitais em Educação<br>
-                            <b>Palestrantes:</b> Profª Tárcia Regina/UPE e Profª Sônia Fortes/UPE<br>
-                            <b>Modalidade:</b> Palestra <br>
-                            <b>Local:</b> Auditório<br>
-                            <hr>
+                                    @if(isset($atividades[$dia][$i]->convidados))
+                                    <b>Convidados :</b> {{$atividades[$dia][$i]->convidados}}  <br>
+                                    @endif
 
-                            <p class="horario">9:30h às 10:00h – Intervalo</p>
-                            <hr>
-                            <p class="horario">10:00h às 12:00h: Roda de Conversa</p>
-                            <hr>
-                            <p>Tema: BNCC e Computação na Educação Básica
-                                Convidado: Prof. Avelino Zorzo - SBC
-                                Coordenação:: Profª Sônia Fortes /UPE
-                                Local: LATDIC</p>
-
-
-                            <p>Tema: Papel das Tecnologias Digitais em Diagnósticos
-                                Convidados: Marcelo Leite/UPE e Sinara Mônica Vitalino de Almeida / UPE
-                                Coordenação: Prof. Lindair Araújo / UPE
-                                Local: Sala ao lado do LATDIC</p>
-
-                            <p>Tema: A Saúde Mental do Professor – Conhecendo a Síndrome de Burnout
-                                Convidados: Profª Mylena Tenório / UAG
-                                Coordenação: Prof João Ricard Pereira da Silva/ UPE
-                                Local: Auditório</p>
-
-                            <p>Tema: Programação de Jogos com Construct 2
-                                Convidados: Hérikles Vinícyus França Cordeiro, José Andersson Soares da Silva, José Flávio Vieira Melo, Denis de Gois Marques, Marcos Uryel Felix de Farias / LC
-                                Coordenação: Prof. Cleiton Martins / UPE
-                                Local: Laboratório 1</p>
-
-                        </div>
+                                    <b>Local:</b>{{$atividades[$dia][$i]->local}}<br>
+                                    <hr>
+                                </div>
+                                <?php $cont++ ?>
+                            @endif
+                        @endfor
 
                     </div>
+
                     <div class="col-md-6">
-
-                        <div class="programacao-completa">
-                            <p>Tema: Papel das Tecnologias Digitais em Diagnósticos
-                                Convidados: Marcelo Leite/UPE e Sinara Mônica Vitalino de Almeida / UPE
-                                Coordenação: Prof. Lindair Araújo / UPE
-                                Local: Sala ao lado do LATDIC</p>
-
-                            <p>Tema: A Saúde Mental do Professor – Conhecendo a Síndrome de Burnout
-                                Convidados: Profª Mylena Tenório / UAG
-                                Coordenação: Prof João Ricard Pereira da Silva/ UPE
-                                Local: Auditório</p>
-
-                            <p>Tema: Programação de Jogos com Construct 2
-                                Convidados: Hérikles Vinícyus França Cordeiro, José Andersson Soares da Silva, José Flávio Vieira Melo, Denis de Gois Marques, Marcos Uryel Felix de Farias / LC
-                                Coordenação: Prof. Cleiton Martins / UPE
-                                Local: Laboratório 1</p>
-                        </div>
-
+                        @for( $i = $cont; $i < count($atividades[$dia]); $i++ )
+                            @if($cont >= $size)
+                                <div class="programacao-completa">
+                                    <b>{{$atividades[$dia][$i]->horario}}</b><br>
+                                    <b>Tema :</b> {{($atividades[$dia][$i]->titulo. '-' . $atividades[$dia][$i]->modalidade)}} <br>
+                                    <b>Area :</b> {{($atividades[$dia][$i]->area)}} <br>
+                                    <b>Palestrante :</b> {{($atividades[$dia][$i]->palestrante)}} <br>
+                                    <b>Coordenação :</b> {{($atividades[$dia][$i]->cordenacao)}}  <br>
+                                    <b>Local:</b>{{$atividades[$dia][$i]->local}}<br>
+                                    <hr>
+                                </div>
+                            @endif
+                        @endfor
                     </div>
+                <?php   $cont = 0 ?>
                 </div>
             </div>
-
-            <div id="17" class="tabcontent">
-                <div class="descricao">
-                    <h1>Dia 17 de Outubro</h1>
-                    <h2>Terça-Feira</h2>
-                </div>
-                <div class="dupla-coluna">
-                    <div class="col-md-6">
-
-
-                    </div>
-
-                    <div class="col-md-6">
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="18" class="tabcontent">
-                <div class="descricao">
-                    <h1>Dia 18 de Outubro</h1>
-                    <h2>Quarta-Feira</h2>
-                </div>
-                <div class="dupla-coluna">
-                    <div class="col-md-6">
-
-
-                    </div>
-
-                    <div class="col-md-6">
-
-
-                    </div>
-                </div>
-
-            </div>
+            @endforeach
         </div>
     </div> <!--- CONTAINER -->
 
 </section>
 
-
+@if(count($submissao) > 0)
 <section id="submissao">
     <div class="container">
         <div class="col-md-12 col-xs-12">
@@ -381,14 +270,15 @@
                 <h1>Submissão</h1>
             </div>
             <div class="col-md-12">
-                <p class="texto-sub">dolorum, eaque earum ex, excepturi illo labore magnam mollitia non officiis perspiciatis praesentium quam recusandae, sed temporibus ullam! A adipisci hic illum incidunt laborum libero qui quia, similique tempore vel. Est harum obcaecati optio quia velit vero. Architecto asperiores autem distinctio enim, excepturi exercitationem officia quia veritatis. Nostrum?</p>
-            </div>
-            <div class="col-md-12" style="padding-bottom: 30px;">
-                <button type="button">Submeter Trabalho</button>
+                <p class="texto-sub">{{$submissao[0]->descricao}}</p>
+                <div class="col-md-12" style="padding-bottom: 30px;">
+                    <a style="text-decoration: none"  target="_blank"  href="{{$submissao[0]->link}}"> <button type="button">Submeter Trabalho</button></a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+@endif
 
 <section id="patrocinio">
     <div class="container">
@@ -396,15 +286,17 @@
             <h2>Organização e Patrocinio</h2>
         </div>
 
-        <div class="col-md-6" id="organizacao">
-            <div class="col-md-6">
-                <img src="../imagens/site-interno/Logos/Tecj%20Jr.png" alt="Logo-Tec" class="logo-tec">
-            </div>
-            <div class="col-md-6">
-                <img src="../imagens/site-interno/Logos/Latdic.png" alt="Logo-Latdic" class="logo-lat">
+        <div class="col-md-12">
+            <div class="row">
+                @if(count($patrocinios) > 0)
+                    @foreach($patrocinios as $p)
+                        <div class=" col-md-3 " style="padding-bottom: 15px">
+                            <img src="{{$p->img}}" width="180" height="120" alt="APOIO">
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
-        <div class="col-md-6">
 
             <!---
             Carousel
@@ -421,35 +313,38 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 footer-col">
-                <p><img src="../imagens/site-interno/logo-juntas.fw.png" alt="Logos" class="logo-footer"></p>
-                <p><i class="fa fa-map-pin"></i> R. Cap. Pedro Rodrigues, 105 - São José, Garanhuns - PE, 55295-110</p>
-                <p><i class="fa fa-phone"></i> Fone (Brasil): +55 xxxxx-xxxx</p>
-                <p><i class="fa fa-envelope"></i> E-mail: empresa.tecjr@gmail.com</p>
+                <p><img src="{{$even[0]->img}}" alt="Logos" class="logo-footer"></p>
+                <p><i class="fa fa-map-pin"></i> {{$even[0]->endereco.', '.$even[0]->numero.', - '.$even[0]->bairro.', '.$even[0]->cidade.' - '.$even[0]->estado.', '.$even[0]->cep}}</p>
+                <p><i class="fa fa-phone"></i> Fone (Brasil): +55 {{$even[0]->fone}}</p>
+                <p><i class="fa fa-envelope"></i> E-mail: {{$even[0]->email}}</p>
 
             </div>
             <div class="col-md-3 col-sm-6 footer-col">
-                <h6 class="heading7">GENERAL LINKS</h6>
+                <h6 class="heading7">LINKS GERAIS</h6>
                 <ul class="footer-ul">
-                    <li><a href="#"> Career</a></li>
-                    <li><a href="#"> Privacy Policy</a></li>
-                    <li><a href="#"> Terms & Conditions</a></li>
-                    <li><a href="#"> Client Gateway</a></li>
-                    <li><a href="#"> Ranking</a></li>
-                    <li><a href="#"> Case Studies</a></li>
-                    <li><a href="#"> Frequently Ask Questions</a></li>
+                    <li><a href="#sobre-evento"> Sobre</a></li>
+                    <li><a href="#incricoes"> Inscrições</a></li>
+                    <li><a href="#palestrantes"> Programação</a></li>
+                    <li><a href="#submissao"> Submissao</a></li>
+                    <li><a href="#patrocinio"> Organização e Patrocínio</a></li>
+                    <li><a href="/contato"> Contato</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 footer-col">
-                <h6 class="heading7">Social Media</h6>
+                <h6 class="heading7">REDES SOCIAIS</h6>
                 <ul class="footer-social">
-                    <li><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-twitter social-icon twitter" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></li>
+                    <li><a href="https://www.facebook.com/TecJrOficial"><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/tecjr/"><i class="fa fa-instagram social-icon instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="/contato"><i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
         </div>
-    </div>
+
+    <ul style="margin-bottom: 0;">
+        <li><a id="back-to-top" href="#" class="btn-alt btn-custom back-to-top" role="button" title="Volte ao topo da pagina" data-toggle="tooltip" data-placement="top"><span class="fa fa-angle-double-up fa-2x"></span></a></li>
+        <li><a href="http://www.tecjr.com.br" class="btn-alt btn-custom back-to-home" role="button" title="Voltar ao Site TecJr." data-toggle="tooltip" data-placement="left"><span class="fa fa-home fa-2x"></span></a></li>
+    </ul>
+
 </footer>
 <div class="copyright">
     <div class="container">

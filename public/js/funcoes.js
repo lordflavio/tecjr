@@ -9,8 +9,9 @@
 //RELOGIO DA INDEX
 function makeTimer() {
 
-    var endTime = new Date("October 16, 2017 08:00:00 PDT");
-    var endTime = (Date.parse(endTime)) / 1000;
+    var jdate = JSON.parse($('#inicio').html());
+
+    var endTime = (Date.parse(jdate)) / 1000;
 
     var now = new Date();
     var now = (Date.parse(now) / 1000);
@@ -54,10 +55,29 @@ function openTab(evt, dia) {
     evt.currentTarget.className += " active";
 }
 
+// $('.nav li').click(function() {
+//     $('li.active').removeClass("active");
+//     $(this).addClass("active");
+// });
 
 
 
 
+// LINKANDO PARA O INICIO DA PAGINA
+$('#back-to-top').click(function () {
+    $('#back-to-top').tooltip('hide');
+    $('body,html').animate({
+        scrollTop: 0
+    }, 800);
+    return false;
+});
+$('#back-to-top').tooltip('show');
+//-----------------------------------------
+
+//TOOTIPE PARA A HOME
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
 
 

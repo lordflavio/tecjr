@@ -25,8 +25,8 @@
                         <div class="row">
                             <!-- Slide Text Layer -->
                             <div class="slide-text slide_style_left">
-                                <h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>
-                                <p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>
+                                <h1 data-animation="animated zoomInRight">Bem Vindo a Tecjr</h1>
+                                <p data-animation="animated fadeInLeft">Tecnologia, Educação e Consultoria Júnior da Universidade de Pernambuco (UPE)</p>
                                 {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>--}}
                                 {{--<a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInRight">select two</a>--}}
                             </div>
@@ -43,8 +43,8 @@
                     <div class="bs-slider-overlay"></div>
                     <!-- Slide Text Layer -->
                     <div class="slide-text slide_style_center">
-                        <h1 data-animation="animated flipInX">Bootstrap touch slider</h1>
-                        <p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>
+                        <h1 data-animation="animated flipInX">A primeira empresa júnior de um curso de licenciatura. </h1>
+                        {{--<p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>--}}
                         {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>--}}
                         {{--<a href="http://bootstrapthemes.co/" target="_blank"  class="btn btn-primary" data-animation="animated fadeInDown">select two</a>--}}
                     </div>
@@ -59,8 +59,8 @@
                     <div class="bs-slider-overlay"></div>
                     <!-- Slide Text Layer -->
                     <div class="slide-text slide_style_right">
-                        <h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>
-                        <p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>
+                        <h1 data-animation="animated zoomInLeft">Consultoria, desenvolvimento e educação júnior</h1>
+                        {{--<p data-animation="animated fadeInRight">Consultoria, desenvolvimento e educação júnior</p>--}}
                         {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>--}}
                         {{--<a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>--}}
                     </div>
@@ -85,15 +85,15 @@
         </div> <!-- End  bootstrap-touch-slider Slider -->
     </section>
 
+    @if(isset($noticias[0]))
     <section id="noticias">
         <div class="container">
 
             <div class="row topo_noticias">
                 <h1>Noticias sobre a UPE</h1>
-                <p id="subtitulo">If you are going to use a passage of Lorem Ipsum, you need to be </p>
+                {{--<p id="subtitulo">If you are going to use a passage of Lorem Ipsum, you need to be </p>--}}
             </div>
 
-            @if(isset($noticias[0]))
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
                 <!-- Wrapper for slides -->
@@ -103,7 +103,9 @@
                         <img src="{{$noticias[0]->img}}" width="760" height="400">
                         <div class="carousel-caption">
                             <h4>{{$noticias[0]->titulo}}</h4>
-                            <p> {{$noticias[0]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
+                            <p> {{$noticias[0]->descricao}}
+                                {{--<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a>--}}
+                            </p>
                         </div>
                     </div><!-- End Item -->
 
@@ -113,7 +115,9 @@
                             <img src="{{$noticias[$i]->img}}" width="760" height="400">
                             <div class="carousel-caption">
                                 <h4>{{$noticias[$i]->titulo}}</h4>
-                                <p> {{$noticias[$i]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
+                                <p> {{$noticias[$i]->descricao}}
+                                    {{--<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a>--}}
+                                </p>
                             </div>
                         </div><!-- End Item -->
                         @endfor
@@ -123,7 +127,9 @@
                             <img src="{{$noticias[$j]->img}}" width="760" height="400">
                             <div class="carousel-caption">
                                 <h4>{{$noticias[$j]->titulo}}</h4>
-                                <p> {{$noticias[$j]->descricao}} <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a></p>
+                                <p> {{$noticias[$j]->descricao}}
+                                    {{--<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Saiba mais</a>--}}
+                                </p>
                             </div>
                         </div><!-- End Item -->
                         @endfor
@@ -156,11 +162,10 @@
                         <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                 </div>
-
             </div><!-- End Carousel -->
-            @endif
         </div>
     </section><!-- OK -->
+    @endif
 
     <section id="equipe">
         <div class="container">
@@ -182,10 +187,10 @@
                         <span class="funcao"> - {{$ges->cargo}} - </span>
                         <h4 class="widget-title">Siga-me nas redes sociais</h4>
                         <ul class="social-nav col-md-offset-2  col-sm-offset-2 col-xs-offset-1 ">
-                            <li><a href="{{$ges->twitter}}" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" title="{{$ges->twitter}}" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="{{$ges->face}}" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="{{$ges->gmail}}" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="{{$ges->twitter}}" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-whatsapp"></i></a></li>
+                            <li><a href="#" title="{{$ges->gmail}}" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" title="{{$ges->whatsapp}}" rel="nofollow" class="linkedin"><i class="fa fa-whatsapp"></i></a></li>
                             {{--<li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
                         </ul>
                     </div>
@@ -210,40 +215,50 @@
 
             <div id="owl-demo-3" class="espacamento">
 
+                @if(isset($evento[0]))
+
                 <div class="item  center-block">
                     <div class="contorno">
-                        <img src="http://1.bp.blogspot.com/-LBPMhqvvas4/VXYmKRqGTRI/AAAAAAAAG0A/98RuYbdVfoE/s1600/logo%2Bevento.jpg" alt="pessoa1" class="img-responsive center-block">
-                        <h4 class="text-center"> COMBINATIVIDADE </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
-                        </br><div class="center-block buttom-custom-1 "><p class="texto-button"> - SAIBA MAIS - </p></div>
+                        <img src="{{$evento[0]->img}}" alt="pessoa1" class="img-responsive center-block">
+                        <h4 class="text-center" style="text-transform: uppercase"> {{$evento[0]->titulo}} </h4>
+                        <span class="descricao">{{$evento[0]->sobre}}</span>
+                        </br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[0]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>
                     </div>
                 </div>
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="https://s-media-cache-ak0.pinimg.com/originals/d4/26/9c/d4269cb720d3e94bf55a62f0c35faaf7.jpg" alt="pessoa1" class="img-responsive center-block">
-                        <h4 class="text-center"> JAVA - MODULO 1 </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
-                        </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="https://www.sololearn.com/Icons/Courses/1073.png" alt="pessoa1" class="img-responsive center-block">
-                        <h4 class="text-center"> PYTHON - MODULO 1 </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
-                        </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
+                @endif
 
+                @if(isset($evento[1]))
                 <div class="item center-block">
                     <div class="contorno">
-                        <img src="https://www.sololearn.com/Icons/Courses/1073.png" alt="pessoa1" class="img-responsive center-block">
-                        <h4 class="text-center"> PYTHON - MODULO 1 </h4>
-                        <span class="descricao">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,</span>
-                        </br> <div class="buttom-custom-1"><p class="texto-button"> - SAIBA MAIS - </p></div>
+                        <img src="{{$evento[1]->img}}" alt="pessoa1" class="img-responsive center-block">
+                        <h4 class="text-center" style="text-transform: uppercase"> {{$evento[1]->titulo}} </h4>
+                        <span class="descricao">{{$evento[1]->sobre}}</span>
+                        </br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[1]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>
                     </div>
                 </div>
+                @endif
 
+                @if(isset($cursos[0]))
+                <div class="item center-block">
+                    <div class="contorno">
+                        <img src="{{$cursos[0]->img}}" alt="CURSO" class="img-responsive center-block">
+                        <h4 class="text-center" style="text-transform: uppercase"> {{$cursos[0]->titulo}} </h4>
+                        <span class="descricao">{{$cursos[0]->discricao}}</span>
+                        </br> <div class="buttom-custom-1"><a style="text-decoration: none" href="/curso/{{$cursos[0]->nome}}"></a><p class="texto-button"> - SAIBA MAIS - </p></div>
+                    </div>
+                </div>
+                @endif
+
+                @if(isset($cursos[1]))
+                <div class="item center-block">
+                    <div class="contorno">
+                        <img src="{{$cursos[1]->img}}" alt="CURSO" class="img-responsive center-block">
+                        <h4 class="text-center" style="text-transform: uppercase"> {{$cursos[1]->titulo}} </h4>
+                        <span class="descricao">{{$cursos[1]->discricao}}</span>
+                        </br> <div class="buttom-custom-1"><a style="text-decoration: none" href="/curso/{{$cursos[1]->nome}}"></a><p class="texto-button"> - SAIBA MAIS - </p></div>
+                    </div>
+                </div>
+                 @endif
             </div>
         </div>
     </section> <!-- OK -->
@@ -272,5 +287,14 @@
             </div>
         </div>
     </section>
+
+    <div id="modal">
+        <div id="float-banner" class="float-banner">
+            <a href="/cursos-e-eventos" title="" data-toggle="tooltip" data-placement="left"><img src="/imagens/folder.jpg" style="max-width: 390px; max-height: 290px;"></a>
+        </div>
+        <div id="float-banner-close" class="float-banner-close">
+            <a href="#"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>
+        </div>
+    </div>
 
 @endsection

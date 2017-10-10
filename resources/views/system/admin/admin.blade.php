@@ -24,12 +24,12 @@
                             <label>Área:</label>
                             <select id="area" name="cargo" onclick="combobox()" class="form-control">
                                 <option value="{{($admin->cargo == "") ? '- Selecione -' : $admin->cargo}}">{{($admin->cargo == "") ? '- Selecione -' : $admin->cargo}}</option>
-                                <option value="CIÊNCIAS EXATAS E DA TERRA">PRESIDENTE</option>
-                                <option value="CIÊNCIAS BIOLÓGICAS">DIRETOR DE PROJETOS</option>
-                                <option value="ENGENHARIAS">DIRETOR FINANCEIRO</option>
-                                <option value="CIÊNCIAS DA SAÚDE">DIRETOR ADMINISTRATIVO</option>
-                                <option value="CIÊNCIAS AGRÁRIAS">DIRETOR DE MARKETING</option>
-                                <option value="CIÊNCIAS SOCIAIS APLICADAS">GESTÃO DE PESSOAS</option>
+                                <option value="PRESIDENTE">PRESIDENTE</option>
+                                <option value="DIRETOR DE PROJETOS">DIRETOR DE PROJETOS</option>
+                                <option value="DIRETOR FINANCEIRO">DIRETOR FINANCEIRO</option>
+                                <option value="DIRETOR ADMINISTRATIVO">DIRETOR ADMINISTRATIVO</option>
+                                <option value="DIRETOR DE MARKETING">DIRETOR DE MARKETING</option>
+                                <option value="GESTÃO DE PESSOAS">GESTÃO DE PESSOAS</option>
                                 <option value="OUTRAS">OUTRAS</option>
                             </select>
                         </div>
@@ -54,7 +54,7 @@
 
                         <div class="form-group col-lg-6 has-feedback">
                             <label>Whatsapp:</label>
-                            <input type="text" name="whatsapp" class="form-control" value="{{$admin->whatsapp}}">
+                            <input type="text" name="whatsapp" id="whatsapp" class="form-control" value="{{$admin->whatsapp}}">
                             <span class="fa fa-whatsapp form-control-feedback form-control-feedback-custom"></span>
                         </div>
 

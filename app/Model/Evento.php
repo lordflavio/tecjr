@@ -10,6 +10,7 @@ class evento extends Model
     protected $fillable = [
         'id',
         'nome',
+        'titulo',
         'endereco',
         'numero',
         'bairro',

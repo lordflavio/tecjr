@@ -62,7 +62,7 @@
 
                         <div class="form-group col-lg-6 has-feedback ">
                             <label >Sobre o Evento:</label>
-                            <textarea  name="objetivo" class="form-control" style="height: 100px"  id="objetivo" placeholder="Descrição..."></textarea>
+                            <textarea  name="sobre" class="form-control" style="height: 100px"  id="sobre" placeholder="Descrição..."></textarea>
                             {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                         </div>
 

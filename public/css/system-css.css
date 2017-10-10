@@ -374,10 +374,17 @@
     color: #1DC3FF;
     font-size: 25px;
 }
+
 .fa.fa-bitbucket:hover{
     color: red;
     font-size: 30px;
 }
+
+.fa.fa-sign-in{
+    color: #fff;
+    font-size: 20px;
+}
+
 .fa.fa-facebook-square{
     margin-top: 5px;
     font-size: 20px;
@@ -419,6 +426,22 @@
     font-size: 20px;
 }
 .fa.fa-thumb-tack{
+    margin-top: 5px;
+    font-size: 20px;
+}
+.fa.fa-graduation-cap{
+    margin-top: 5px;
+    font-size: 20px;
+}
+.fa.fa-puzzle-piece{
+    margin-top: 5px;
+    font-size: 20px;
+}
+.fa.fa-external-link{
+    margin-top: 5px;
+    font-size: 20px;
+}
+.fa.fa-link{
     margin-top: 5px;
     font-size: 20px;
 }

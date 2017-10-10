@@ -113,10 +113,37 @@
                     </div>
                 </div>
             </section>
+
+            <section>
+                <h1 class="text-center">Modal Rapido</h1>
+                <hr>
+                <img class="center-block" src="/imagens/folder.jpg" width="500" alt="FOLDER">
+                <br>
+                <div class="col-md-12">
+                    <form class="form-horizontal" action="{{route('home.folder')}}" method="POST" enctype="multipart/form-data" >
+                        {{ method_field('POST')}}
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="folder">Upload Imagem <small>Recomendado tipo jpg</small></label>
+                            <div class="col-md-4">
+                                <input id="folder" name="folder" class="input-file" type="file">
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="pro"></label>
+                            <div class="col-md-4">
+                                <button style="width: 150px" id="pro" name="pro" class="btn btn-success btn-success-custom center-block">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
             <br>
         </div>
     </div>
-
 
     {{--Noticias--}}
     <div class="modal fade" id="noticia" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
