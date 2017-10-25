@@ -145,7 +145,7 @@
                             @for($i = 1; $i < count($palestrante); $i++)
                                 <div role="tabpanel" class="tab-pane" id="{{'p'.$palestrante[$i]->id}}">
                                     <div class="tab-inner">
-                                        <p class="lead"></p>
+                                        <p class="lead">{{$palestrante[$i]->atividade}}</p>
                                         <hr>
                                         <p><strong class="text-uppercase">{{$palestrante[$i]->nome}}</strong></p>
                                         <p><em class="text-capitalize"> {{$palestrante[$i]->formacao}} -  </em>  <a href="{{$palestrante[$i]->lattes}}">Lattes</a></p>
@@ -212,24 +212,25 @@
                             @if($cont < $size)
                                 <div class="programacao-completa">
                                     <b>{{$atividades[$dia][$i]->horario}}</b><br>
-                                    <b>Tema :</b> {{($atividades[$dia][$i]->titulo. ' - '. $atividades[$dia][$i]->modalidade)}}  <br>
-                                    @if(isset($atividades[$dia][$i]->area))
-                                    <b>Area :</b> {{$atividades[$dia][$i]->area}} <br>
+                                    <b>Tema: </b> {{($atividades[$dia][$i]->titulo. ' - '. $atividades[$dia][$i]->modalidade)}}  <br>
+
+                                    @if($atividades[$dia][$i]->area != "")
+                                    <b>Area: </b> {{$atividades[$dia][$i]->area}} <br>
                                     @endif
 
-                                    @if(isset($atividades[$dia][$i]->palestrante))
-                                    <b>Palestrante :</b> {{$atividades[$dia][$i]->palestrante}} <br>
+                                    @if($atividades[$dia][$i]->palestrante != "")
+                                    <b>Palestrante: </b> {{$atividades[$dia][$i]->palestrante}} <br>
                                     @endif
 
-                                    @if(isset($atividades[$dia][$i]->cordenacao))
-                                    <b>Coordenação :</b> {{$atividades[$dia][$i]->cordenacao}}  <br>
+                                    @if($atividades[$dia][$i]->cordenacao != "")
+                                    <b>Coordenação: </b> {{$atividades[$dia][$i]->cordenacao}}  <br>
                                     @endif
 
-                                    @if(isset($atividades[$dia][$i]->convidados))
-                                    <b>Convidados :</b> {{$atividades[$dia][$i]->convidados}}  <br>
+                                    @if($atividades[$dia][$i]->convidados != "")
+                                    <b>Convidados: </b> {{$atividades[$dia][$i]->convidados}}  <br>
                                     @endif
 
-                                    <b>Local:</b>{{$atividades[$dia][$i]->local}}<br>
+                                    <b>Local: </b>{{$atividades[$dia][$i]->local}}<br>
                                     <hr>
                                 </div>
                                 <?php $cont++ ?>

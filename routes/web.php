@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', 'ControllerOut@welcome')->name('welcome');;
+Route::get('/', 'ControllerOut@welcome')->name('welcome');
+
+//Route::get('/pdf', 'System\CertificationController@test')->name('pdf');
+
+//Route::get('/email', function (){
+//    return view('contato-envio');
+//});
 
 Route::get('/portifolio', 'ControllerOut@portifolio')->name('portifolio');
 //Route::get('/noticias', 'ControllerOut@noticias')->name('noticias');
@@ -19,7 +25,9 @@ Route::get('/contato', 'ControllerOut@contato')->name('contato');
 Route::get('/cursos-e-eventos', 'ControllerOut@cursosEventos')->name('cursoEvento');
 Route::get('/curso/{curso}', 'ControllerOut@curso')->name('curso');
 Route::get('/eventos/{evento}', 'ControllerOut@evento')->name('evento');
-Route::match(['get','post'],'/contato-up', 'ControllerOut@envio')->name('up.envio');
+Route::post('/contato-up', 'ControllerOut@envio')->name('up.envio');
+
+
 
 
 

@@ -167,76 +167,111 @@
     </section><!-- OK -->
     @endif
 
+
+
     <section id="equipe">
         <div class="container">
-            <div class="row cabecalho_secao">
-                <h1>Nossa equipe</h1>
-                <p>Pessoas por trás dessa empresa</p>
-            </div>
-
-            {{--<button  type="button" id="b-equipe-left"><i class="fa fa-chevron-left"></i></button>--}}
-            {{--<button  type="button" id="b-equipe-right"><i class="fa fa-chevron-right"></i></button>--}}
-
-            <div id="owl-demo" class="espacamento">
-             @if(count($gestao) > 0)
-                @foreach($gestao as $ges)
-                <div class="item center-block">
-                    <img src="{{$ges->img}}" alt="pessoa1" class="img-responsive img-thumbnail">
-                    <div class="descricao-membros">
-                        <h4> {{$ges->nome}} </h4>
-                        <span class="funcao"> - {{$ges->cargo}} - </span>
-                        <h4 class="widget-title">Siga-me nas redes sociais</h4>
-                        <ul class="social-nav col-md-offset-2  col-sm-offset-2 col-xs-offset-1 ">
-                            <li><a href="#" title="{{$ges->twitter}}" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="{{$ges->face}}" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" title="{{$ges->gmail}}" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" title="{{$ges->whatsapp}}" rel="nofollow" class="linkedin"><i class="fa fa-whatsapp"></i></a></li>
-                            {{--<li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>--}}
-                        </ul>
-                    </div>
-                </div>
-                @endforeach
-             @endif
+            <div class="row espacamento-equipe">
+                <h1>Nossa Equipe</h1>
             </div>
         </div>
+        <div class="container">
+            @if(count($gestao) > 0)
 
-    </section>  <!-- OK -->
+            @endif
+
+        </div>
+    </section>
+
+
 
     <section id="cursos">
         <div class="container">
-
-            <div class="row cabecalho_secao">
-                <h1>Cursos e Eventos</h1>
-                <p>Entre em contato conosco para saber mais.</p>
+            <div class="espacamento">
+                <h1 class="titulo-secao">Cursos e Eventos</h1>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @if(isset($evento[0]))
+                    <div class="col-md-4">
+                        <a href="/eventos/{{$evento[0]->nome}}">
+                            <div class="product-item">
+                                <div class="pi-img-wrapper">
+                                    <img src="{{$evento[0]->img}}" class="img-responsive" alt="Berry Lace Dress">
+                                </div>
+                                <h3 class="titulo-cursos">{{$evento[0]->titulo}} </h3>
+
+                                <div class="sticker sticker-new"></div>
+                            </div>
+                        </a>
+                    </div>
+                    @endif
+
+                    @if(isset($cursos[0]))
+                    <div class="col-md-4">
+                        <a href="/curso/{{$cursos[0]->nome}}">
+                            <div class="product-item">
+                                <div class="pi-img-wrapper">
+                                    <img src="{{$cursos[0]->img}}" class="img-responsive"  alt="NOVO EVENTO">
+                                </div>
+                                <h3 class="titulo-cursos sticker-new">{{$cursos[0]->titulo}}</h3>
+                            </div>
+                        </a>
+                    </div>
+                    @endif
+
+                    <div class="col-md-4">
+                        <a href="/cursos-e-eventos">
+                            <div class="product-item">
+                                <div class="pi-img-wrapper">
+                                    <img src="/imagens/CURSOS.png" class="img-responsive" alt="Berry Lace Dress">
+                                </div>
+                                <h3 class="titulo-cursos">OUTROS CURSOS E EVENTOS </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    {{--<section id="cursos">--}}
+        {{--<div class="container">--}}
+
+            {{--<div class="row cabecalho_secao">--}}
+                {{--<h1>Cursos e Eventos</h1>--}}
+                {{--<p>Entre em contato conosco para saber mais.</p>--}}
+            {{--</div>--}}
 
             {{--<button  type="button" id="b-cursos-left"><i class="fa fa-chevron-left"></i></button>--}}
             {{--<button  type="button" id="b-cursos-right"><i class="fa fa-chevron-right"></i></button>--}}
 
-            <div id="owl-demo-3" class="espacamento">
+            {{--<div id="owl-demo-3" class="espacamento">--}}
 
-                @if(isset($evento[0]))
+                {{--@if(isset($evento[0]))--}}
 
-                <div class="item  center-block">
-                    <div class="contorno">
-                        <img src="{{$evento[0]->img}}" alt="pessoa1" class="img-responsive center-block">
-                        <h4 class="text-center" style="text-transform: uppercase"> {{$evento[0]->titulo}} </h4>
-                        <span class="descricao">{{$evento[0]->sobre}}</span>
-                        </br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[0]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>
-                    </div>
-                </div>
-                @endif
+                {{--<div class="item  center-block">--}}
+                    {{--<div class="contorno">--}}
+                        {{--<img src="{{$evento[0]->img}}" alt="pessoa1" class="img-responsive center-block">--}}
+                        {{--<h4 class="text-center" style="text-transform: uppercase"> {{$evento[0]->titulo}} </h4>--}}
+                        {{--<span class="descricao">{{$evento[0]->sobre}}</span>--}}
+                        {{--</br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[0]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--@endif--}}
 
-                @if(isset($evento[1]))
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="{{$evento[1]->img}}" alt="pessoa1" class="img-responsive center-block">
-                        <h4 class="text-center" style="text-transform: uppercase"> {{$evento[1]->titulo}} </h4>
-                        <span class="descricao">{{$evento[1]->sobre}}</span>
-                        </br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[1]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>
-                    </div>
-                </div>
-                @endif
+                {{--@if(isset($evento[1]))--}}
+                {{--<div class="item center-block">--}}
+                    {{--<div class="contorno">--}}
+                        {{--<img src="{{$evento[1]->img}}" alt="pessoa1" class="img-responsive center-block">--}}
+                        {{--<h4 class="text-center" style="text-transform: uppercase"> {{$evento[1]->titulo}} </h4>--}}
+                        {{--<span class="descricao">{{$evento[1]->sobre}}</span>--}}
+                        {{--</br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[1]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--@endif--}}
 
                 @if(isset($cursos[0]))
                 <div class="item center-block">
@@ -249,19 +284,19 @@
                 </div>
                 @endif
 
-                @if(isset($cursos[1]))
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="{{$cursos[1]->img}}" alt="CURSO" class="img-responsive center-block">
-                        <h4 class="text-center" style="text-transform: uppercase"> {{$cursos[1]->titulo}} </h4>
-                        <span class="descricao">{{$cursos[1]->discricao}}</span>
-                        </br> <div class="buttom-custom-1"><a style="text-decoration: none" href="/curso/{{$cursos[1]->nome}}"></a><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
-                 @endif
-            </div>
-        </div>
-    </section> <!-- OK -->
+                {{--@if(isset($cursos[1]))--}}
+                {{--<div class="item center-block">--}}
+                    {{--<div class="contorno">--}}
+                        {{--<img src="{{$cursos[1]->img}}" alt="CURSO" class="img-responsive center-block">--}}
+                        {{--<h4 class="text-center" style="text-transform: uppercase"> {{$cursos[1]->titulo}} </h4>--}}
+                        {{--<span class="descricao">{{$cursos[1]->discricao}}</span>--}}
+                        {{--</br> <div class="buttom-custom-1"><a style="text-decoration: none" href="/curso/{{$cursos[1]->nome}}"></a><p class="texto-button"> - SAIBA MAIS - </p></div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                 {{--@endif--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section> <!-- OK -->--}}
 
     <section id="colaboradores">
         <div class="container">

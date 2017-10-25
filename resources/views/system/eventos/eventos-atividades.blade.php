@@ -22,136 +22,165 @@
                         <P class="text-right" style="margin-right: 10px;"><button type="button" data-toggle="modal" data-target="#contact"  class="btn btn-success btn-success-custom "><i class="fa fa-archive"></i> Nova Atividade </button></P>
                         <hr>
                         <!-- Boxes de Acoes -->
-                        @foreach($atividades as $atividade)
-                            <div class="col-xs-12 col-sm-6 col-lg-4" style="margin-top: 20px">
-                                <div class="box">
-                                    <div class="icon">
-                                        <div class="info">
-                                            <h3 class="title">{{$atividade->titulo}}</h3>
-                                            <p class="text-left"><b>Area: </b>{{$atividade->area}}</p>
-                                            <p class="text-left"><b>Modalidade: </b>{{$atividade->modalidade}}</p>
-                                            <p class="text-left"><b>Data: </b>{{ date("d-m-Y", strtotime($atividade->data)) }} <b style="margin-left: 20px"> Horario: </b>{{$atividade->horario}}</p>
-                                            <p class="text-left"><b>Cordenação: </b>{{$atividade->cordenacao}}</p>
-                                            <p class="text-left"><b>Convidados: </b>{{$atividade->convidados}}</p>
-                                            <p class="text-left"><b>Palestrantes: </b>{{$atividade->palestrante}}</p>
-                                            <p class="text-left"><b>Local: </b>{{$atividade->local}}</p>
-                                            <div class="more">
-                                                <a style="cursor: pointer;" type="button" data-toggle="modal" data-target="{{'#atividade'.$atividade->id}}"  title="Editar">
-                                                    Edite
-                                                </a>
-                                            </div>
-                                            <div class="col-md-offset-10">
-                                                <a  href="{{'/system/evento-atividade/'.$atividade->id.'/'. $evento->id}}" title="Remover">
-                                                    <i class="fa fa-bitbucket "></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="space"></div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="{{'atividade'.$atividade->id}}" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-heading">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Adicionar uma nova atividade: {{$evento->titulo}}</h4>
-                                        </div>
-                                        <form action="{{route('evento-atividade.update',$atividade->id)}}" method="post">
-                                            {{ method_field('POST')}}
-                                            {{ csrf_field() }}
-                                            <div class="panel-body">
-                                                <section class="hast">
-                                                    <div class="col-md-12">
-                                                        <h3 class="dark-grey">Informações Atividade</h3><br>
+                        <div class="table-responsive">
+                            <table id="mytable" class="table">
 
-                                                        <input type="text" name="eventoId" style="display: none;" class="form-control" id="eventoId" value="{{$evento->id}}">
+                                <thead>
+                                <th class="text-center">Titulo</th>
+                                <th class="text-center">Area</th>
+                                <th class="text-center">Modalidade</th>
+                                <th class="text-center">Data</th>
+                                <th class="text-center">Cordenação</th>
+                                <th class="text-center">Convidados</th>
+                                <th class="text-center">Palestrantes</th>
+                                <th class="text-center">Local</th>
+                                <th class="text-center">Edite</th>
+                                <th class="text-center">Delete</th>
+                                </thead>
+                                <tbody>
+                                @foreach($atividades as $atividade)
+                                    <tr>
+                                        <td>{{$atividade->titulo}}</td>
+                                        <td>{{$atividade->area}}</td>
+                                        <td>{{$atividade->modalidade}}</td>
+                                        <td width="90"><p>{{ date("d-m-Y", strtotime($atividade->data)) }}</p></td>
+                                        <td>{{$atividade->cordenacao}}</td>
+                                        <td>{{$atividade->convidados}}</td>
+                                        <td>{{$atividade->palestrante}}</td>
+                                        <td>{{$atividade->local}}</td>
+                                        <td><p data-placement="top" data-toggle="tooltip" title="Editar"><button class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="{{'#atividade'.$atividade->id}}" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                        <td><a href="{{'/system/evento-atividade/'.$atividade->id.'/'. $evento->id}}" data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
+                                    </tr>
+                                    <div class="modal fade" id="{{'atividade'.$atividade->id}}" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Adicionar uma nova atividade: {{$evento->titulo}}</h4>
+                                                </div>
+                                                <form action="{{route('evento-atividade.update',$atividade->id)}}" method="post">
+                                                    {{ method_field('POST')}}
+                                                    {{ csrf_field() }}
+                                                    <div class="panel-body">
+                                                        <section class="hast">
+                                                            <div class="col-md-12">
+                                                                <h3 class="dark-grey">Informações Atividade</h3><br>
 
-                                                        <div class="form-group col-lg-10 has-feedback">
-                                                            <label>Titulo:</label>
-                                                            <input type="text" name="titulo" class="form-control" id="titulo" value="{{$atividade->titulo}}" required="">
-                                                            <span class="fa fa-edit form-control-feedback form-control-feedback-custom"></span>
-                                                        </div>
+                                                                <input type="text" name="eventoId" style="display: none;" class="form-control" id="eventoId" value="{{$evento->id}}">
 
-                                                        <div class="form-group col-lg-5 has-feedback">
-                                                            <label>Cordenação:</label>
-                                                            <input type="text" name="cordenacao" class="form-control" id="cordenacao" value="{{$atividade->cordenacao}}">
-                                                            {{--<span class="fa fa-edit form-control-feedback form-control-feedback-custom"></span>--}}
-                                                        </div>
+                                                                <div class="form-group col-lg-10 has-feedback">
+                                                                    <label>Titulo:</label>
+                                                                    <input type="text" name="titulo" class="form-control" id="titulo" value="{{$atividade->titulo}}" required="">
+                                                                    <span class="fa fa-edit form-control-feedback form-control-feedback-custom"></span>
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback">
-                                                            <label>Palestrante:</label>
-                                                            <input type="text" name="palestrante" class="form-control" id="palestrante" value="{{$atividade->palestrante}}">
-                                                            <span class="fa fa-user-circle-o form-control-feedback form-control-feedback-custom"></span>
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback">
+                                                                    <label>Cordenação:</label>
+                                                                    <input type="text" name="cordenacao" class="form-control" id="cordenacao" value="{{$atividade->cordenacao}}">
+                                                                    {{--<span class="fa fa-edit form-control-feedback form-control-feedback-custom"></span>--}}
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback">
-                                                            <label>Área:</label>
-                                                            <select id="area" name="area" onclick="combobox()" class="form-control">
-                                                                <option value="{{($atividade->area != "") ? $atividade->area : ""}}"> {{($atividade->area != "") ? $atividade->area : "- Selecione -"}} </option>
-                                                                <option value="CIÊNCIAS EXATAS E DA TERRA">CIÊNCIAS EXATAS E DA TERRA</option>
-                                                                <option value="CIÊNCIAS BIOLÓGICAS">CIÊNCIAS BIOLÓGICAS</option>
-                                                                <option value="ENGENHARIAS">ENGENHARIAS</option>
-                                                                <option value="CIÊNCIAS DA SAÚDE">CIÊNCIAS DA SAÚDE</option>
-                                                                <option value="CIÊNCIAS AGRÁRIAS">CIÊNCIAS AGRÁRIAS</option>
-                                                                <option value="CIÊNCIAS SOCIAIS APLICADAS">CIÊNCIAS SOCIAIS APLICADAS</option>
-                                                                <option value="CIÊNCIAS HUMANAS">CIÊNCIAS HUMANAS</option>
-                                                                <option value="LINGÜÍSTICA, LETRAS E ARTES">LINGÜÍSTICA, LETRAS E ARTES</option>
-                                                                <option value="OUTRAS">OUTRAS</option>
-                                                            </select>
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback">
+                                                                    <label>Palestrante:</label>
+                                                                    <input type="text" name="palestrante" class="form-control" id="palestrante" value="{{$atividade->palestrante}}">
+                                                                    <span class="fa fa-user-circle-o form-control-feedback form-control-feedback-custom"></span>
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback">
-                                                            <label>Modalidade:</label>
-                                                            <select id="modalidade" name="modalidade" onclick="combobox()" class="form-control">
-                                                                <option value="{{($atividade->modalidade) ? $atividade->modalidade : "" }}"> {{($atividade->modalidade) ? $atividade->modalidade : "- Selecione -" }} </option>
-                                                                <option value="Palestra">PALESTRA</option>
-                                                                <option value="Minicurso">MINICURSO</option>
-                                                                <option value="Mesa Redonda">MESA REDONDA</option>
-                                                                <option value="Entreterimento">ENTRETERIMENTO</option>
-                                                                <option value="Outras">OUTRAS</option>
-                                                            </select>
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback">
+                                                                    <label>Área:</label>
+                                                                    <select id="area" name="area" onclick="combobox()" class="form-control">
+                                                                        <option value="{{($atividade->area != "") ? $atividade->area : ""}}"> {{($atividade->area != "") ? $atividade->area : "- Selecione -"}} </option>
+                                                                        <option value="CIÊNCIAS EXATAS E DA TERRA">CIÊNCIAS EXATAS E DA TERRA</option>
+                                                                        <option value="CIÊNCIAS BIOLÓGICAS">CIÊNCIAS BIOLÓGICAS</option>
+                                                                        <option value="ENGENHARIAS">ENGENHARIAS</option>
+                                                                        <option value="CIÊNCIAS DA SAÚDE">CIÊNCIAS DA SAÚDE</option>
+                                                                        <option value="CIÊNCIAS AGRÁRIAS">CIÊNCIAS AGRÁRIAS</option>
+                                                                        <option value="CIÊNCIAS SOCIAIS APLICADAS">CIÊNCIAS SOCIAIS APLICADAS</option>
+                                                                        <option value="CIÊNCIAS HUMANAS">CIÊNCIAS HUMANAS</option>
+                                                                        <option value="LINGÜÍSTICA, LETRAS E ARTES">LINGÜÍSTICA, LETRAS E ARTES</option>
+                                                                        <option value="OUTRAS">OUTRAS</option>
+                                                                    </select>
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback ">
-                                                            <label >Data: {{date("d-m-Y", strtotime($atividade->data))}} </label>
-                                                            <input type="date" name="data" class="form-control"   id="data" placeholder="dd/MM/dddd">
-                                                            <span class="fa fa-calendar form-control-feedback form-control-feedback-custom"></span>
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback">
+                                                                    <label>Modalidade:</label>
+                                                                    <select id="modalidade" name="modalidade" onclick="combobox()" class="form-control">
+                                                                        <option value="{{($atividade->modalidade) ? $atividade->modalidade : "" }}"> {{($atividade->modalidade) ? $atividade->modalidade : "- Selecione -" }} </option>
+                                                                        <option value="Palestra">PALESTRA</option>
+                                                                        <option value="Minicurso">MINICURSO</option>
+                                                                        <option value="Mesa Redonda">MESA REDONDA</option>
+                                                                        <option value="Entreterimento">ENTRETERIMENTO</option>
+                                                                        <option value="Outras">OUTRAS</option>
+                                                                    </select>
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback ">
-                                                            <label >Horario:</label>
-                                                            <input type="text" name="horario" class="form-control" value="{{$atividade->horario}}"  id="horario" placeholder="HH:MM" required="">
-                                                            <span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback ">
+                                                                    <label >Data: {{date("d-m-Y", strtotime($atividade->data))}} </label>
+                                                                    <input type="date" name="data" class="form-control"   id="data" placeholder="dd/MM/dddd">
+                                                                    <span class="fa fa-calendar form-control-feedback form-control-feedback-custom"></span>
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback ">
-                                                            <label >Convidados:</label>
-                                                            <input type="text" name="convidados" class="form-control" value="{{$atividade->convidados}}"   id="convidados">
-                                                            {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback ">
+                                                                    <label >Horario:</label>
+                                                                    <input type="text" name="horario" class="form-control" value="{{$atividade->horario}}"  id="horario" placeholder="HH:MM" required="">
+                                                                    <span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>
+                                                                </div>
 
-                                                        <div class="form-group col-lg-5 has-feedback ">
-                                                            <label >Local de Realização:</label>
-                                                            <input type="text" name="local" class="form-control" value="{{$atividade->local}}"   id="local" placeholder="Ex: Sala 01" required="">
-                                                            {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
-                                                        </div>
+                                                                <div class="form-group col-lg-5 has-feedback ">
+                                                                    <label >Convidados:</label>
+                                                                    <input type="text" name="convidados" class="form-control" value="{{$atividade->convidados}}"   id="convidados">
+                                                                    {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                                                                </div>
+
+                                                                <div class="form-group col-lg-5 has-feedback ">
+                                                                    <label >Local de Realização:</label>
+                                                                    <input type="text" name="local" class="form-control" value="{{$atividade->local}}"   id="local" placeholder="Ex: Sala 01" required="">
+                                                                    {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                                                                </div>
+                                                            </div>
+                                                        </section>
                                                     </div>
-                                                </section>
+                                                    <div class="panel-footer" style="margin-bottom:-14px;">
+                                                        <input type="submit" class="btn btn-success" value="Salvar"/>
+                                                        <!--<span class="glyphicon glyphicon-remove"></span>-->
+                                                        <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="panel-footer" style="margin-bottom:-14px;">
-                                                <input type="submit" class="btn btn-success" value="Salvar"/>
-                                                <!--<span class="glyphicon glyphicon-remove"></span>-->
-                                                <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                        @endforeach
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                            {{--<div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" style="margin-top: 20px">--}}
+                                {{--<div class="box">--}}
+                                    {{--<div class="icon">--}}
+                                        {{--<div class="info" >--}}
+                                            {{--<h3 class="title col-md-12">{{$atividade->titulo}}</h3>--}}
+                                            {{--<p class="text-left col-md-12"><b>Area: </b>{{$atividade->area}}</p>--}}
+                                            {{--<p class="text-left col-md-12"><b>Modalidade: </b>{{$atividade->modalidade}}</p>--}}
+                                            {{--<p class="text-left col-md-12"><b>Data: </b>{{ date("d-m-Y", strtotime($atividade->data)) }} <b style="margin-left: 20px"> Horario: </b>{{$atividade->horario}}</p>--}}
+                                            {{--<p class="text-left col-md-12"><b>Cordenação: </b>{{$atividade->cordenacao}}</p>--}}
+                                            {{--<p class="text-left col-md-12"><b>Convidados: </b>{{$atividade->convidados}}</p>--}}
+                                            {{--<p class="text-left col-md-12"><b>Palestrantes: </b>{{$atividade->palestrante}}</p>--}}
+                                            {{--<p class="text-left col-md-12"><b>Local: </b>{{$atividade->local}}</p>--}}
+                                            {{--<div class="more">--}}
+                                                {{--<a style="cursor: pointer;" type="button" data-toggle="modal" data-target="{{'#atividade'.$atividade->id}}"  title="Editar">--}}
+                                                    {{--Edite--}}
+                                                {{--</a>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-offset-8">--}}
+                                                {{--<a  href="{{'/system/evento-atividade/'.$atividade->id.'/'. $evento->id}}" title="Remover">--}}
+                                                    {{--<i class="fa fa-bitbucket "></i>--}}
+                                                {{--</a>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="space"></div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                     </div>
-
                     <div id="submissao" class="tab-pane fade">
                         <h1 class="text-center"> Submissão </h1><br>
                         <form action="{{route('evento.submissao',$evento->id)}}" method="post">

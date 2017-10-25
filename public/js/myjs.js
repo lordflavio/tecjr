@@ -29,73 +29,6 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
-    // Carousel da equipe
-    $("#owl-demo").owlCarousel({
-
-        autoPlay: true, //Set AutoPlay to 3 seconds
-
-        items : 3,
-        slideSpeed : 800,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
-
-    });
-
-    var owl3 = $("#owl-demo").data('owlCarousel');
-    $('#b-equipe-left').on("click", function () {
-        owl3.prev();
-    })
-    $('#b-equipe-right').on("click", function () {
-        owl3.next();
-    })
-    // FIM do Carousel de noticias
-
-
-
-    // Carousel de noticias
-    $("#owl-demo-2").owlCarousel({
-
-        autoPlay: true, //Set AutoPlay to 3 seconds
-
-        items : 3,
-        slideSpeed : 800,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
-
-    });
-
-    var owl2 = $("#owl-demo-2").data('owlCarousel');
-    $('#b-noticias-left').on("click", function () {
-        owl2.prev();
-    })
-    $('#b-noticias-right').on("click", function () {
-        owl2.next();
-    })
-    // Fim do Carousel de noticias
-
-
-
-    // Carousel de Cursos
-    $("#owl-demo-3").owlCarousel({
-
-        autoPlay: true, //Set AutoPlay to 3 seconds
-
-        items : 4,
-        slideSpeed : 800,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
-
-    });
-
-    var owl4 = $("#owl-demo-3").data('owlCarousel');
-    $('#b-cursos-left').on("click", function () {
-        owl4.prev();
-    })
-    $('#b-cursos-right').on("click", function () {
-        owl4.next();
-    })
-    // Fim do Carousel de Cursos
-
 
     // INICIO - APOIADORES
     $("#owl-demo-apoio").owlCarousel({
@@ -185,6 +118,25 @@ jQuery(document).ready(function() {
     });
 
 });
+
+
+$(document).ready(function(){
+    $("#mytable #checkall").click(function () {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+
+    $("[data-toggle=tooltip]").tooltip();
+});
+
 
 
 

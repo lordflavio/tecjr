@@ -83,7 +83,7 @@ class EventoController extends Controller
             $evento->dateFimEx = $request->dateFimEx;
             $evento->img  = '/imagens/eventos/'.$n_nome.'-'.$n_date.'.'.$extencao;
 
-            if( $img->move(public_path().'/imagens/eventos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+            if( $img->move('./imagens/eventos/',$n_nome.'-'.$n_date.'.'.$extencao)){
 
                 $evento->save();
 
@@ -190,7 +190,7 @@ class EventoController extends Controller
 
             $evento->img  = '/imagens/eventos/'.$n_nome.'-'.$n_date.'.'.$extencao;
 
-            if( $img->move(public_path().'/imagens/eventos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+            if( $img->move('./imagens/eventos/',$n_nome.'-'.$n_date.'.'.$extencao)){
 
                 $evento->save();
 
@@ -233,7 +233,7 @@ class EventoController extends Controller
 
     public function delete($id)
     {
-        unlink(public_path().evento::find($id)->img);
+        unlink('.'.evento::find($id)->img);
         evento::destroy($id);
 
         Session::flash('warning','Evento Removido!');
@@ -274,7 +274,7 @@ class EventoController extends Controller
 
             $pat->img  = '/imagens/eventos/patrocinios/'.(count($cont)+ 1).'-'.$id.'.'.$extencao;
 
-            if( $img->move(public_path().'/imagens/eventos/patrocinios/',(count($cont)+ 1).'-'.$id.'.'.$extencao)){
+            if( $img->move('./imagens/eventos/patrocinios/',(count($cont)+ 1).'-'.$id.'.'.$extencao)){
                  $pat->save();
                 Session::flash('success','Patrocinio Registrado!');
                 return redirect(route('evento.show',$id));
@@ -301,6 +301,8 @@ class EventoController extends Controller
                 return back();
             }
 
+            $in = count(Evento_palestrante::all()) + 1;
+
             $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
 
             $pal = new Evento_palestrante();
@@ -311,9 +313,9 @@ class EventoController extends Controller
             $pal->lattes = $request->lattes;
 
 
-            $pal->img  = '/imagens/eventos/palestrantes/'.$n_nome.'-'.$id.'.'.$extencao;
+            $pal->img  = '/imagens/eventos/palestrantes/'.$n_nome.'-'.$id.'-'.$in.'.'.$extencao;
 
-            if( $img->move(public_path().'/imagens/eventos/palestrantes/',$n_nome.'-'.$id.'.'.$extencao)){
+            if( $img->move(public_path().'/imagens/eventos/palestrantes/',$n_nome.'-'.$id.'-'.$in.'.'.$extencao)){
                  $pal->save();
                 Session::flash('success','Palestrante Registrado!');
                 return redirect(route('evento.show',$id));
@@ -346,13 +348,15 @@ class EventoController extends Controller
                 return back();
             }
 
+            $in = count(Evento_palestrante::all()) + 1;
+
             $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
 
             unlink(public_path().$pal->img);
 
-            $pal->img  = '/imagens/eventos/palestrantes/'.$n_nome.'-'.$id.'.'.$extencao;
+            $pal->img  = '/imagens/eventos/palestrantes/'.$n_nome.'-'.$id.'-'.$in.'.'.$extencao;
 
-            if( $img->move(public_path().'/imagens/eventos/palestrantes/',$n_nome.'-'.$id.'.'.$extencao)){
+            if( $img->move('./imagens/eventos/palestrantes/',$n_nome.'-'.$id.'-'.$in.'.'.$extencao)){
                  $pal->save();
                 Session::flash('update','Palestrante Atualizado!');
                 return redirect(route('evento.show',$id2));
@@ -371,7 +375,7 @@ class EventoController extends Controller
 
     public function patrocinioDelete($id,$id2){
 
-        unlink(public_path().Evento_Patrocinios::find($id)->img);
+        unlink('.'.Evento_Patrocinios::find($id)->img);
         Evento_Patrocinios::destroy($id);
         Session::flash('warning','Patrocinio Removido!');
         return redirect()->route('evento.show',$id2);
@@ -380,7 +384,7 @@ class EventoController extends Controller
 
     public function palestranteDelete($id,$id2){
 
-        unlink(public_path().Evento_palestrante::find($id)->img);
+        unlink('.'.Evento_palestrante::find($id)->img);
         Evento_palestrante::destroy($id);
         Session::flash('warning','Palestrante Removido!');
         return redirect()->route('evento.show',$id2);
@@ -410,10 +414,10 @@ class EventoController extends Controller
                 return back();
             }
 
-            if($ideal_size[0] != 1360 && $ideal_size[1] != 400){
-                Session::flash('warning','Tamanho da imagem invalido!');
-                return back();
-            }
+//            if($ideal_size[0] != 1360 && $ideal_size[1] != 400){
+//                Session::flash('warning','Tamanho da imagem invalido!');
+//                return back();
+//            }
 
             if($evento->banner != ""){
                 unlink(public_path().$evento->banner);
@@ -422,7 +426,7 @@ class EventoController extends Controller
             $evento->banner  = '/imagens/eventos/'.$evento->nome.'-'.$evento->id.'.'.$extencao;
 
 
-            if( $img->move(public_path().'/imagens/eventos/',$evento->nome.'-'.$evento->id.'.'.$extencao)){
+            if( $img->move('./imagens/eventos/',$evento->nome.'-'.$evento->id.'.'.$extencao)){
 
                 $evento->save();
 

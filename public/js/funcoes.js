@@ -71,7 +71,7 @@ $('#back-to-top').click(function () {
     }, 800);
     return false;
 });
-$('#back-to-top').tooltip('show');
+// $('#back-to-top').tooltip('show');
 //-----------------------------------------
 
 //TOOTIPE PARA A HOME

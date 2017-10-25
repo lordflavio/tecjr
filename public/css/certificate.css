@@ -1,0 +1,58 @@
+*{margin: 0px; padding: 0px;}
+.certificado{
+    width: 975px;
+    height: 630px;
+    margin: 5px;
+    float: left;
+    font-family: Lato,Helvetica,Arial,sans-serif;
+    margin-left: calc(50% - 487.5px);
+}
+.text-center{text-align: center;}
+.img-back-cert{
+    width: 100%;
+    z-index: 0;
+    position: relative;
+    height: 100%;
+}
+.conteudo-certificado{
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    margin: 181px auto;
+    float: left;
+    width: 975px;
+    height: 630px;
+}
+.titulo-certificado{
+    color: #0053D1;
+    font-size: 42px;
+    margin: 2px 0px 40px 0px;
+}
+.detalhes-certificado{
+    color: #0053D1;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 8px;
+    line-height: 26px;
+}
+.nome-aluno{
+    font-size: 20px;
+    font-weight: bold;
+}
+.curso{
+    font-size: 20px;
+    font-weight: bold;
+}
+.mais-detalhes-certificado{
+    font-size: 14px;
+    font-weight: normal;
+    margin: 18px;
+    color: #0053D1;
+    font-style: italic;
+}
+.data-certificado{
+    font-size: 16px;
+    font-weight: normal;
+    margin: 34px 0px 22px 50%;
+    color: #0053D1;
+}

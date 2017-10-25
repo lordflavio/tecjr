@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contato;
 use App\Model\Admin;
 use App\Model\curso;
 use App\Model\Curso_conteudo;
@@ -13,6 +14,7 @@ use App\Model\Noticias;
 use App\Model\atividade;
 use App\Model\Patrocinio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 
@@ -176,45 +178,8 @@ class ControllerOut extends Controller
 
 
     public function envio (Request $request){
-        $nome= $request->nome;
-        $email= $request->email;
-        $assunto = $request->assunto;
-        $mensagem= $request->mensagem;
 
-        $destino = "empresa.tecjr@gmail.com";
-
-        $titulo= "Mensagem do Site";
-
-        $data = date ("d-m-Y", time());
-        $hora = date ("H:i", time());
-
-        $mensagem1 = "<html>
-            <head>
-                <title>Tecjr - UPE 2017 - Duvidas</title>
-                <style>
-                    @import url('https://fonts.googleapis.com/css?family=Anton');
-                </style>
-            </head>
-            <body>
-                <strong style='font-size: 16px; font-family: 'Anton'>Enviado por:</strong><b style='font-size: 16px; font-family: 'Anton'> $email</b><br>
-                <strong style='font-size: 16px; font-family: 'Anton'>Nome:</strong><b style='font-size: 16px; font-family: Arial;'> $nome</b><br>
-                <strong style='font-size: 16px; font-family: 'Anton'>Assunto:</strong><b style='font-size: 16px; font-family: 'Anton'> $assunto</b><br>
-                <strong style='font-size: 16px; font-family: 'Anton'>Menssagem:</strong><br>
-                <p style='font-size: 16px; font-family: 'Anton'>$mensagem</p>
-                <p style='font-size: 14px; font-family: 'Anton'>Enviado no dia: $data <br>Atravez do Site: <a href='http://www.tecjr.com.br/'>http://www.tecjr.com.br/</a></p>
-            
-            </body>
-            </html>";
-
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-        $headers .= "To: TECJR-UPE 2017 <$destino>" . "\r\n";
-        $headers .= "From: $nome <$email>" . "\r\n";
-        $headers .= "Cc: $email" . "\r\n";
-        $headers .= "Bcc: $email" . "\r\n";
-
-        mail($destino,$titulo,$mensagem1,$headers);
+        Mail::to('empresa.tecjr@gmail.com')->send(new Contato($request));
 
         Session::flash('success','Enviado!');
         return redirect(route('contato'));
