@@ -12,7 +12,7 @@
                                     <table width="100%">
                                         <tr>
                                             <td rowspan="2" style="text-align:center;padding:10px;">
-                                                <img style="float:left; "  src="/imagens/logo1.png" width="150" />
+                                                <img style="float:left; "  src="{{'http://laravel-lordflavioo.c9users.io/public/imagens/logo1.png'}}" width="150" />
 
                                                 <span style="color:#000;float:right;font-size: 13px;font-style: italic;margin-top: 20px; padding:10px; font-weight:normal;">
 							Mensagem do Site <span></span></span></td>
@@ -27,10 +27,11 @@
                     <table style="padding: 10px;font-size:14px; width:100%;">
                         <tr>
                             <td style="padding:10px;font-size:14px; width:100%;">
-                                <p><b>Enviado Por:</b> {{$dados->name_n}}</p>
+                                <p><b>Enviado Por:</b> {{$dados->nome}}</p>
+                                <p><b>Email: {{$dados->email}} </p>
                                 <p><br /> <b>Assunto:</b> {{$dados->assunto}} </p>
-                                <p><b>Mensagem</b><br /> {{$dados->mensage}}</p>
-                                <p> </p>
+                                <p><b>Mensagem</b><br /></p>
+                                <p>{{$dados->mensage}}</p>
                                 {{--<p>Thanks for choosing SeeDocOnline,</p>--}}
                                 {{--<p>SeeDocOnline Team.</p>--}}
                                 <!-- /Callout Panel -->

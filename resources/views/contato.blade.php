@@ -20,12 +20,12 @@
                             {{ method_field('POST')}}
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nome" name="name_n" placeholder="Nome" required="" autofocus="">
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="" autofocus="">
                             </div>
 
 
                             <div class="form-group form_left">
-                                <input type="email" class="form-control" id="email" name="email_n" placeholder="Email" required="">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="">
                             </div>
 
                             <div class="form-group">
