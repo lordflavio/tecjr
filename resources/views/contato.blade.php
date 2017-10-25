@@ -20,7 +20,7 @@
                             {{ method_field('POST')}}
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nome" name="name_n" placeholder="Nome" required="" autofocus="">
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="" autofocus="">
                             </div>
 
 

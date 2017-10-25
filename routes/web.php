@@ -15,9 +15,9 @@ Route::get('/', 'ControllerOut@welcome')->name('welcome');
 
 //Route::get('/pdf', 'System\CertificationController@test')->name('pdf');
 
-//Route::get('/email', function (){
-//    return view('contato-envio');
-//});
+Route::get('/email', function (){
+    return view('contato-envio');
+});
 
 Route::get('/portifolio', 'ControllerOut@portifolio')->name('portifolio');
 //Route::get('/noticias', 'ControllerOut@noticias')->name('noticias');

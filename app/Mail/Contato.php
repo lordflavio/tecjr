@@ -24,6 +24,6 @@ class Contato extends Mailable
      */
     public function build()
     {
-        return $this->from($this->dados->email,$this->dados->name_n)->subject("Mensagem do site")->view('contato-envio');
+        return $this->from($this->dados->email,'Site Tecjr')->subject("Mensagem do site")->view('contato-envio');
     }
 }
