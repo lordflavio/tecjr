@@ -13,7 +13,7 @@
 
 Route::get('/', 'ControllerOut@welcome')->name('welcome');
 
-//Route::get('/pdf', 'System\CertificationController@test')->name('pdf');
+Route::get('/pdf', 'System\CertificationController@test')->name('pdf');
 
 Route::get('/email', function (){
     return view('contato-envio');

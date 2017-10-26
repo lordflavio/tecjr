@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +10,13 @@
     <link rel="stylesheet" href="css/certificate.css">
 
     <!--Favicon-->
-    <link rel="icon" type="image/png" href="https://academy.especializati.com.br/assets/site/imgs/favicon.png">
+    <link rel="shortcut icon" href="{{asset('imagens/ico.png')}}" />
+
 </head>
 <body>
-
-<div class="certificado">
-    <img src="https://academy.especializati.com.br/assets/site/imgs/img-back-certificado-especializati.png" class="img-back-cert" alt="Certificado Digital Tecjr">
+@for($i = 0; $i < 6; $i++)
+<div class="certificado" style="margin-left: 75px">
+    <img src="imagens/Model-Certification.png" class="img-back-cert" alt="Certificado Digital Tecjr">
 
     <div class="conteudo-certificado text-center">
         <h1 class="titulo-certificado">CERTIFICADO</h1>
@@ -33,6 +36,6 @@
     </div>
 
 </div><!--Certificado-->
-
+@endfor
 </body>
 </html>
