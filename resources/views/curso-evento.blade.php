@@ -11,13 +11,13 @@
                     <div class="thumbnail">
                         <img class="img-responsive" src="{{$curso->img}}" alt="{{$curso->titulo}}">
                         <h4 style="text-transform: uppercase">{{$curso->titulo}}</h4>
-                        <span class="descricao-curso"> {{$curso->discricao}} </span>
                         <div class="descricao-avancada">
+                            <p>{{$curso->situacao}}</i></p>
                             <p><i class="fa fa-clock-o fa-lg" aria-hidden="true"> {{$curso->duracao}} Horas</i></p>
                             <p><i class="fa fa-ticket fa-lg" aria-hidden="true"> {{$curso->valorInscricao}} Reais</i></p>
                         </div>
                         <br>
-                        <a href="/curso/{{$curso->nome}}" class="btn btn-primary col-xs-12" role="button">Increver-se</a>
+                        <a href="/curso/{{$curso->nome}}" class="btn btn-primary col-xs-12" role="button">Saiba mais clique aqui!</a>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -32,13 +32,12 @@
                                 <div class="thumbnail">
                                     <img class="img-responsive" src="{{$evento->img}}" alt="LOGO" height="200px" width="320px">
                                     <h4 style="text-transform: uppercase">{{$evento->titulo}}</h4>
-                                    <span class="descricao-curso">{{$evento->sobre}}</span>
                                     <div class="descricao-avancada">
                                         {{--<p><i class="fa fa-clock-o fa-lg" aria-hidden="true"> -- Horas</i></p>--}}
                                         {{--<p><i class="fa fa-ticket fa-lg" aria-hidden="true"> --,-- Reais</i></p>--}}
                                     </div>
                                     <br>
-                                    <a href="/eventos/{{$evento->nome}}" class="btn btn-primary col-xs-12" role="button">Inscreva-se</a>
+                                    <a href="/eventos/{{$evento->nome}}" class="btn btn-primary col-xs-12" role="button">Saiba mais clique aqui!</a>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>

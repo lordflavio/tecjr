@@ -508,6 +508,12 @@
                                         <label>Estado:</label>
                                         <input type="text" name="estado" value="{{$evento->estado}}" class="form-control" id="estado">
                                     </div>
+                                    
+                                    <div class="form-group col-lg-4 has-feedback ">
+                                        <label >Valor de Inscricao:</label>
+                                        <input type="text" name="valorInscricao" class="form-control"   id="valorInscricao" >
+                                        <span class="fa fa-money form-control-feedback form-control-feedback-custom"></span>
+                                    </div>
 
                                     <div class="form-group col-lg-8 ">
                                         <label class="col-md-3 control-label" for="img">Upload Imagem</label>

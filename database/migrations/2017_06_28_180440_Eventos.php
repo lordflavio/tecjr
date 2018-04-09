@@ -17,6 +17,7 @@ class Eventos extends Migration
             $table->increments('id');
             $table->string('nome',150);
             $table->string('titulo',150);
+            $table->string('valor_inscricao',20);
             $table->string('endereco');
             $table->string('numero',20);
             $table->string('bairro');
@@ -25,7 +26,7 @@ class Eventos extends Migration
             $table->string('cep',10);
             $table->string('email');
             $table->string('fone',18);
-            $table->text('sobre');
+            $table->text('descricao');
             $table->date('dateInicioIns');
             $table->date('dateFimIns');
             $table->date('dateInicioEx');

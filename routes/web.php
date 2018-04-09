@@ -28,12 +28,27 @@ Route::get('/eventos/{evento}', 'ControllerOut@evento')->name('evento');
 Route::post('/contato-up', 'ControllerOut@envio')->name('up.envio');
 
 
+Route::group(['middleware' => ['auth']], function() {
+  Route::get('/perfil-user', 'ParticipanteController@index')->name('perfil-user'); 
+  Route::match(['get','post'],'/perfil-user-update/{id}','ParticipanteController@updates')->name('perfil-user.update');
+  Route::get('/perfil-user/cursos', 'ParticipanteController@curso')->name('perfil-user-cursos');
+  Route::post('atualizar-senha', 'ParticipanteController@passwordUpdate')->name('password.update');
+  Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
+  Route::match(['get','post'],'/curso-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoCurso')->name('curso-pagamento');
+  
+  
+  $this->post('pagseguro-getcode', 'PagSeguroController@getCode')->name('pagseguro.code.transparent');
+  $this->post('pagseguro-payment-billet', 'PagSeguroController@billet')->name('pagseguro.billet');
+  $this->post('pagseguro-payment-card', 'PagSeguroController@paymentCard')->name('pagseguro.card');
+  
 
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware' => ['role:administrator'],['auth']], function() {
@@ -96,3 +111,7 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -24,6 +24,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('OwlCarousel-master/owl-carousel/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('OwlCarousel-master/owl-carousel/owl.theme.css')}}">
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 <body>
@@ -44,7 +46,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <img src="{{get_include_path().'/imagens/logo1.png'}}" width="150" height="79" alt="Logo da Empresa">
+                <img src="{{url('/imagens/logo1.png')}}" width="150" height="79" alt="Logo da Empresa">
 
             </div>
 
@@ -56,7 +58,27 @@
                     <li class="hvr-underline-from-left"><a href="/#equipe">EQUIPE</a></li>
                     <li class="hvr-underline-from-left"><a href="{{route('cursoEvento')}}">CURSOS/EVENTOS</a></li>
                     <li class="hvr-underline-from-left"><a href="{{route('contato')}}">CONTATOS</a></li>
-                    {{--<li class="hvr-underline-from-left"><a href="/login">LOGIN</a></li>--}}
+                    @if($templete == 0)
+                        <li class="dropdown">
+                            <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{($templete == "0") ? $participant->img : '#' }}" class="img-responsive img-thumbnail img-circle"> <p> {{ Auth::user()->name }} </p></a><b class="caret pull-right"></b>
+                            <ul class="dropdown-menu dropdown-menu-custom" role="menu">
+                                <li><a href="{{'/perfil-user'}}">Perfil <span class="glyphicon glyphicon-user pull-right"></span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                                        Logout <span class="glyphicon glyphicon-log-out pull-right"></span>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="hvr-underline-from-left"><a href="/login">LOGIN</a></li>
+                        <li class="hvr-underline-from-left"><a href="/register">REGISTRE-SE</a></li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -86,7 +108,7 @@
                 <div class="col-lg-3  col-md-4 col-sm-6 col-xs-8">
                     <h3 class="text-center"> Trabalhamos com </h3>
                     <ul style="margin-left: 30px" >
-                        <li> <a href="/portifolio"> Desenvolvimento de Sistemmas </a> </li>
+                        <li> <a href="/portifolio"> Desenvolvimento de Sistemas </a> </li>
                         <li> <a href="/portifolio"> Eventos Academicos </a> </li>
                         <li> <a href="/portifolio"> Cursos </a> </li>
                         <li> <a href="/contato"> Divugue em nosso site </a> </li>
@@ -136,6 +158,7 @@
 <script src="{{asset('js/toastr.min.js' )}}"></script>
 <script src="{{asset('js/funcoes2.js' )}}"></script>
 <script src="{{asset('js/myjs.js' )}}"></script>
+<script src="{{asset('js/jquery.mask.js' )}}"></script>
 <script src="{{asset('js/bootstrap-touch-slider.js' )}}"></script>
 
 
@@ -167,7 +190,25 @@
             @endif
         }, 1000);
     });
+
 </script>
+
+<script type="text/javascript">
+    $(function() {
+        $("#myTab > li").click(function() {
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+            localStorage.setItem("ultimo", $(this).attr("id"));
+        });
+
+        var ultimo = localStorage.getItem("ultimo");
+        if (ultimo)
+            $("#" + ultimo).click();
+    });
+
+</script>
+
+ @stack('scripts')
 
 </body>
 </html>

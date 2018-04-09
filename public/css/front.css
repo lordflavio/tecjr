@@ -1920,3 +1920,352 @@ address{
     }
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
+/*                                        PERFIL                                       */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+#perfil{
+    background-color: #E7E7E7;
+    margin-top: -20px;
+}
+
+/* Profile container */
+.profile {
+    margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+}
+
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #005E89;
+    color: #fff;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+    color: #fff;
+    background-color: #005E89;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
+
+.per{
+    border-right: 1px solid rgba(0, 0, 0, 0.30);
+}
+.per .control-label-custom {
+    padding-top: 0;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.has-feedback label~.form-control-feedback.form-control-feedback-custom {
+    top: 25px;
+    right: 13px;
+}
+
+.conta{
+    padding-top: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.30);
+}
+
+@media (min-width: 1200px){
+    .container.container-custom {
+        width: 1000px;
+    }
+}
+
+.per input{
+    font-size: 12px;
+}
+
+.per select{
+    font-size: 12px;
+}
+
+
+.glyphicon.glyphicon-plus-sign{
+    top: 2px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.fa.fa-check-square-o{
+    /*top: 15px;*/
+    margin-top: 2px;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.fa.fa-unlock-alt  {
+    top: 10px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 15px;
+
+}
+
+.fa.fa-key{
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+.fa.fa-mobile{
+    margin-top: 9px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.fa.fa-user-circle-o{
+    margin-top: 9px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.fa.fa-id-card-o{
+    margin-top: 9px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.fa.fa-university{
+    margin-top: 9px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.fa.fa-thumb-tack{
+    margin-top: 9px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.fa.fa-check{
+    font-weight: 500;
+    font-size: 25px;
+    color: #fff;
+}
+
+/**** LAYOUT Perfil Curosos e Eventos ****/
+.list-inline>li {
+    padding: 0 10px 0 0;
+}
+.container-pad {
+    padding: 30px 15px;
+}
+
+
+/**** MODULE ****/
+.bgc-fff {
+    background-color: #fff!important;
+}
+.box-shad {
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.brdr {
+    border: 1px solid #ededed;
+}
+
+/* Font changes */
+.fnt-smaller {
+    font-size: .9em;
+}
+.fnt-lighter {
+    color: #bbb;
+}
+
+/* Padding - Margins */
+.pad-10 {
+    padding: 10px!important;
+}
+.mrg-0 {
+    margin: 0!important;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.btm-mrg-20 {
+    margin-bottom: 20px!important;
+}
+
+/* Color  */
+.clr-535353 {
+    color: #535353;
+}
+
+
+/**** MEDIA QUERIES ****/
+@media only screen and (max-width: 991px) {
+    #property-listings .property-listing {
+        padding: 5px!important;
+    }
+    #property-listings .property-listing a {
+        margin: 0;
+    }
+    #property-listings .property-listing .media-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #property-listings .property-listing img {
+        max-width: 180px;
+    }
+}
+
+.pagamento a{
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+}
+
+.pagamento a:hover{
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
+
+/*Button Cursos Certificado page Perfil*/
+
+.btn.btn-success.p-buuton{
+    
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+
+/* Table css Start */
+
+tr.row-name
+{
+    font-size: 18px;
+    color:#448aff;
+}
+
+tr.row-content
+{
+    color:#6c7173;
+}
+
+table
+{
+    border-bottom: 8px solid #448aff;
+}
+
+td.check
+{
+    text-align: center;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)
+{
+    background:#F0F2F2 !important; 
+}
+
+
+

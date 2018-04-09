@@ -64,6 +64,7 @@ class EventoController extends Controller
 
             $evento->nome = $n_nome;
             $evento->titulo = $request->nome;
+            $evento->valor_inscricao = $request->valorInscricao;
             $evento->endereco = $request->endereco;
             $evento->numero = $request->numero;
             $evento->bairro = $request->bairro;
@@ -72,7 +73,7 @@ class EventoController extends Controller
             $evento->cep = $request->cep;
             $evento->email = $request->email;
             $evento->fone = $request->fone;
-            $evento->sobre = $request->sobre;
+            $evento->descricao = $request->sobre;
             $evento->descIns = $request->descIns;
             $evento->map = $request->map;
             $evento->programacao = "";
@@ -148,6 +149,7 @@ class EventoController extends Controller
 
         $evento->nome = $n_nome;
         $evento->titulo = $request->nome;
+        $evento->valor_inscricao = $request->valorInscricao;
         $evento->endereco = $request->endereco;
         $evento->numero = $request->numero;
         $evento->bairro = $request->bairro;
@@ -218,18 +220,18 @@ class EventoController extends Controller
     {
     }
 
-    public function ativa(Request $request,$id){
-
-        $even = evento::find($id);
-        $even->status= "true";
-        if($request->novaData == "new"){
-            $even->dateInicioIns = $request->dateInicioIns;
-            $even->dateFimIns = $request->dateFimIns;
-        }
-        $even->save();
-        Session::flash('info','Inscrições Abertas!');
-        return redirect()->route('evento.show',$id);
-    }
+//    public function ativa(Request $request,$id){
+//
+//        $even = evento::find($id);
+//        $even->status= "true";
+//        if($request->novaData == "new"){
+//            $even->dateInicioIns = $request->dateInicioIns;
+//            $even->dateFimIns = $request->dateFimIns;
+//        }
+//        $even->save();
+//        Session::flash('info','Inscrições Abertas!');
+//        return redirect()->route('evento.show',$id);
+//    }
 
     public function delete($id)
     {

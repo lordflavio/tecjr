@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\Contato;
 use App\Model\Admin;
+use App\Model\participante;
 use App\Model\curso;
 use App\Model\Curso_conteudo;
 use App\Model\evento;
@@ -16,32 +17,60 @@ use App\Model\Patrocinio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 
 class ControllerOut extends Controller
 {
     public function welcome()
     {
+
         $patrocinio = Patrocinio::all();
         $noticias = Noticias::all();
         $gestao = Admin::all();
 
         $cursos = curso::orderBy('id', 'desc')->get();
         $evento = evento::orderBy('id', 'desc')->get();
+        
 
         $title = 'Tecjr';
         $key = " Evento, Tecjr, UPE, Universidade de Pernabuco, Eventos Gratuido, Palestras, Mesas Redondas, Minicursos, Inscrição, Empresa Jr, Consutoria, Noticias UPE, Tecjr";
         $desc ="A Tecnologia, Educação e Consultoria Júnior da Universidade de Pernambuco (UPE), é uma associação civil sem fins lucrativos e com prazo de duração indeterminado, formada pelos alunos de graduação do Curso de Licenciatura em Computação da Universidade de Pernambuco (UPE).";
+        $templete = 0;
+        
+        if (Auth::Guest()) {
+            $templete = 1;
+            return view('/welcome', compact('patrocinio', 'noticias', 'gestao', 'cursos', 'evento', 'title', 'key', 'desc', 'templete'));
+        } else {
 
-        return view('/welcome',compact('patrocinio','noticias','gestao','cursos','evento','title','key','desc'));
+            if (!empty(Admin::find(Auth::user()->id))) {
+                $templete = 1;
+                return view('/welcome', compact('patrocinio', 'noticias', 'gestao', 'cursos', 'evento', 'title', 'key', 'desc', 'templete'));
+            } else {
+                $participant = participante::find(Auth::user()->id);
+                return view('/welcome', compact('patrocinio', 'noticias', 'gestao', 'cursos', 'evento', 'title', 'key', 'desc', 'templete', 'participant'));
+            }
+        }
     }
     public function portifolio()
     {
         $title = 'Tecjr Portifolio';
         $key = "Deselvolvimento web, Software, Eventos Acadêmicos, Curso, Java, Python, Consutoria, Recrutamento, Desenvolvimento de Software, Sites, Apps Android, Seleção ";
         $desc ="";
+        $templete = 0;
 
-        return view('/portifolio',compact('title','key','desc'));
+        if (Auth::Guest()) {
+            $templete = 1;
+            return view('/portifolio', compact('title', 'key', 'desc', 'templete'));
+        } else {
+            if (!empty(Admin::find(Auth::user()->id))) {
+                $templete = 1;
+                return view('/portifolio', compact('title', 'key', 'desc', 'templete'));
+            } else {
+                $participant = participante::find(Auth::user()->id);
+                return view('/portifolio', compact('title', 'key', 'desc', 'templete', 'participant'));
+            }
+        }
     }
 
 //    public function noticias()
@@ -57,9 +86,21 @@ class ControllerOut extends Controller
         $title = 'Tecjr Contato';
         $key = " Evento, Tecjr, UPE, Universidade de Pernabuco, Eventos Gratuido, Palestras, Mesas Redondas, Minicursos, Inscrição, Empresa Jr, Consutoria, Noticias UPE, Tecjr";
         $desc ="A empresa Tecnologia, Educação e Consultoria Júnior da Universidade de Pernambuco (UPE) atende pelos seguintes meios, telefone, e-mail, Fecebook e Instagram.";
+        $templete = 0;
+        
+        if (Auth::Guest()) {
+            $templete = 1;
+            return view('/contato', compact('title', 'key', 'desc', 'templete'));
+        } else {
 
-        return view('/contato',compact('title','key','desc'));
-
+            if (!empty(Admin::find(Auth::user()->id))) {
+                $templete = 1;
+                return view('/contato', compact('title', 'key', 'desc', 'templete'));
+            } else {
+                $participant = participante::find(Auth::user()->id);
+                return view('/contato', compact('title', 'key', 'desc', 'templete', 'participant'));
+            }
+        }
     }
 
     public function cursosEventos()
@@ -69,21 +110,47 @@ class ControllerOut extends Controller
         $title = 'Tecjr Cursos/Eventos';
         $key = "Deselvolvimento web, Software, Eventos Acadêmicos, Curso, Java, Python, Consutoria, Recrutamento, Desenvolvimento de Software ";
         $desc ="";
+        $templete = 0;
+        
 
-        return view('/curso-evento',compact('cursos','eventos', 'title','key',"desc"));
+        if (Auth::Guest()) {
+            $templete = 1;
+            return view('/curso-evento', compact('cursos', 'eventos', 'title', 'key', 'desc', 'templete'));
+        } else {
+
+            if (!empty(Admin::find(Auth::user()->id))) {
+                $templete = 1;
+                return view('/curso-evento', compact('cursos', 'eventos', 'title', 'key', 'desc', 'templete'));
+            } else {
+                $participant = participante::find(Auth::user()->id);
+                return view('/curso-evento', compact('cursos', 'eventos', 'title', 'key', 'desc', 'templete', 'participant'));
+            }
+        }
     }
 
     public function curso($curso)
     {
-        $curso = curso::all()->where('nome','=',$curso);
-        $conteudo = Curso_conteudo::all()->where('cursosId','=',$curso[0]->id);
-        $title = $title = 'Tecjr '.$curso[0]->titulo;
+        $curso = curso::where('nome','=',$curso)->first();
+        $conteudo = Curso_conteudo::all()->where('cursosId','=',$curso->id);
+        $title = $title = 'Tecjr '.$curso->titulo;
         $title = 'Tecjr Cursos/Eventos';
         $key = "Tecjr Cursos, Cursos UPE, Java, HTML5, Python, Banco de Dados";
-        $desc = $curso[0]->discricao;
-        return view('/curso',compact('curso','title','conteudo','key','desc','title'));
+        $desc = $curso->descricao;
 
+        $templete = 0;
+        if (Auth::Guest()) {
+            $templete = 1;
+            return view('/curso', compact('curso', 'title', 'conteudo', 'key', 'desc', 'title', 'templete'));
+        } else {
 
+            if (!empty(Admin::find(Auth::user()->id))) {
+                $templete = 1;
+                return view('/curso', compact('curso', 'title', 'conteudo', 'key', 'desc', 'title', 'templete'));
+            } else {
+                $participant = participante::find(Auth::user()->id);
+                return view('/curso', compact('curso', 'title', 'conteudo', 'key', 'desc', 'title', 'templete', 'participant'));
+            }
+        }
     }
 
     public function evento ($evento){
@@ -184,6 +251,5 @@ class ControllerOut extends Controller
         Session::flash('success','Enviado!');
         return redirect(route('contato'));
     }
-
 
 }

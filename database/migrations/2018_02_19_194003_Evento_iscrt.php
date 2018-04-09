@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ParticipanteHasEventos extends Migration
+class EventoIscrt extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class ParticipanteHasEventos extends Migration
      */
     public function up()
     {
-        Schema::create('participante_has_eventos', function (Blueprint $table) {
+         Schema::create('eventos_inscritos', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('participanteId')->unsigned();
             $table->integer('eventosId')->unsigned();
-            $table->float('custo', 8);
-            $table->string('status');
-            $table->foreign('participanteId')->references('id')->on('participante')->onDelete('cascade');;
+            $table->integer('transacaoId')->unsigned();
+            $table->foreign('transacaoId')->references('id')->on('transacoes')->onDelete('cascade');
+            $table->foreign('participanteId')->references('id')->on('participante')->onDelete('cascade');
             $table->foreign('eventosId')->references('id')->on('eventos')->onDelete('cascade');;
             $table->timestamps();
         });
@@ -31,7 +32,7 @@ class ParticipanteHasEventos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('participante_has_eventos');
+        Schema::dropIfExists('eventos_inscritos');
 
     }
 }

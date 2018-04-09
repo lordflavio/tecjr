@@ -14,8 +14,10 @@ class ParticipanteHasAtividades extends Migration
     public function up()
     {
         Schema::create('participante_has_atividades', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('participanteId')->unsigned();
             $table->integer('eventosId')->unsigned();
+            $table->integer('certificado');
             $table->integer('atividadeId')->unsigned();
             $table->foreign('participanteId')->references('id')->on('participante')->onDelete('cascade');
             $table->foreign('eventosId')->references('id')->on('eventos')->onDelete('cascade');

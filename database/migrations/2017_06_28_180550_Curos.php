@@ -18,11 +18,12 @@ class Curos extends Migration
             $table->string('nome');
             $table->date('data');
             $table->boolean('inscricoes');
+            $table->string('situacao');
             $table->string('valorInscricao',20);
             $table->string('horario',20);
             $table->string('titulo',250);
             $table->string('duracao',30);
-            $table->text('discricao');
+            $table->text('descricao');
             $table->string('ministrante');
             $table->text('publicoAlvo');
             $table->text('preRequisitos');

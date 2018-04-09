@@ -48,7 +48,6 @@
                                         <input type="text" name="valorInscricao" class="form-control"  value="{{$curso->valorInscricao}}"  id="valorInscricao" placeholder="R$: 00,00">
                                         <span class="fa fa-money form-control-feedback form-control-feedback-custom"></span>
                                     </div>
-
                                     <div class="form-group col-lg-2 has-feedback ">
                                         <label >Horario:</label>
                                         <input type="text" name="horario" class="form-control" value="{{$curso->horario}}"   id="horario" placeholder="HH:MM">
@@ -84,6 +83,15 @@
                                         <textarea  name="discricao" class="form-control" style="height: 100px"  id="discricao" placeholder="Descrição...">{{$curso->discricao}}</textarea>
                                         {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                                     </div>
+                                    
+                                     <div class="form-group col-lg-4 has-feedback">
+                                            <label>Situação</label>
+                                            <select id="sexo" name="situacao" class="form-control" required="">
+                                                <option value="{{($curso->situacao == "") ? '- Selecione -' : $curso->situacao}}">{{($curso->situacao == "") ? '- Selecione -' : $curso->situacao}}</option>
+                                                <option value="Em andamento">Em andamento</option>
+                                                <option value="Finalizado">Finalizado</option>
+                                            </select>
+                                    </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="img">Upload Imagem</label>
@@ -93,7 +101,7 @@
                                 </div>
                             </section>
                             <div class="col-md-12">
-                                <p class="text-center"> <button type="submit" class="btn btn-success btn-success-custom "> Salvar  </button></p>
+                                <p class="text-center"> <button type="submit" class="btn btn-success btn-success-custom "> Salvar  </button> <a href="/system/curso" type="button" class="btn btn-success btn-success-custom ">Voltar</a> </p>
                             </div>
                         </form>
                     </div>

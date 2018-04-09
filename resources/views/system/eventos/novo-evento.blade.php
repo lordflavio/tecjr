@@ -35,7 +35,6 @@
                             <span class="fa fa-phone form-control-feedback form-control-feedback-custom"></span>
                         </div>
 
-
                         <div class="form-group col-lg-6 has-feedback ">
                             <label >Data Inicio Realiação do Evento:</label>
                             <input type="date" name="dateInicioEx" class="form-control"   id="dateInicioEx" placeholder="dd/MM/dddd">
@@ -103,6 +102,12 @@
                             <label>Estado</label>
                             <input type="text" name="estado" class="form-control" id="estado">
                         </div>
+                        
+                        <div class="form-group col-lg-4 has-feedback ">
+                                <label >Valor de Inscricao:</label>
+                                <input type="text" name="valorInscricao" class="form-control"   id="valorInscricao" >
+                                <span class="fa fa-money form-control-feedback form-control-feedback-custom"></span>
+                        </div>
 
                         <div class="form-group col-lg-8 ">
                             <label class="col-md-3 control-label" for="img">Upload Imagem</label>
@@ -111,7 +116,7 @@
                     </div>
                 </section>
                 <div>
-                   <p class="text-center"><button type="submit" class="btn btn-success btn-success-custom "> Criar Evento  </button></p>
+                   <p class="text-center"><button type="submit" class="btn btn-success btn-success-custom "> Criar Evento  </button> <a href="/system/curso" type="button" class="btn btn-success btn-success-custom ">Voltar</a></p>
                 </div>
             </form>
         </div>

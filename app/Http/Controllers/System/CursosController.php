@@ -58,17 +58,18 @@ class CursosController extends Controller
 
                 $curso = new curso();
                 $curso->nome = $n_nome;
-                $curso->data = $request->data;
+                $curso->data = $request->dat;
                 $curso->inscricoes = false;
                 $curso->valorInscricao = $request->valorInscricao;
                 $curso->horario = $request->horario;
                 $curso->titulo = $request->titulo;
                 $curso->duracao = $request->duracao;
-                $curso->discricao = $request->discricao;
+                $curso->descricao = $request->discricao;
                 $curso->ministrante = $request->ministrante;
                 $curso->publicoAlvo = $request->publicoAlvo;
                 $curso->preRequisitos = $request->preRequisitos;
                 $curso->objetivo = $request->objetivo;
+                $curso->situacao = "Em programação";
                 $curso->img  = '/imagens/cursos/'.$n_nome.'-'.$n_date.'.'.$extencao;
 
                 $curso->save();
@@ -137,11 +138,12 @@ class CursosController extends Controller
         $curso->horario = $request->horario;
         $curso->titulo = $request->titulo;
         $curso->duracao = $request->duracao;
-        $curso->discricao = $request->discricao;
+        $curso->descricao = $request->discricao;
         $curso->ministrante = $request->ministrante;
         $curso->publicoAlvo = $request->publicoAlvo;
         $curso->preRequisitos = $request->preRequisitos;
         $curso->objetivo = $request->objetivo;
+        $curso->situacao = $request->situacao;
 
         if(isset($request->data)){
             $curso->data = $request->data;

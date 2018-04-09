@@ -8,9 +8,11 @@ class Participate_has_Atividade extends Model
 {
     protected $table = "participante_has_atividades";
     protected $fillable = [
+        'id',
         'participanteId',
         'eventosId',
-        'atividadeId'
+        'atividadeId',
+        'certificado'
 
     ];
 }

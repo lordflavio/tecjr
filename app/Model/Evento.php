@@ -10,6 +10,7 @@ class evento extends Model
     protected $fillable = [
         'id',
         'nome',
+        'valor_inscricao',
         'titulo',
         'endereco',
         'numero',
@@ -19,7 +20,7 @@ class evento extends Model
         'cep',
         'email',
         'fone',
-        'sobre',
+        'descricao',
         'dateInicioIns',
         'dateFimIns',
         'dateInicioEx',
