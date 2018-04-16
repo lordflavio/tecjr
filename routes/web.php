@@ -35,6 +35,9 @@ Route::group(['middleware' => ['auth']], function() {
   Route::post('atualizar-senha', 'ParticipanteController@passwordUpdate')->name('password.update');
   Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
   Route::match(['get','post'],'/curso-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoCurso')->name('curso-pagamento');
+
+  Route::match(['get','post'],'/evento-tipo-pagamento/{busca}', 'ParticipanteController@tipoEvento')->name('evento-tipo-pg');
+  Route::match(['get','post'],'/evento-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoEvento')->name('evento-pagamento');
   
   
   $this->post('pagseguro-getcode', 'PagSeguroController@getCode')->name('pagseguro.code.transparent');

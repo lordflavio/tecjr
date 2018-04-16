@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\evento;
 use Illuminate\Http\Request;
 use App\Model\participante;
 use Illuminate\Support\Facades\Auth;
@@ -263,6 +264,57 @@ class ParticipanteController extends Controller
             } else if ($tipo == "cartao") {
                 $title = 'Tecjr Pagamento Cartão';
                 return view('user/pagamento/curso-pag-cartao', compact('participant', 'key', 'title', 'desc', 'templete', 'curso'));
+            }
+        }
+    }
+
+    public function tipoEvento($busca)
+    {
+        $title = 'Tecjr Inscrição';
+        $key = "";
+        $desc = "Inscrição no Evento ";
+
+        $evento = evento::where('nome','=',$busca)->first();
+
+        $participant = participante::find(Auth::user()->id);
+//      $user =  Participant::all();
+        $templete = 0;
+
+         if (!empty(Admin::find(Auth::user()->id))) {
+                $templete = 1;
+                return redirect()->route('home');
+            } else {
+
+                return view('user/pagamento/evento-pagamento',compact('participant','key','title','desc','templete','evento'));
+
+        }
+
+
+    }
+
+     public function pagamentoEvento($tipo,$busca)
+    {
+
+        $key = "";
+        $desc = "Pagamento da Inscrição";
+
+        $evento = evento::where('nome','=',$busca)->first();
+
+        $participant = participante::find(Auth::user()->id);
+//      $user =  Participant::all();
+        $templete = 0;
+
+        if (!empty(Admin::find(Auth::user()->id))) {
+            $templete = 1;
+            return redirect()->route('home');
+        } else {
+
+            if ($tipo == "boleto") {
+                $title = 'Tecjr Pagamento Boleto';
+                return view('user/pagamento/evento-pag-boleto', compact('participant', 'key', 'title', 'desc', 'templete', 'evento'));
+            } else if ($tipo == "cartao") {
+                $title = 'Tecjr Pagamento Cartão';
+                return view('user/pagamento/evento-pag-cartao', compact('participant', 'key', 'title', 'desc', 'templete', 'evento'));
             }
         }
     }

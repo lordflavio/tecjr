@@ -241,6 +241,8 @@ class ControllerOut extends Controller
                                        'key',
                                        'desc'));
 
+//        echo $even[0]->nome;
+
     }
 
 

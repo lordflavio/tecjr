@@ -98,7 +98,7 @@
                                 
                                 <p class="desc"><span class="ini">Situação:</span> {{$curso->situacao}} </p>
 
-                                <p class="desc"><span class="ini">Objetivo:</span> {{$curso->objetico}}</p>
+                                <p class="desc"><span class="ini">Objetivo:</span> {{$curso->objetivo}}</p>
 
                                 <p class="desc"><span class="ini">Certificado:</span> O Certificado de Conclusão do Curso é válido em todo o Brasil.</p>
 

@@ -97,7 +97,7 @@
                 <p>{{$even[0]->descIns}}</p>
             </div>
             <div class="col-md-12">
-                <a style="text-decoration: none" href="https://docs.google.com/forms/d/e/1FAIpQLSdf8v6RKPhxLoCUCXt1a5v5nOlhIQL7T-UO3RyiHJEHQldC5A/viewform"><button id="js-trigger-overlay" type="button">Fazer Inscrição</button></a>
+                <a style="text-decoration: none" href="{{route('evento-tipo-pg',$even[0]->nome)}}"><button id="js-trigger-overlay" type="button">Fazer Inscrição</button></a>
             </div>
         </div>
     </div>

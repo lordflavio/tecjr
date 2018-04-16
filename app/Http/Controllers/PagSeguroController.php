@@ -48,12 +48,12 @@ class PagSeguroController extends Controller
             $response = $pagseguro->paymentBillet($request->sendHash, $object);
             $trans->newTransacao($object, $response['reference'], $response['code'],1, $paymentMethod = 2, $request->type);
            
-        }else if($request->type == 0){
-           
-          //  $object =  evento::where('nome','=',$request->busca )->first();
+        }else if($request->type == 2){
+
+           $object =  evento::where('nome','=',$request->busca )->first();
            $response = $pagseguro->paymentBillet($request->sendHash, $object); 
            
-        // $trans->newTransacao($object, $response['reference'], $response['code'],$response['code'], $paymentMethod = 1, $request->type);
+            $trans->newTransacao($object, $response['reference'], $response['code'],$response['code'], $paymentMethod = 1, $request->type);
         }
 
 //        $cart = new Cart;
