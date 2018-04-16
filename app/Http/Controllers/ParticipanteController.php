@@ -180,15 +180,25 @@ class ParticipanteController extends Controller
 //      $user =  Participant::all();
         $templete = 0;
         
-       $df = $tra->user()->all();
-       $ins = array();
-       
+        //$df = $tra->where('user_id', auth()->user()->id)->get();
+
+        $df = Curso_inscritos::where('participanteId', auth()->user()->id)->get();
+
+
+
+         $ins = array();
+        //dd($df);
+
        for ($i = 0; $i < count($df); $i++){
-            $ins['transacao'][$i] = $df[$i];
-            $ins['curso'][$i] = $tra->cursos()->get()->first();
+            $ins['csf'][$i] = $df[$i];
+            $ins['curso'][$i] = $curso::where('id','=',$df[$i]->cursosId )->get()->first();
+            $ins['transacao'][$i] = Transacoes::where('id','=',$df[$i]->transacaoId )->get()->first();
+          // echo $i.'<br>';
        }
 
-        return view('user/perfil-cursos',compact('participant','key','title','desc','templete','ins'));
+      // dd($ins);
+
+       return view('user/perfil-cursos',compact('participant','key','title','desc','templete','ins'));
     }
     
     public function passwordUpdate(Request $request)
@@ -232,7 +242,7 @@ class ParticipanteController extends Controller
     
      public function pagamentoCurso($tipo,$busca)
     {
-        $title = 'Tecjr Perfil';
+
         $key = "";
         $desc = "Perfil Usuario";
         
@@ -248,8 +258,10 @@ class ParticipanteController extends Controller
         } else {
 
             if ($tipo == "boleto") {
+                $title = 'Tecjr Pagamento Boleto';
                 return view('user/pagamento/curso-pag-boleto', compact('participant', 'key', 'title', 'desc', 'templete', 'curso'));
             } else if ($tipo == "cartao") {
+                $title = 'Tecjr Pagamento Cartão';
                 return view('user/pagamento/curso-pag-cartao', compact('participant', 'key', 'title', 'desc', 'templete', 'curso'));
             }
         }

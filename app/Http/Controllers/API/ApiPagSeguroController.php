@@ -13,13 +13,13 @@ class ApiPagSeguroController extends Controller
     {
         
         if(!$request->notificationCode)
-            return response()->json(['error' => 'NotNotificationCode'], 404);
-        
+        return response()->json(['error' => 'NotNotificationCode'], 404);
+
         $response = $pagseguro->getStatusTransaction($request->notificationCode);
-        
+
         $trans = $transacoes->where('reference', $response['reference'])->get()->first();
         $trans->changeStatus($response['status']);
-        
+
         return response()->json(['success' => true]);
     }
 }

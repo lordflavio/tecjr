@@ -101,7 +101,6 @@ class PagSeguro extends Model
         $params = array_merge($params, $this->getShipping());
         $params = array_merge($params, $this->getCreditCard($request));
         $params = array_merge($params, $this->billingAddress());
-        
 
         try {
             $guzzle = new Guzzle;

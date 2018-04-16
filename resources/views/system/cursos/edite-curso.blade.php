@@ -80,7 +80,7 @@
 
                                     <div class="form-group col-lg-6 has-feedback ">
                                         <label >Descrição:</label>
-                                        <textarea  name="discricao" class="form-control" style="height: 100px"  id="discricao" placeholder="Descrição...">{{$curso->discricao}}</textarea>
+                                        <textarea  name="discricao" class="form-control" style="height: 100px"  id="discricao" placeholder="Descrição...">{{$curso->descricao}}</textarea>
                                         {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                                     </div>
                                     

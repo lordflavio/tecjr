@@ -16,7 +16,7 @@ class Transacoes extends Model
     public function cursos()
     {
         return $this->belongsToMany(curso::class, 'curso_inscritos')
-                        ->withPivot('certificado');
+                        ->withPivot(['certificado']);
     }
     
     public function scopeUser($query)
@@ -69,6 +69,23 @@ class Transacoes extends Model
             7 => 'Cancelada',
             8 => 'Debitado',
             9 => 'Retenção temporária',
+        ];
+        
+        return $statusA[$status];
+    }
+    
+     public function getLabel($status)
+    {
+        $statusA = [
+            1 => 'label-primary',
+            2 => 'label-warning',
+            3 => 'label-success',
+            4 => 'label-success',
+            5 => 'label-default',
+            6 => 'label-info',
+            7 => 'label-danger',
+            8 => 'label-default',
+            9 => 'label-default',
         ];
         
         return $statusA[$status];

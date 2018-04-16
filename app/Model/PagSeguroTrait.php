@@ -82,12 +82,13 @@ trait PagSeguroTrait
     
     public function getCreditCard($request)
     {
+        $cod = substr($request->telefonecard, 1,2);
         $fone = $this->limpa(substr($this->participante->telefone, 4,9));
         return [
             'creditCardHolderName'      => $request->card_holder_name,
             'creditCardHolderCPF'       => $this->limpa($request->cpf),
             'creditCardHolderBirthDate' => $request->data,
-            'creditCardHolderAreaCode'  => substr($request->telefone2, 1,2),
+            'creditCardHolderAreaCode'  => $cod,
             'creditCardHolderPhone'     => $fone,
         ];
     }

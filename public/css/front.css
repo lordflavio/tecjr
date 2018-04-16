@@ -2163,6 +2163,9 @@ address{
 .fnt-smaller {
     font-size: .9em;
 }
+.fnt-smaller span {
+    margin: 5px;
+}
 .fnt-lighter {
     color: #bbb;
 }

@@ -106,12 +106,3 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
 //    Route::resource('/system/home','System\HomeController');
 });
 
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

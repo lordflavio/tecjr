@@ -1,3 +1,3 @@
 <?php
 
-$this->post('pagseguro', 'API\ApiPagSeguroController@request'); // Rota de retorno do pagSeguro
+$this->post('/pagseguronotification', 'API\ApiPagSeguroController@request');

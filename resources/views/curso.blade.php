@@ -110,7 +110,7 @@
 
                 <div class="col-md-4">
                     <div class="bloco-inscri">
-                        <a href="{{route('curso-tipo-pg',$curso->nome)}}"><button type="button" {{ ($curso->inscricoes == true) ? '' : 'disabled'}}  class="btn btn-success"><p>MATRICULAR NESSE CURSO</p><small>{{($curso->inscricoes == true) ? 'COMECE A ESTUDAR AGORA' : 'ISCRIÇÕES NÃO DISPONIVEIS NO MOMENTO'}} </small></button></a>
+                        <a href="{{ $curso->inscricoes == true ? route('curso-tipo-pg',$curso->nome) : '#'}}"><button type="button" {{ ($curso->inscricoes == true) ? '' : 'disabled'}}  class="btn btn-success"><p>MATRICULAR NESSE CURSO</p><small>{{($curso->inscricoes == true) ? 'COMECE A ESTUDAR AGORA' : 'ISCRIÇÕES NÃO DISPONIVEIS NO MOMENTO'}} </small></button></a>
                         <div class="dentro-inscri">
                             <p><i class="fa fa-ticket" aria-hidden="true"></i><span> {{$curso->valorInscricao}} </span></p>
                             <p><i class="fa fa-file-text-o" aria-hidden="true"></i><span> C/ Certificado</span></p>

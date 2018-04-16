@@ -62,39 +62,54 @@
                             <h4 class="text-center">Meus Cursos</h4>
                             <div class="container-pad" id="property-listings">
                                 <div class="row">
-                                    @for($i = 0; $i < 5; $i++) 
+                                    @if(count($ins) > 0)
+                                    @for($i = 0; $i < count($ins['curso']); $i++)
                                     <div class="col-sm-10 col-lg-10 col-md-offset-1" > 
                                         <!-- Begin Listing: 609 W GRAVERS LN-->
                                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                                             <div class="media">
                                                 <a class="pull-left" href="#" target="_parent">
-                                                    <img alt="image" class="img-responsive" src="{{($participant->img == "") ? '/imagens/user.jpg' : $participant->img }}"></a>
+                                                    <img alt="image" class="img-responsive" src="{{ $ins['curso'][$i]->img }}"></a>
 
                                                 <div class="clearfix visible-sm"></div>
 
                                                 <div class="media-body fnt-smaller">
                                                     <a href="#" target="_parent"></a>
 
-                                                    <h4 style="color: black; font-weight: 700;" class="media-heading"> Titulo </h4>
+                                                    <h4 style="color: black; font-weight: 700;" class="media-heading"> {{ $ins['curso'][$i]->titulo }} </h4>
 
-                                                    <p class="hidden-xs text-justify"> Descrição </p>
+                                                    <p class="hidden-xs text-justify"> {{ $ins['curso'][$i]->descricao }} </p>
 
-                                                    <small style="margin-top: 8px;" class="pull-right"> 12/11/2018 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
-                                                   
+                                                    <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ins['curso'][$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+
+
                                                     <p> Situação: </p>
                                                     <p>
-                                                        <span href="#" class="label label-primary">Aguardando Pagamento</span> 
-                                                        <span href="#" class="label label-success">Em andamento</span> 
-                                                        <a style="text-decoration: none"> 
-                                                            <button class="btn btn-success p-buuton" disabled > Gerar Certificado </button> 
-                                                        </a> 
+                                                        <span href="#" class="label {{ $ins['transacao'][$i]->getLabel($ins['transacao'][$i]->status) }}">
+                                                            {{ $ins['transacao'][$i]->getStatus($ins['transacao'][$i]->status) }}
+                                                            </span>
+                                                            <span href="#" class="label {{ $ins['curso'][$i]->situacao == 'Em andamento' ? 'label-primary' : 'label-success' }}" >
+
+                                                            {{ $ins['curso'][$i]->situacao }}
+
+                                                            </span>
+                                                        <a style="text-decoration: none">
+                                                            <button class="btn btn-success p-buuton" disabled > Gerar Certificado </button>
+                                                        </a>
                                                     </p>
+
+                                                    @if($ins['curso'][$i]->situacao == "Em andamento")
                                                     <p><small class="alert-info"> A função gerar cetificado é habilitada depois da finalização do curso </small></p>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div><!-- End Listing-->
                                     </div><!-- End Col -->
                                     @endfor
+                                    @else
+                                        <h5 class="text-center"> Você não possui cursos </h5>
+                                    @endif
                                 </div><!-- End row -->
                             </div><!-- End container -->
                         </div>

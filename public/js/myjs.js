@@ -56,8 +56,10 @@ $(document).ready(function() {
 $(document).ready(function(){
     $('#fone').mask('(00)0000-0000');
     $('#whatsapp').mask('(00)00000-0000');
-    $('#telefone2').mask('(00)00000-0000');
+    $('#telefonecard').mask('(00)00000-0000');
+    $('#telefone').mask('(00)00000-0000');
     $('#data').mask('00/00/0000');
+    $('#card_expiration_month').mask('00');
     // $('#horario').mask('00:00');
     $('#duracao').mask('00');
     // $('.date_time').mask('00/00/0000 00:00:00');
