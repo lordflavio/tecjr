@@ -31,9 +31,10 @@ Route::post('/contato-up', 'ControllerOut@envio')->name('up.envio');
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/perfil-user', 'ParticipanteController@index')->name('perfil-user'); 
   Route::match(['get','post'],'/perfil-user-update/{id}','ParticipanteController@updates')->name('perfil-user.update');
-  Route::get('/perfil-user/cursos', 'ParticipanteController@curso')->name('perfil-user-cursos');
-  Route::post('atualizar-senha', 'ParticipanteController@passwordUpdate')->name('password.update');
-  Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
+    Route::post('atualizar-senha', 'ParticipanteController@passwordUpdate')->name('password.update');
+    Route::get('/perfil-user/cursos', 'ParticipanteController@curso')->name('perfil-user-cursos');
+    Route::get('/perfil-user/eventos', 'ParticipanteController@evento')->name('perfil-user-cursos');
+    Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
   Route::match(['get','post'],'/curso-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoCurso')->name('curso-pagamento');
 
   Route::match(['get','post'],'/evento-tipo-pagamento/{busca}', 'ParticipanteController@tipoEvento')->name('evento-tipo-pg');

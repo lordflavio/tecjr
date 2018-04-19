@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\evento;
+use App\Model\Evento_inscritos;
 use Illuminate\Http\Request;
 use App\Model\participante;
 use Illuminate\Support\Facades\Auth;
@@ -173,7 +174,7 @@ class ParticipanteController extends Controller
     
     public function curso(Transacoes $tra, curso $curso)
     {
-        $title = 'Tecjr Perfil';
+        $title = 'Tecjr Perfil - Meus Curso';
         $key = "";
         $desc = "Perfil Usuario";
         
@@ -200,6 +201,37 @@ class ParticipanteController extends Controller
       // dd($ins);
 
        return view('user/perfil-cursos',compact('participant','key','title','desc','templete','ins'));
+    }
+
+    public function evento(Transacoes $tra, curso $curso)
+    {
+        $title = 'Tecjr Perfil - Meus Eventos';
+        $key = "";
+        $desc = "Perfil Usuario";
+
+        $participant = participante::find(Auth::user()->id);
+//      $user =  Participant::all();
+        $templete = 0;
+
+        //$df = $tra->where('user_id', auth()->user()->id)->get();
+
+        $df = Evento_inscritos::where('participanteId', auth()->user()->id)->get();
+
+
+
+         $ins = array();
+        //dd($df);
+
+       for ($i = 0; $i < count($df); $i++){
+           // $ins['csf'][$i] = $df[$i];
+            $ins['evento'][$i] = $curso::where('id','=',$df[$i]->eventosId )->get()->first();
+            $ins['transacao'][$i] = Transacoes::where('id','=',$df[$i]->transacaoId )->get()->first();
+          // echo $i.'<br>';
+       }
+
+      // dd($ins);
+
+       return view('user/perfil-eventos',compact('participant','key','title','desc','templete','ins'));
     }
     
     public function passwordUpdate(Request $request)

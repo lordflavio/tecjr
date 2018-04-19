@@ -51,9 +51,10 @@ class PagSeguroController extends Controller
         }else if($request->type == 2){
 
            $object =  evento::where('nome','=',$request->busca )->first();
-           $response = $pagseguro->paymentBillet($request->sendHash, $object); 
-           
-            $trans->newTransacao($object, $response['reference'], $response['code'],$response['code'], $paymentMethod = 1, $request->type);
+
+           $response = $pagseguro->paymentBillet($request->sendHash, $object);
+
+            $trans->newTransacao($object, $response['reference'], $response['code'],1, $paymentMethod = 2, $request->type);
         }
 
 //        $cart = new Cart;
@@ -84,11 +85,12 @@ class PagSeguroController extends Controller
             $trans->newTransacao($object, $response['reference'], $response['code'],$response['status'], $paymentMethod = 1, $request->type);
         }
            
-        }else if($request->type == 0){
+        }else if($request->type == 2 ){
            $object =  evento::where('nome','=',$request->busca )->first();
-           $response = $pagseguro->paymentCredCard($request, $object); 
-           
-         //  $trans->newTransacao($object, $response['reference'], $response['code'], $request->type);
+           $response = $pagseguro->paymentCredCard($request, $object);
+
+            $trans->newTransacao($object, $response['reference'], $response['code'],$response['status'], $paymentMethod = 1, $request->type);
+
         }
         
         // Retorno da transação

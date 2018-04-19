@@ -110,6 +110,7 @@
             <h1>Alguns Palestrantes</h1>
         </div>
 
+        @if(count($palestrante) > 0)
         <!--- https://bootsnipp.com/snippets/featured/fancy-tabs-responsive#comments -->
         <div class="container text-center">
             <div class="row">
@@ -157,7 +158,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
         <div class="programacao">
 
             <div class="col-md-12 espacamento-programacao">

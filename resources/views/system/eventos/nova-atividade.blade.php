@@ -43,7 +43,7 @@
 
                         <div class="form-group col-lg-4 has-feedback ">
                             <label >Data:</label>
-                            <input type="date" name="date" class="form-control"   id="date" placeholder="dd/MM/dddd">
+                            <input type="date" name="date" class="form-control"   id="date" >
                             <span class="fa fa-calendar form-control-feedback form-control-feedback-custom"></span>
                         </div>
 

@@ -434,11 +434,6 @@
                                     Eventos </a>
                             </li>
                             <li>
-                                <a href="" >
-                                    <i class="fa fa-graduation-cap"></i>
-                                    Certificados </a>
-                            </li>
-                            <li>
                                 <a  href="/contato">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                     Contato </a>

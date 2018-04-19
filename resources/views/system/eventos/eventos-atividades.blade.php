@@ -598,8 +598,8 @@
                                 </div>
 
                                 <div class="form-group col-lg-5 has-feedback ">
-                                    <label >Data:</label>
-                                    <input type="date" name="data" class="form-control"   id="data" placeholder="dd/MM/dddd" required="">
+                                    <label >Data </label>
+                                    <input type="date" name="data" class="form-control"   id="dateAtividade">
                                     <span class="fa fa-calendar form-control-feedback form-control-feedback-custom"></span>
                                 </div>
 

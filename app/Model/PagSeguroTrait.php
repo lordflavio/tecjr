@@ -26,7 +26,7 @@ trait PagSeguroTrait
 
         $items["itemId{$posistion}"]            = $object->id;
         $items["itemDescription{$posistion}"]   = $object->descricao;
-        $items["itemAmount{$posistion}"]        = str_replace(",", ".", $object->valorInscricao);
+        $items["itemAmount{$posistion}"]        = str_replace(",", ".", $object->valor_inscricao);
         $items["itemQuantity{$posistion}"]      = '1';
 
        

@@ -36,14 +36,9 @@
                                     Cursos </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/perfil-user/eventos">
                                     <i class="fa fa-archive"></i>
                                     Eventos </a>
-                            </li>
-                            <li>
-                                <a href="" >
-                                    <i class="fa fa-graduation-cap"></i>
-                                    Certificados </a>
                             </li>
                             <li>
                                 <a  href="/contato">
@@ -94,7 +89,9 @@
 
                                                             </span>
                                                         <a style="text-decoration: none">
-                                                            <button class="btn btn-success p-buuton" disabled > Gerar Certificado </button>
+                                                            <button class="btn  {{ $ins['csf'][$i]->certificado == 2 ? 'btn-danger' : 'label-success' }} p-buuton"  {{ $ins['curso'][$i]->situacao == 'Finalizado' ? '' : 'disabled' }}  >
+                                                                Gerar Certificado
+                                                            </button>
                                                         </a>
                                                     </p>
 
