@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\System;
 
 use App\Model\curso;
+use App\Model\participante;
 use App\Model\Curso_conteudo;
+use App\Model\Curso_inscritos;
+use App\Model\Transacoes;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Model\Admin;
+use phpDocumentor\Reflection\Types\Array_;
 
 class CursosController extends Controller
 {
@@ -103,7 +108,23 @@ class CursosController extends Controller
         $conteudo = Curso_conteudo::where('cursosId','=',$id)->get();
         $admin = Admin::find( Auth::user()->id);
         $title = 'Tecjr '.$curso->nome;
-        return view('system/cursos/edite-curso',compact('title','curso','admin','conteudo'));
+
+        $part = Curso_inscritos::where('cursosId','=',$curso->id)->get();
+
+        $participantes = array();
+//        $participantes['part'];
+//        $participantes['user'];
+
+        for($i = 0; $i < count($part); $i++){
+            $participantes['part'][$i] = Participante::where('id','=',$part[$i]->participanteId)->get()->first();
+            $participantes['crf'][$i] = $part[$i];
+            $participantes['user'][$i] = User::where('id','=',$part[$i]->participanteId)->get()->first();
+        }
+
+       // dd($participantes);
+
+
+        return view('system/cursos/edite-curso',compact('title','curso','admin','conteudo','participantes'));
     }
 
     /**
@@ -229,6 +250,57 @@ class CursosController extends Controller
         $curso->inscricoes = false;
         $curso->save();
         Session::flash('warning','Desativado!');
+        return redirect()->route('curso.show',$id);
+    }
+
+//    public function addView($id){
+//        $curso = curso::find($id);
+//        $admin = Admin::find( Auth::user()->id);
+//        $title = 'Tecjr Curso Add Participante  '.$curso->nome;
+//
+//        return view('system/cursos/add-participante', compact('$admin', 'title','curso'));
+//
+//    }
+
+    public function addParticipante ($id, Request $request){
+
+        $curso = curso::find($id);
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr Curso Add Participante  '.$curso->nome;
+
+        $participante =  participante::where('cpf','=',$request->cpf)->first();
+
+        if(isset($participante->id)){
+            return view('system/cursos/add-participante', compact('admin', 'title', 'curso','participante'));
+        }else{
+            Session::flash('warning','Participante Não Encontrado!');
+            return redirect()->route('curso.show',$id);
+        }
+
+
+    }
+
+    public function adicionar ($id, $idP){
+
+        $tr = new Transacoes();
+
+        $object = curso::find($id);
+
+        if($tr->newTransacaoFree($object, "INSCRIÇÃO PRESENCIAL", "0000000000000", 1, 2, 1,$idP)){
+            Session::flash('success','Participante Adicionado');
+            return redirect()->route('curso.show',$id);
+        }else{
+            Session::flash('warning','Problema ao adcionar, Tente novamente');
+            return redirect()->route('curso.show',$id);
+        }
+
+    }
+
+    public function certificar($id, $id2, Request $resquest){
+        $crf = Curso_inscritos::where('cursosId','=',$id)->where('participanteId','=',$id2)->first();
+        $crf->certificado = $resquest->crf;
+        $crf->save();
+        Session::flash('success','Participante Certificado!');
         return redirect()->route('curso.show',$id);
     }
 }

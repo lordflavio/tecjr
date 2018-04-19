@@ -34,7 +34,7 @@ class Transacoes extends Model
             'payment_method'    => $paymentMethod,
             'date'              => date('Ymd'),
         ]);
-        
+
         if($type == 1){
             Curso_inscritos::create(array(
                 'participanteId'    => auth()->user()->id,
@@ -50,8 +50,36 @@ class Transacoes extends Model
                 'transacaoId'       => $order->id,
             ));
         }
-        
+
+    }
+    public function newTransacaoFree($object, $reference, $code, $status = 1, $paymentMethod = 2, $type, $paticipante)
+    {
+        $order = $this->create([
+            'user_id'           => $paticipante,
+            'reference'         => $reference,
+            'code'              => $code,
+            'status'            => $status,
+            'payment_method'    => $paymentMethod,
+            'date'              => date('Ymd'),
+        ]);
+
+        if($type == 1){
+            Curso_inscritos::create(array(
+                'participanteId'    => $paticipante,
+                'cursosId'          => $object->id,
+                'transacaoId'       => $order->id,
+                'certificado'            => 0,
+            ));
+
+        }else if($type == 0){
+            Evento_inscritos::create(array(
+                'participanteId'    => $paticipante,
+                'eventosId'          => $object->id,
+                'transacaoId'       => $order->id,
+            ));
         }
+
+    }
         
       
     
@@ -100,6 +128,7 @@ class Transacoes extends Model
             4 => 'Saldo PagSeguro',
             5 => 'Oi Paggo',
             7 => 'Depósito em conta',
+            8 => 'Pagamento Precencial',
         ];
         
         return $paymentsMethods[$method];

@@ -71,11 +71,17 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
 
     Route::resource('/system/curso','System\CursosController');
     Route::get('/system/cursoex/{id}','System\CursosController@delete')->name('cursoex.delete');
+    Route::match(['get','post'],'/system/curso-add-participante/{id}','System\CursosController@addParticipante')->name('curso-add');
+
+    Route::match(['get','post'],'/system/add-part/{id}/{idP}','System\CursosController@adicionar')->name('curso-adicionar');
+
     Route::match(['get','post'],'/system/curso-ctd/{id}','System\CursosController@addConteudo')->name('cursoctd.conteudo');
     Route::match(['get','post'],'/system/curso-ex/{id}','System\CursosController@update')->name('cursoex.update');
     Route::get('/system/conteudo/{id}/{id2}','System\CursosController@deleteConteudo')->name('conteudo.delete');
     Route::get('/system/curso-ative/{id}','System\CursosController@ative')->name('curso.ative');
     Route::get('/system/curso-desative/{id}','System\CursosController@desative')->name('curso.desative');
+
+    Route::post('/system/curso-certificar/{id}/{id2}','System\CursosController@certificar')->name('curso.certificar');
 
 //-------------------------------------------- EVENTO CONTROLLER --------------------------------------------------------------
 

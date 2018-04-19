@@ -19,10 +19,21 @@ class Curso_inscritos extends Model
     public function getCertificado($c)
     {
         $A = [
+            0 => 'Em espera',
             1 => 'Confirmado',
             2 => 'Negado',
         ];
         
         return $A[$c];
+    }
+
+    public function getLabel($n){
+        $b = [
+            0 => 'btn-primary',
+            1 => 'btn-success',
+            2 => 'btn-danger',
+        ];
+
+        return $b[$n];
     }
 }
