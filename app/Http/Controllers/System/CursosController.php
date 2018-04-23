@@ -282,25 +282,46 @@ class CursosController extends Controller
 
     public function adicionar ($id, $idP){
 
-        $tr = new Transacoes();
+        $cursIs = Curso_inscritos::where('participanteId','=',$idP)->first();
 
-        $object = curso::find($id);
-
-        if($tr->newTransacaoFree($object, "INSCRIÇÃO PRESENCIAL", "0000000000000", 1, 2, 1,$idP)){
-            Session::flash('success','Participante Adicionado');
+        if(isset($cursIs)){
+            Session::flash('info','Úsuario já inscrito');
             return redirect()->route('curso.show',$id);
         }else{
-            Session::flash('warning','Problema ao adcionar, Tente novamente');
-            return redirect()->route('curso.show',$id);
+            $tr = new Transacoes();
+
+            $object = curso::find($id);
+
+            if($tr->newTransacaoFree($object, uniqid(date('YmdHis')), uniqid(date('YmdHis')), 1, 7, 1,$idP)){
+                Session::flash('success','Participante Adicionado');
+                return redirect()->route('curso.show',$id);
+            }else{
+                Session::flash('warning','Problema ao adcionar, Tente novamente');
+                return redirect()->route('curso.show',$id);
+            }
         }
+
+
 
     }
 
     public function certificar($id, $id2, Request $resquest){
         $crf = Curso_inscritos::where('cursosId','=',$id)->where('participanteId','=',$id2)->first();
-        $crf->certificado = $resquest->crf;
-        $crf->save();
-        Session::flash('success','Participante Certificado!');
-        return redirect()->route('curso.show',$id);
+        $crf->certificado = intval($resquest->crf);
+        if($crf->save()){
+            Session::flash('success','Participante Certificado!');
+            return redirect()->route('curso.show',$id);
+        }else{
+            Session::flash('warning','Problema, Tente novamente');
+            return redirect()->route('curso.show',$id);
+        }
+
+    }
+
+    public function remove ($id, $id2){
+        Curso_inscritos::destroy(Curso_inscritos::where('participanteId','=',$id)->first()->id);
+
+        Session::flash('success','Participante Removido!');
+        return redirect()->route('curso.show',$id2);
     }
 }

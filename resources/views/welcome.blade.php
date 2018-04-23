@@ -175,12 +175,32 @@
                 <h1>Nossa Equipe</h1>
             </div>
         </div>
-        <div class="container">
+        <ul class="seven">
             @if(count($gestao) > 0)
+                @for($i=0;$i< count($gestao); $i++)
+                    <li class="transition">
+                        <div class="wrapper">
+                            <ul class="social transition">
+                                <li class="transition"><a href="{{$gestao[$i]->twitter}}"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+                                <li class="transition"><a href="#" title="{{$gestao[$i]->whatsapp}}"><i class="fa fa-whatsapp fa-2x"></i></a></li>
+                                <li class="transition"><a href="{{$gestao[$i]->face}}"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                                <li class="transition"><a href="{{$gestao[$i]->gmail}}"><i class="fa fa-envelope fa-2x"></i></a></li>
+                            </ul>
+                            <span class="transition">
+                                <h3 class="transition"> <?php echo $gestao[$i]->nome;  ?> <em> {{$gestao[$i]->cargo}} </em></h3>
+                                <img class="transition" src="{{$gestao[$i]->img}}" width="120">
+                                <h4 class="transition">Contact me:</h4>
+                            </span>
+                            <div class="arrow"></div>
+                        </div>
+                    </li>
+                @endfor
+
 
             @endif
+        </ul>
 
-        </div>
+
     </section>
 
 
@@ -190,139 +210,69 @@
             <div class="espacamento">
                 <h1 class="titulo-secao">Cursos e Eventos</h1>
             </div>
+
             <div class="row">
-                <div class="col-md-12">
-                    @if(isset($evento[0]))
-                    <div class="col-md-4">
-                        <a href="/eventos/{{$evento[0]->nome}}">
-                            <div class="product-item">
-                                <div class="pi-img-wrapper">
-                                    <img src="{{$evento[0]->img}}" class="img-responsive" alt="Berry Lace Dress">
-                                </div>
-                                <h3 class="titulo-cursos">{{$evento[0]->titulo}} </h3>
-
-                                <div class="sticker sticker-new"></div>
+                @for($i = 0; $i< count($cursos); $i++)
+                <div class="col-sm-6 col-md-6 col-lg-4 mt-4">
+                    <div class="card card-inverse card-info">
+                        <img class="card-img-top" src="{{$cursos[$i]->img}}">
+                        <div class="card-block">
+                            <h4 class="card-title">{{$cursos[$i]->nome}}</h4>
+                            <div class="card-text">
+                                {{$cursos[$i]->descricao}}
                             </div>
-                        </a>
-                    </div>
-                    @endif
-
-                    @if(isset($cursos[0]))
-                    <div class="col-md-4">
-                        <a href="/curso/{{$cursos[0]->nome}}">
-                            <div class="product-item">
-                                <div class="pi-img-wrapper">
-                                    <img src="{{$cursos[0]->img}}" class="img-responsive"  alt="NOVO EVENTO">
-                                </div>
-                                <h3 class="titulo-cursos sticker-new">{{$cursos[0]->titulo}}</h3>
-                            </div>
-                        </a>
-                    </div>
-                    @endif
-
-                    <div class="col-md-4">
-                        <a href="/cursos-e-eventos">
-                            <div class="product-item">
-                                <div class="pi-img-wrapper">
-                                    <img src="/imagens/CURSOS.png" class="img-responsive" alt="Berry Lace Dress">
-                                </div>
-                                <h3 class="titulo-cursos">OUTROS CURSOS E EVENTOS </h3>
-                            </div>
-                        </a>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/curso/{{$cursos[$i]->nome}}" type="button" class="btn btn-info2 btn-sm center-block">Saiba Mais</a>
+                        </div>
                     </div>
                 </div>
+                @endfor
+
+                    @for($i = 0; $i< count($evento); $i++)
+                        <div class="col-sm-6 col-md-6 col-lg-4 mt-4">
+                            <div class="card card-inverse card-info">
+                                <img class="card-img-top" src="{{$evento[$i]->img}}">
+                                <div class="card-block">
+                                    <h4 class="card-title">{{$evento[$i]->titulo}}</h4>
+                                    <div class="card-text">
+                                        {{$evento[$i]->descricao}}
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/eventos/{{$evento[$i]->nome}}" type="button" class="btn btn-info2 btn-sm center-block">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
 
             </div>
+
         </div>
     </section>
 
 
-    {{--<section id="cursos">--}}
-        {{--<div class="container">--}}
-
-            {{--<div class="row cabecalho_secao">--}}
-                {{--<h1>Cursos e Eventos</h1>--}}
-                {{--<p>Entre em contato conosco para saber mais.</p>--}}
-            {{--</div>--}}
-
-            {{--<button  type="button" id="b-cursos-left"><i class="fa fa-chevron-left"></i></button>--}}
-            {{--<button  type="button" id="b-cursos-right"><i class="fa fa-chevron-right"></i></button>--}}
-
-            {{--<div id="owl-demo-3" class="espacamento">--}}
-
-                {{--@if(isset($evento[0]))--}}
-
-                {{--<div class="item  center-block">--}}
-                    {{--<div class="contorno">--}}
-                        {{--<img src="{{$evento[0]->img}}" alt="pessoa1" class="img-responsive center-block">--}}
-                        {{--<h4 class="text-center" style="text-transform: uppercase"> {{$evento[0]->titulo}} </h4>--}}
-                        {{--<span class="descricao">{{$evento[0]->sobre}}</span>--}}
-                        {{--</br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[0]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--@endif--}}
-
-                {{--@if(isset($evento[1]))--}}
-                {{--<div class="item center-block">--}}
-                    {{--<div class="contorno">--}}
-                        {{--<img src="{{$evento[1]->img}}" alt="pessoa1" class="img-responsive center-block">--}}
-                        {{--<h4 class="text-center" style="text-transform: uppercase"> {{$evento[1]->titulo}} </h4>--}}
-                        {{--<span class="descricao">{{$evento[1]->sobre}}</span>--}}
-                        {{--</br><div class="center-block buttom-custom-1 "><a style="text-decoration: none;" href="/eventos/{{$evento[1]->nome}}"><p class="texto-button"> - SAIBA MAIS - </p></a></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--@endif--}}
-
-                @if(isset($cursos[0]))
-                <div class="item center-block">
-                    <div class="contorno">
-                        <img src="{{$cursos[0]->img}}" alt="CURSO" class="img-responsive center-block">
-                        <h4 class="text-center" style="text-transform: uppercase"> {{$cursos[0]->titulo}} </h4>
-                        <span class="descricao">{{$cursos[0]->discricao}}</span>
-                        </br> <div class="buttom-custom-1"><a style="text-decoration: none" href="/curso/{{$cursos[0]->nome}}"></a><p class="texto-button"> - SAIBA MAIS - </p></div>
-                    </div>
-                </div>
-                @endif
-
-                {{--@if(isset($cursos[1]))--}}
-                {{--<div class="item center-block">--}}
-                    {{--<div class="contorno">--}}
-                        {{--<img src="{{$cursos[1]->img}}" alt="CURSO" class="img-responsive center-block">--}}
-                        {{--<h4 class="text-center" style="text-transform: uppercase"> {{$cursos[1]->titulo}} </h4>--}}
-                        {{--<span class="descricao">{{$cursos[1]->discricao}}</span>--}}
-                        {{--</br> <div class="buttom-custom-1"><a style="text-decoration: none" href="/curso/{{$cursos[1]->nome}}"></a><p class="texto-button"> - SAIBA MAIS - </p></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                 {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section> <!-- OK -->--}}
 
     <section id="colaboradores">
         <div class="container">
-
-            {{--<button  type="button" id="b-left"><i class="fa fa-chevron-left"></i></button>--}}
-            {{--<button  type="button" id="b-right"><i class="fa fa-chevron-right"></i></button>--}}
-
-            <div class="row texto-ini">
-                <h1 id="texto1">NOSSOS</h1>
-                <h1 id="texto2">APOIADORES</h1>
+            <div class="espacamento">
+                <h1>Colaboradores</h1>
             </div>
 
-            <div class="col-md-4"></div>
-
-            <div class="col-md-8">
-                <div id="owl-demo-apoio" class="espacamento">
-                 @if(count($patrocinio) > 0)
+            <div class="imagens-colaboradores">
+                <div class="imagens col-md-12">
                     @foreach($patrocinio as $p)
-                    <div class="item center-block item-custom"><img src="{{$p->img}}" alt="APOIO"></div>
+                    <div class="col-md-4">
+                        <img src="{{$p->img}}" width="270" height="200" alt="fail">
+                    </div>
                     @endforeach
-                 @endif
                 </div>
+
             </div>
         </div>
     </section>
 
+    <!---
     <div id="modal">
         <div id="float-banner" class="float-banner">
             <a href="/cursos-e-eventos" title="" data-toggle="tooltip" data-placement="left"><img src="/imagens/folder.jpg" style="max-width: 390px; max-height: 290px;"></a>
@@ -331,5 +281,6 @@
             <a href="#"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>
         </div>
     </div>
+    -->
 
 @endsection

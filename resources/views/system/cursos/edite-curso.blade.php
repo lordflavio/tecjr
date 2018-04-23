@@ -199,7 +199,7 @@
                                                             <p class="text-center" data-placement="top" data-toggle="tooltip" title="{{$participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado)}}"><a type="button" class="btn {{$participantes['crf'][$i]->getLabel($participantes['crf'][$i]->certificado)}} btn-xs" data-title="certificar">{{$participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado)}}</a></p>
                                                         @endif
                                                     </td>
-                                                    <td><a href="#" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
+                                                    <td><a href="/system/curso-excluir-participante/{{$participantes['part'][$i]->id}}/{{$curso->id}}" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
                                                 </tr>
                                             @endfor
                                             </tbody>

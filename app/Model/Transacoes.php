@@ -127,8 +127,7 @@ class Transacoes extends Model
             3 => 'Débito online (TEF)',
             4 => 'Saldo PagSeguro',
             5 => 'Oi Paggo',
-            7 => 'Depósito em conta',
-            8 => 'Pagamento Precencial',
+            7 => 'Pagamento Precencial',
         ];
         
         return $paymentsMethods[$method];

@@ -82,6 +82,7 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
     Route::get('/system/curso-desative/{id}','System\CursosController@desative')->name('curso.desative');
 
     Route::post('/system/curso-certificar/{id}/{id2}','System\CursosController@certificar')->name('curso.certificar');
+    Route::get('/system/curso-excluir-participante/{id}/{id2}','System\CursosController@remove')->name('excluir');
 
 //-------------------------------------------- EVENTO CONTROLLER --------------------------------------------------------------
 
