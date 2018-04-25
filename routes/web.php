@@ -33,12 +33,19 @@ Route::group(['middleware' => ['auth']], function() {
   Route::match(['get','post'],'/perfil-user-update/{id}','ParticipanteController@updates')->name('perfil-user.update');
     Route::post('atualizar-senha', 'ParticipanteController@passwordUpdate')->name('password.update');
     Route::get('/perfil-user/cursos', 'ParticipanteController@curso')->name('perfil-user-cursos');
-    Route::get('/perfil-user/eventos', 'ParticipanteController@evento')->name('perfil-user-cursos');
-    Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
-  Route::match(['get','post'],'/curso-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoCurso')->name('curso-pagamento');
+    Route::get('/perfil-user/eventos', 'ParticipanteController@evento')->name('perfil-user-eventos');
 
-  Route::match(['get','post'],'/evento-tipo-pagamento/{busca}', 'ParticipanteController@tipoEvento')->name('evento-tipo-pg');
-  Route::match(['get','post'],'/evento-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoEvento')->name('evento-pagamento');
+    Route::get('/perfil-user/eventos-atividades/{id}', 'ParticipanteController@eventoAtividades')->name('perfil-user-evento-atividades');
+    Route::get('/perfil-user/eventos-minhas-atividades/{id}', 'ParticipanteController@eventoParticipanteAtividades')->name('perfil-user-evento-minhas-atividades');
+
+    Route::get('/perfil-user/eventos-minhas-atividades/{id}/{id2}', 'ParticipanteController@ativitadeIns')->name('perfil-user-evento-atividade-ins');
+
+
+    Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
+    Route::match(['get','post'],'/curso-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoCurso')->name('curso-pagamento');
+
+    Route::match(['get','post'],'/evento-tipo-pagamento/{busca}', 'ParticipanteController@tipoEvento')->name('evento-tipo-pg');
+    Route::match(['get','post'],'/evento-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoEvento')->name('evento-pagamento');
   
   
   $this->post('pagseguro-getcode', 'PagSeguroController@getCode')->name('pagseguro.code.transparent');

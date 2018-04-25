@@ -89,7 +89,7 @@
 
                                                             </span>
                                                         <a style="text-decoration: none">
-                                                            <button class="btn  {{ $ins['csf'][$i]->certificado == 2 ? 'btn-danger' : 'label-success' }} p-buuton"  {{ $ins['curso'][$i]->situacao == 'Finalizado' ? '' : 'disabled' }}  >
+                                                            <button class="btn  {{ $ins['csf'][$i]->certificado == 2 ? 'btn-danger' : 'btn-success' }} p-buuton"  {{ $ins['curso'][$i]->situacao == 'Finalizado' ? '' : 'disabled' }}  >
                                                                 Gerar Certificado
                                                             </button>
                                                         </a>

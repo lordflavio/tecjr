@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\evento;
+use App\Model\atividade;
+use App\Model\Participate_has_Atividade;
 use App\Model\Evento_inscritos;
 use Illuminate\Http\Request;
 use App\Model\participante;
@@ -172,7 +174,7 @@ class ParticipanteController extends Controller
         //
     }
     
-    public function curso(Transacoes $tra, curso $curso)
+    public function curso()
     {
         $title = 'Tecjr Perfil - Meus Curso';
         $key = "";
@@ -193,7 +195,7 @@ class ParticipanteController extends Controller
 
        for ($i = 0; $i < count($df); $i++){
             $ins['csf'][$i] = $df[$i];
-            $ins['curso'][$i] = $curso::where('id','=',$df[$i]->cursosId )->get()->first();
+            $ins['curso'][$i] = curso::where('id','=',$df[$i]->cursosId )->get()->first();
             $ins['transacao'][$i] = Transacoes::where('id','=',$df[$i]->transacaoId )->get()->first();
           // echo $i.'<br>';
        }
@@ -203,7 +205,7 @@ class ParticipanteController extends Controller
        return view('user/perfil-cursos',compact('participant','key','title','desc','templete','ins'));
     }
 
-    public function evento(Transacoes $tra, curso $curso)
+    public function evento()
     {
         $title = 'Tecjr Perfil - Meus Eventos';
         $key = "";
@@ -217,15 +219,19 @@ class ParticipanteController extends Controller
 
         $df = Evento_inscritos::where('participanteId', auth()->user()->id)->get();
 
-
-
          $ins = array();
+        // $insAtividade = array();
         //dd($df);
 
        for ($i = 0; $i < count($df); $i++){
            // $ins['csf'][$i] = $df[$i];
-            $ins['evento'][$i] = $curso::where('id','=',$df[$i]->eventosId )->get()->first();
+            $ins['evento'][$i] = evento::where('id','=',$df[$i]->eventosId )->get()->first();
             $ins['transacao'][$i] = Transacoes::where('id','=',$df[$i]->transacaoId )->get()->first();
+//            $ins['ativ'][$i] = Atividades::where('eventoId','=',$df->eventosId[$i])->get();
+//            $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('eventoId','=',$df->eventosId[$i])->get();
+//            for ($j = 0; $j < count($ativ); $j++ ){
+//                $ins['pAtiv'][$i] =  Atividades::where('id','=',$ativ[$j]->atividadeId)->get();
+//            }
           // echo $i.'<br>';
        }
 
@@ -233,7 +239,63 @@ class ParticipanteController extends Controller
 
        return view('user/perfil-eventos',compact('participant','key','title','desc','templete','ins'));
     }
-    
+
+    public function eventoAtividades($id)
+    {
+        $title = 'Tecjr Perfil - Meus Eventos - Atividades';
+        $key = "";
+        $desc = "Perfil Usuario - Meus Eventos - Atividades";
+
+        $participant = participante::find(Auth::user()->id);
+//      $user =  Participant::all();
+        $templete = 0;
+
+        $ativ =  atividade::where('eventoId','=',$id)->get();
+        $p = new Participate_has_Atividade;
+
+        return view('user/perfil-eventos-atividades',compact('participant','key','title','desc','templete','ativ','p'));
+    }
+
+    public function eventoParticipanteAtividades($id)
+    {
+        $title = 'Tecjr Perfil - Meus Eventos - Minhas Atividades';
+        $key = "";
+        $desc = "Perfil Usuario - Meus Eventos - Minhas Atividades";
+
+        $participant = participante::find(Auth::user()->id);
+//      $user =  Participant::all();
+        $templete = 0;
+
+        $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('eventosId','=',$id)->get();
+        $ativIns = array();
+
+        for ($j = 0; $j < count($ativ); $j++ ){
+            $ativIns =  atividade::where('id','=',$ativ[$j]->atividadeId)->get();
+        }
+
+
+        return view('user/perfil-participates-has-atividades',compact('participant','key','title','desc','templete','ativIns'));
+    }
+
+    public function ativitadeIns($id, $id2)
+    {
+        $dataForm['participanteId'] = Auth::user()->id;
+        $dataForm['eventosId'] = $id2;
+        $dataForm['atividadeId'] = $id;
+        $dataForm['certificado'] = 0;
+
+        if( Participate_has_Atividade::create($dataForm)){
+
+            Session::flash('success', 'Você foi Inscrito nessa Atividade!');
+            return back();
+        }else{
+            Session::flash('info', 'Ops! um problema ocorreu tente novamente !');
+            return back();
+        }
+
+
+    }
+
     public function passwordUpdate(Request $request)
     {
         $this->validate($request, ['password' => 'required|string|min:6|confirmed']);

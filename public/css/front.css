@@ -2036,7 +2036,7 @@ address{
 .btn.btn-success.p-buuton{
     
     display: inline;
-    padding: .2em .6em .3em;
+    padding: .3em .6em .3em;
     font-size: 75%;
     font-weight: 700;
     line-height: 1;
@@ -2046,6 +2046,42 @@ address{
     vertical-align: baseline;
     border-radius: .25em;
 
+}
+.btn.btn-success.p-buuton-custom{
+    padding: .5em .6em .3em;
+    font-size: 100%;
+    display: inline;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.btn.btn-info.p-buuton-custom{
+    padding: .5em .6em .3em;
+    font-size: 100%;
+    display: inline;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.btn.btn-danger.p-buuton-custom{
+    padding: .5em .6em .3em;
+    font-size: 100%;
+    display: inline;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
 
 
@@ -2065,6 +2101,10 @@ tr.row-content
 table
 {
     border-bottom: 8px solid #448aff;
+}
+
+.media span{
+    margin: 5px;
 }
 
 td.check

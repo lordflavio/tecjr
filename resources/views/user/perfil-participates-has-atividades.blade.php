@@ -54,51 +54,41 @@
                     <div class="profile-content">
                         <section id="agenda">
                             <div class="container-fluid">
-                                <h4 class="text-center">Meus Eventos</h4>
+                                <h4 class="text-center">Minhas Atividades</h4>
                                 <div class="container-pad" id="property-listings">
                                     <div class="row">
-                                        @if(count($ins) > 0)
-                                            @for($i = 0; $i < count($ins['evento']); $i++)
-                                                <div class="col-sm-10 col-lg-10 col-md-offset-1" >
+                                        @if(count($ativIns) > 0)
+                                            @for($i = 0; $i < count($ativIns); $i++)
+                                                <div class="col-sm-6 col-lg-6" >
                                                     <!-- Begin Listing: 609 W GRAVERS LN-->
                                                     <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                                                         <div class="media">
-                                                            <a class="pull-left" href="#" target="_parent">
-                                                                <img alt="image" class="img-responsive" src="{{ $ins['evento'][$i]->img }}"></a>
+                                                            {{--<a class="pull-left" href="#" target="_parent">--}}
+                                                                {{--<img alt="image" class="img-responsive" src="{{ $ins['evento'][$i]->img }}"></a>--}}
 
                                                             <div class="clearfix visible-sm"></div>
 
                                                             <div class="media-body fnt-smaller">
                                                                 <a href="#" target="_parent"></a>
 
-                                                                <h4 style="color: black; font-weight: 700;" class="media-heading"> {{ $ins['evento'][$i]->titulo }} </h4>
+                                                                <h4 style="color: black; font-weight: 700;" class="media-heading"> <b>Tema :</b> {{($ativIns[$i]->titulo. '-' . $ativIns[$i]->modalidade)}} </h4>
 
-                                                                <p class="hidden-xs text-justify"> {{ $ins['evento'][$i]->descricao }} </p>
-
-                                                                <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ins['evento'][$i]->dateInicioEx))}} à {{date("d-m-Y", strtotime($ins['evento'][$i]->dateFimEx))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
-
-
-                                                                <p> Situação: </p>
-
-                                                                <p>
-                                                                    <span href="#" class="label {{ $ins['transacao'][$i]->getLabel($ins['transacao'][$i]->status) }}">
-                                                                    {{ $ins['transacao'][$i]->getStatus($ins['transacao'][$i]->status) }}
-                                                                    </span>
+                                                                <p class="hidden-xs text-justify">
+                                                                    <b>Horario: {{$ativIns[$i]->horario}}
+                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ativIns[$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+                                                                    </b><br>
+                                                                    <b>Area :</b> {{($ativIns[$i]->area)}} <br>
+                                                                    <b>Palestrante :</b> {{($ativIns[$i]->palestrante)}} <br>
+                                                                    <b>Coordenação :</b> {{($ativIns[$i]->cordenacao)}}  <br>
+                                                                    <b>Local:</b>{{$ativIns[$i]->local}}<br>
                                                                 </p>
 
                                                                 <hr>
-
-                                                               <p>
-                                                                   {{--@if(strtotime($ins['evento'][$i]->dateFimEx) < strtotime(date('y-m-d')))--}}
-                                                                   <a href="{{route('perfil-user-evento-atividades',$ins['evento'][$i]->id)}}" style="text-decoration: none">
-                                                                       <button class="btn btn-success  p-buuton-custom"> Inscrever-se nas Atividades </button>
-                                                                   </a>
-                                                                   {{--@endif--}}
-
-                                                                   <a href="{{route('perfil-user-evento-minhas-atividades',$ins['evento'][$i]->id)}}" style="text-decoration: none">
-                                                                       <button class="btn btn-success  p-buuton-custom"> Atividades Escolhidas </button>
-                                                                   </a>
-                                                               </p>
+                                                                <p class="text-center">
+                                                                    <a href="#" style="text-decoration: none">
+                                                                        <button class="btn btn-danger p-buuton p-buuton-custom"> Remover essa Atividade </button>
+                                                                    </a>
+                                                                </p>
 
                                                             </div>
                                                         </div>
@@ -106,8 +96,11 @@
                                                 </div><!-- End Col -->
                                             @endfor
                                         @else
-                                            <h5 class="text-center"> Você não possui cursos </h5>
+                                            <h5 class="text-center"> Você não esta em nenhuma atividade no momento neste evento evento </h5>
                                         @endif
+                                        <div class="col-md-12">
+                                            <a href="/perfil-user/eventos" type="button" class="btn btn-success pull-left"> Voltar </a>
+                                        </div>
                                     </div><!-- End row -->
                                 </div><!-- End container -->
                             </div>

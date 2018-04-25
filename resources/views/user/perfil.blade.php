@@ -429,7 +429,7 @@
                                     Cursos </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/perfil-user/eventos">
                                     <i class="fa fa-archive"></i>
                                     Eventos </a>
                             </li>
