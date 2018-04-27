@@ -13,6 +13,7 @@
                     <li><a data-toggle="tab" href="#palestrantes">Palestrantes</a></li>
                     <li><a data-toggle="tab" href="#programacao">Programação</a></li>
                     <li><a data-toggle="tab" href="#banner">Banner Principal</a></li>
+                    <li><a data-toggle="tab" href="#participantes">Participantes do Evento</a></li>
                     <li><a data-toggle="tab" href="#edite">Editar</a></li>
                     {{--<li><a data-toggle="tab" href="#menu2">Archivos de Registro</a></li>--}}
                 </ul>
@@ -27,29 +28,31 @@
 
                                 <thead>
                                 <th class="text-center">Titulo</th>
-                                <th class="text-center">Area</th>
-                                <th class="text-center">Modalidade</th>
+                                {{--<th class="text-center">Area</th>--}}
+                                {{--<th class="text-center">Modalidade</th>--}}
                                 <th class="text-center">Data</th>
                                 <th class="text-center">Cordenação</th>
-                                <th class="text-center">Convidados</th>
+                                {{--<th class="text-center">Convidados</th>--}}
                                 <th class="text-center">Palestrantes</th>
                                 <th class="text-center">Local</th>
+                                <th class="text-center">Vagas</th>
                                 <th class="text-center">Edite</th>
                                 <th class="text-center">Delete</th>
                                 </thead>
                                 <tbody>
                                 @foreach($atividades as $atividade)
                                     <tr>
-                                        <td>{{$atividade->titulo}}</td>
-                                        <td>{{$atividade->area}}</td>
-                                        <td>{{$atividade->modalidade}}</td>
-                                        <td width="90"><p>{{ date("d-m-Y", strtotime($atividade->data)) }}</p></td>
-                                        <td>{{$atividade->cordenacao}}</td>
-                                        <td>{{$atividade->convidados}}</td>
-                                        <td>{{$atividade->palestrante}}</td>
-                                        <td>{{$atividade->local}}</td>
-                                        <td><p data-placement="top" data-toggle="tooltip" title="Editar"><button class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="{{'#atividade'.$atividade->id}}" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                        <td><a href="{{'/system/evento-atividade/'.$atividade->id.'/'. $evento->id}}" data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
+                                        <td class="text-center">{{$atividade->titulo}}</td>
+                                        {{--<td>{{$atividade->area}}</td>--}}
+                                        {{--<td>{{$atividade->modalidade}}</td>--}}
+                                        <td><p class="text-center">{{ date("d/m/Y", strtotime($atividade->data)) }}</p></td>
+                                        <td class="text-center">{{$atividade->cordenacao}}</td>
+                                        {{--<td>{{$atividade->convidados}}</td>--}}
+                                        <td class="text-center">{{$atividade->palestrante}}</td>
+                                        <td class="text-center">{{$atividade->local}}</td>
+                                        <td class="text-center" width="50">{{$atividade->vagas}}</td>
+                                        <td class="text-center" width="50"><p data-placement="top" data-toggle="tooltip" title="Editar"><button class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="{{'#atividade'.$atividade->id}}" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                        <td class="text-center" width="50"><a href="{{'/system/evento-atividade/'.$atividade->id.'/'. $evento->id}}" data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
                                     </tr>
                                     <div class="modal fade" id="{{'atividade'.$atividade->id}}" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
@@ -124,7 +127,13 @@
                                                                     <label >Horario:</label>
                                                                     <input type="text" name="horario" class="form-control" value="{{$atividade->horario}}"  id="horario" placeholder="HH:MM" required="">
                                                                     <span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>
-                                                                </div>
+                                                                 </div>
+
+                                                                <div class="form-group col-lg-5 has-feedback ">
+                                                                    <label >Número de Vagas:</label>
+                                                                    <input type="text" name="vagas" class="form-control" value="{{$atividade->vagas}}"  id="vagas"  required="">
+                                                                    {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                                                                 </div>
 
                                                                 <div class="form-group col-lg-5 has-feedback ">
                                                                     <label >Convidados:</label>
@@ -407,6 +416,54 @@
 
                     </div>
 
+                    <div id="participantes" class="tab-pane fade">
+                        <h1 class="text-center"> Participantes </h1><br>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6" style="margin-bottom: 20px">
+                                    <button data-toggle="modal" data-target="#add" class="btn btn-success btn-success-custom" > Add Participante</button>
+                                </div><br>
+                                @if(count($participantes) > 0)
+                                    <div class="table-bordered col-lg-12">
+                                        <table id="mytable" class="table">
+
+                                            <thead>
+                                            <th class="text-center">Img</th>
+                                            <th class="text-center">Nome</th>
+                                            <th class="text-center">CPF</th>
+                                            <th class="text-center">Sexo</th>
+                                            <th class="text-center">Celular</th>
+                                            <th class="text-center">Email</th>
+                                            <th class="text-center">Certificar</th>
+                                            <th class="text-center">Remover </th>
+
+                                            </thead>
+                                            <tbody>
+                                            @for($i = 0; $i < count($participantes['part']); $i++)
+                                                <tr>
+                                                    <td><img src="{{$participantes['part'][$i]->img}}" width="50" alt="Participante"></td>
+                                                    <td>{{$participantes['part'][$i]->nome}}</td>
+                                                    <td>{{$participantes['part'][$i]->cpf}}</td>
+                                                    <td>{{$participantes['part'][$i]->sexo}}</td>
+                                                    <td>{{$participantes['part'][$i]->celular}}</td>
+                                                    <td>{{$participantes['user'][$i]->email}}</td>
+                                                    <td class="text-center"><a href="/system/evento-participantes-atividades/{{$participantes['part'][$i]->id}}/{{$evento->id}}" data-placement="top" data-toggle="tooltip" title="Certificar"><button class="btn btn-info btn-xs" data-title="Certificar" data-toggle="modal" data-target="#delete" >Certificar</button></a></td>
+                                                    <td class="text-center"><a href="#" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
+                                                </tr>
+                                            @endfor
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @else
+                                    <h4 class="text-center">Não há Inscristos no momento </h4>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
                     <div id="edite" class="tab-pane fade">
                         <form style="margin-top: 30px" action="{{route('evento.update',$evento->id)}}" method="post" enctype="multipart/form-data">
                             {{ method_field('POST')}}
@@ -607,6 +664,12 @@
                                     <label >Horario:</label>
                                     <input type="text" name="horario" class="form-control"   id="horario" placeholder="HH:MM" required="">
                                     <span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>
+                                </div>
+
+                                <div class="form-group col-lg-5 has-feedback ">
+                                    <label >Número de Vagas:</label>
+                                    <input type="text" name="vagas" class="form-control"  id="vagas" placeholder="Ex: 50" required="">
+                                    {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                                 </div>
 
                                 <div class="form-group col-lg-5 has-feedback ">

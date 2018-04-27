@@ -240,7 +240,7 @@ class ParticipanteController extends Controller
        return view('user/perfil-eventos',compact('participant','key','title','desc','templete','ins'));
     }
 
-    public function eventoAtividades($id)
+    public function eventoAtividades($busca)
     {
         $title = 'Tecjr Perfil - Meus Eventos - Atividades';
         $key = "";
@@ -250,13 +250,22 @@ class ParticipanteController extends Controller
 //      $user =  Participant::all();
         $templete = 0;
 
-        $ativ =  atividade::where('eventoId','=',$id)->get();
-        $p = new Participate_has_Atividade;
+        $ev = evento::where('nome','=',$busca)->first();
 
-        return view('user/perfil-eventos-atividades',compact('participant','key','title','desc','templete','ativ','p'));
+        if(isset($ev)){
+            $ativ =  atividade::where('eventoId','=',$ev->id)->get();
+            $p = new Participate_has_Atividade;
+
+            return view('user/perfil-eventos-atividades',compact('participant','key','title','desc','templete','ativ','p'));
+        }else{
+            Session::flash('info', 'Este eevento não existe');
+            return back();
+        }
+
+
     }
 
-    public function eventoParticipanteAtividades($id)
+    public function eventoParticipanteAtividades($busca)
     {
         $title = 'Tecjr Perfil - Meus Eventos - Minhas Atividades';
         $key = "";
@@ -266,15 +275,24 @@ class ParticipanteController extends Controller
 //      $user =  Participant::all();
         $templete = 0;
 
-        $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('eventosId','=',$id)->get();
-        $ativIns = array();
+        $ev = evento::where('nome','=',$busca)->first();
 
-        for ($j = 0; $j < count($ativ); $j++ ){
-            $ativIns =  atividade::where('id','=',$ativ[$j]->atividadeId)->get();
+
+
+        if(isset($ev)){
+            $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('eventosId','=',$ev->id)->get();
+            $ativIns = array();
+
+            for ($j = 0; $j < count($ativ); $j++ ){
+                $ativIns =  atividade::where('id','=',$ativ[$j]->atividadeId)->get();
+            }
+
+            return view('user/perfil-participates-has-atividades',compact('participant','key','title','desc','templete','ativIns'));
+
+        }else{
+            Session::flash('info', 'Este evento não existe');
+            return back();
         }
-
-
-        return view('user/perfil-participates-has-atividades',compact('participant','key','title','desc','templete','ativIns'));
     }
 
     public function ativitadeIns($id, $id2)
@@ -294,6 +312,19 @@ class ParticipanteController extends Controller
         }
 
 
+    }
+
+    public function eventoRemoverAtiidade ($id)
+    {
+        $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('atividadeId','=',$id)->get();
+
+        if(Participate_has_Atividade::destroy($id)){
+            Session::flash('success', 'Atividade Removida com sucesso!');
+            return back();
+        }else{
+            Session::flash('info', 'Ops! um problema ocorreu tente novamente !');
+            return back();
+        }
     }
 
     public function passwordUpdate(Request $request)

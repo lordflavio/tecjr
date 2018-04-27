@@ -49,6 +49,7 @@ class AtividadeController extends Controller
            $atv->data = $request->data;
            $atv->horario = $request->horario;
            $atv->local = $request->local;
+           $atv->vagas = $request->vagas;
 
 
         if(isset($request->area)){
@@ -130,6 +131,7 @@ class AtividadeController extends Controller
         $atv->titulo = $request->titulo;
         $atv->horario = $request->horario;
         $atv->local = $request->local;
+        $atv->vagas = $request->vagas;
 
 
         if(isset($request->data)){

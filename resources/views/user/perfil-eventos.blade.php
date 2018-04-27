@@ -75,7 +75,7 @@
 
                                                                 <p class="hidden-xs text-justify"> {{ $ins['evento'][$i]->descricao }} </p>
 
-                                                                <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ins['evento'][$i]->dateInicioEx))}} à {{date("d-m-Y", strtotime($ins['evento'][$i]->dateFimEx))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+                                                                <small style="margin-top: 8px;" class="pull-right"> {{date("d/m/Y", strtotime($ins['evento'][$i]->dateInicioEx))}} à {{date("d/m/Y", strtotime($ins['evento'][$i]->dateFimEx))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
 
 
                                                                 <p> Situação: </p>
@@ -88,17 +88,24 @@
 
                                                                 <hr>
 
-                                                               <p>
-                                                                   {{--@if(strtotime($ins['evento'][$i]->dateFimEx) < strtotime(date('y-m-d')))--}}
-                                                                   <a href="{{route('perfil-user-evento-atividades',$ins['evento'][$i]->id)}}" style="text-decoration: none">
-                                                                       <button class="btn btn-success  p-buuton-custom"> Inscrever-se nas Atividades </button>
-                                                                   </a>
-                                                                   {{--@endif--}}
+                                                               @if($ins['transacao'][$i]->status == 3)
+                                                                    <p>
+                                                                       @if(strtotime($ins['evento'][$i]->dateFimEx) <= strtotime(date('y-m-d')))
+                                                                       <a href="{{route('perfil-user-evento-atividades',$ins['evento'][$i]->nome)}}" style="text-decoration: none">
+                                                                           <button class="btn btn-success  p-buuton-custom"> Inscrever-se nas Atividades </button>
+                                                                       </a>
+                                                                       @endif
 
-                                                                   <a href="{{route('perfil-user-evento-minhas-atividades',$ins['evento'][$i]->id)}}" style="text-decoration: none">
-                                                                       <button class="btn btn-success  p-buuton-custom"> Atividades Escolhidas </button>
-                                                                   </a>
-                                                               </p>
+                                                                       <a href="{{route('perfil-user-evento-minhas-atividades',$ins['evento'][$i]->nome)}}" style="text-decoration: none">
+                                                                           <button class="btn btn-success  p-buuton-custom"> Atividades Escolhidas </button>
+                                                                       </a>
+                                                                        @else
+                                                                    </p>
+
+                                                                    <div class = "alert alert-info text-center"> As inscrições nas atividades estaram disponivels depois da confirmação de pagamento </div>
+
+                                                               @endif
+
 
                                                             </div>
                                                         </div>

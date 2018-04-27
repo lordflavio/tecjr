@@ -35,10 +35,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/perfil-user/cursos', 'ParticipanteController@curso')->name('perfil-user-cursos');
     Route::get('/perfil-user/eventos', 'ParticipanteController@evento')->name('perfil-user-eventos');
 
-    Route::get('/perfil-user/eventos-atividades/{id}', 'ParticipanteController@eventoAtividades')->name('perfil-user-evento-atividades');
+    Route::get('/perfil-user/eventos-atividades/{busca}', 'ParticipanteController@eventoAtividades')->name('perfil-user-evento-atividades');
     Route::get('/perfil-user/eventos-minhas-atividades/{id}', 'ParticipanteController@eventoParticipanteAtividades')->name('perfil-user-evento-minhas-atividades');
 
     Route::get('/perfil-user/eventos-minhas-atividades/{id}/{id2}', 'ParticipanteController@ativitadeIns')->name('perfil-user-evento-atividade-ins');
+    Route::get('/perfil-user/eventos-minhas-atividades-remover/{id}', 'ParticipanteController@eventoRemoverAtiidade')->name('perfil-user-evento-atividade-remove');
 
 
     Route::match(['get','post'],'/curso-tipo-pagamento/{busca}', 'ParticipanteController@tipoCurso')->name('curso-tipo-pg');
@@ -115,6 +116,11 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
     Route::match(['get','post'],'/system/evento-patrocinio-delete/{id}/{id2}','System\EventoController@patrocinioDelete')->name('evento.patrocinio-delete');
 
     Route::get('/system/evento-palestrante-delete/{id}/{id2}','System\EventoController@palestranteDelete')->name('evento.patrocinio-delete');
+
+    Route::get('/system/evento-certificar/{id}/{id2}','System\EventoController@certificar')->name('evento.certificar');
+    Route::get('/system/evento-participantes-atividades/{id}/{id2}','System\EventoController@partAtividade')->name('evento.part-atividades');
+
+
 
 //-------------------------------------------- ADMIN CONTROLLER -------------------------------------------------------------
 

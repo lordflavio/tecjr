@@ -75,7 +75,7 @@
 
                                                                 <p class="hidden-xs text-justify">
                                                                     <b>Horario: {{$ativ[$i]->horario}}
-                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ativ[$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d/m/Y", strtotime($ativ[$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
                                                                     </b><br>
                                                                     <b>Area :</b> {{($ativ[$i]->area)}} <br>
                                                                     <b>Palestrante :</b> {{($ativ[$i]->palestrante)}} <br>
@@ -84,12 +84,17 @@
                                                                 </p>
 
                                                                 <hr>
+                                                                @if($ativ[$i]->vagas < $ativ[$i]->check($ativ[$i]->id, $ativ[$i]->eventoId))
                                                                 <p class="text-center">
                                                                     @php( $v = $p->verifica($ativ[$i]->id))
                                                                     <a href="{{$v['link'] == '#' ? '#' : '/perfil-user/eventos-minhas-atividades/'.$ativ[$i]->id.'/'.$ativ[$i]->eventoId }}" style="text-decoration: none">
                                                                         <button class="btn {{$v['btn'] == "disabled" ? 'btn-info' : 'btn-success'}} p-buuton-custom" {{$v['btn']}}  > {{$v['btn'] == "disabled" ? 'Já Inscrito' : 'Participar desta Atividade'}} </button>
                                                                     </a>
+                                                                    <b>Vagas: </b>{{$ativ[$i]->vagas}} <b>Dísponivel: </b> {{ $ativ[$i]->vagas - $ativ[$i]->check($ativ[$i]->id, $ativ[$i]->eventoId) }}
                                                                 </p>
+                                                                @else
+                                                                    <div class = "alert alert-info text-center"> Lotado </div>
+                                                                @endif
 
                                                             </div>
                                                         </div>

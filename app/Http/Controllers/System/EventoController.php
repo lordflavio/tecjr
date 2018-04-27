@@ -4,6 +4,10 @@ namespace App\Http\Controllers\System;
 
 use App\Model\atividade;
 use App\Model\evento;
+use App\Model\Participate_has_Atividade;
+use App\User;
+use App\Model\participante;
+use App\Model\Evento_inscritos;
 use App\Model\Evento_palestrante;
 use App\Model\Evento_Patrocinios;
 use App\Model\Evento_submissao;
@@ -116,8 +120,21 @@ class EventoController extends Controller
         $submissao = Evento_submissao::all()->where('eventoid','=',$id);
         $patrocinio = Evento_Patrocinios::all()->where('eventoid','=',$id);
         $palestrante = Evento_palestrante::all()->where('eventoid','=',$id);
+
+        $part = Evento_inscritos::where('eventosId','=',$evento->id)->get();
+
+        $participantes = array();
+//        $participantes['part'];
+//        $participantes['user'];
+
+        for($i = 0; $i < count($part); $i++){
+            $participantes['part'][$i] = Participante::where('id','=',$part[$i]->participanteId)->get()->first();
+            $participantes['crf'][$i] = $part[$i];
+            $participantes['user'][$i] = User::where('id','=',$part[$i]->participanteId)->get()->first();
+        }
+
         $title = 'Tecjr Eventos: ' . $evento->nome;
-        return view('system/eventos/eventos-atividades', compact('atividades', 'evento', 'title','admin','patrocinio','submissao','palestrante'));
+        return view('system/eventos/eventos-atividades', compact('atividades', 'evento', 'title','admin','patrocinio','submissao','palestrante','participantes'));
     }
 
 
@@ -443,6 +460,19 @@ class EventoController extends Controller
             Session::flash('info','Carregar uma imagem!');
             return back();
         }
+
+    }
+
+    public function partAtividade($id,$id2){
+
+        $admin = Admin::find( Auth::user()->id);
+
+        $evento = evento::find($id2);
+
+        $atvP = Participate_has_Atividade::where('participanteId','=',$id)->where('eventosId','=',$id2)->get();
+
+        $title = 'Tecjr Eventos: ' . $evento->nome;
+        return view('system/eventos/certificar-atividade', compact('evento','title','admin','atvP'));
 
     }
 

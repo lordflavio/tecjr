@@ -75,7 +75,7 @@
 
                                                                 <p class="hidden-xs text-justify">
                                                                     <b>Horario: {{$ativIns[$i]->horario}}
-                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ativIns[$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d/m/Y", strtotime($ativIns[$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
                                                                     </b><br>
                                                                     <b>Area :</b> {{($ativIns[$i]->area)}} <br>
                                                                     <b>Palestrante :</b> {{($ativIns[$i]->palestrante)}} <br>
@@ -85,7 +85,7 @@
 
                                                                 <hr>
                                                                 <p class="text-center">
-                                                                    <a href="#" style="text-decoration: none">
+                                                                    <a href="{{route('perfil-user-evento-atividade-remove',$ativIns[$i]->id)}}" style="text-decoration: none">
                                                                         <button class="btn btn-danger p-buuton p-buuton-custom"> Remover essa Atividade </button>
                                                                     </a>
                                                                 </p>
