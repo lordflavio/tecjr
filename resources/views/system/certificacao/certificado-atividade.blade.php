@@ -32,7 +32,7 @@
         {{--</h3>--}}
 
         <h4 class="data-certificado">
-            Garanhums, {{$atv->getData(date('y-m-d'))}}
+            Garanhuns, {{$atv->getData(date('y-m-d'))}}
         </h4>
     </div>
 

@@ -23,8 +23,8 @@
 
         <p class="detalhes-certificado text-justify" style="width: 700px">
             Certificamos que <span class="nome-aluno">{{$part->nome}}</span> Portador do CPF nº <span class="curso">{{$part->cpf}}</span> concluiu com
-          êxito Curso de <span class="curso"> {{$curso->titulo}} </span> oferecido plea  Tecnologia, Educação e Consultoria Jr.(Tecjr) com carga horária de {{$curso->duracao}} horas,
-            comcluída em {{$curso->getData($curso->data)}}
+          êxito Curso de <span class="curso"> {{$curso->titulo}} </span> oferecido pela  Tecnologia, Educação e Consultoria Jr.(Tecjr) com carga horária de {{$curso->duracao}} horas,
+            concluída em {{$curso->getData($curso->data)}}
         </p>
 
         {{--<h3 class="mais-detalhes-certificado">--}}
@@ -32,7 +32,7 @@
         {{--</h3>--}}
 
         <h4 class="data-certificado">
-           Garanhums, {{$curso->getData(date('y-m-d'))}}
+           Garanhuns, {{$curso->getData(date('y-m-d'))}}
         </h4>
     </div>
 
