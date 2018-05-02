@@ -14,6 +14,8 @@
     <!-- Icon -->
     <link rel="shortcut icon" href="{{asset(get_include_path().'/imagens/ico.png')}}" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-touch-slider.css')}}">
     <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet">
@@ -26,6 +28,26 @@
     <link rel="stylesheet" href="{{asset('OwlCarousel-master/owl-carousel/owl.theme.css')}}">
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Highlight bottom nav links
+            var clickEvent = false;
+            $("#myCarousel").on("click", ".nav a", function(){
+                clickEvent = true;
+                $(this).parent().siblings().removeClass("active");
+                $(this).parent().addClass("active");
+            }).on("slid.bs.carousel", function(e){
+                if(!clickEvent){
+                    itemIndex = $(e.relatedTarget).index();
+                    targetNavItem = $(".nav li[data-slide-to='" + itemIndex + "']");
+                    $(".nav li").not(targetNavItem).removeClass("active");
+                    targetNavItem.addClass("active");
+                }
+                clickEvent = false;
+            });
+        });
+    </script>
 
 </head>
 <body>

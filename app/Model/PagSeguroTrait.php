@@ -24,9 +24,19 @@ trait PagSeguroTrait
 
         $posistion = 1;
 
+        if(isset($object->dateInicioIns)){
+            $description = "Evento Academico organizado pela Empresa Junior (TecJr)";
+            $custo = $object->valor_inscricao;
+        }else{
+            $description = "Curso de tecnico organizado pela Empresa Junior (TecJr)";
+            $custo = $object->valorInscricao;
+        }
+
+        //dd($description);
+
         $items["itemId{$posistion}"]            = $object->id;
-        $items["itemDescription{$posistion}"]   = $object->descricao;
-        $items["itemAmount{$posistion}"]        = str_replace(",", ".", $object->valor_inscricao);
+        $items["itemDescription{$posistion}"]   = $description;
+        $items["itemAmount{$posistion}"]        = str_replace(",", ".", $custo);
         $items["itemQuantity{$posistion}"]      = '1';
 
        

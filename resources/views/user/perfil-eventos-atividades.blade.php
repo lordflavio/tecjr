@@ -17,7 +17,7 @@
                                 Foto de perfil
                             </div>
                             <div class="profile-usertitle-job" style="padding-bottom: 20px">
-                                <button type="submit" class="btn btn-success center-block"> Mudar Imgaem  </button>
+                                <button type="submit" class="btn btn-success " data-toggle="modal" data-target="#img" class="btn btn-success center-block"> Mudar Imgaem  </button>
                             </div>
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
@@ -71,7 +71,7 @@
                                                             <div class="media-body fnt-smaller">
                                                                 <a href="#" target="_parent"></a>
 
-                                                                <h4 style="color: black; font-weight: 700;" class="media-heading"> <b>Tema :</b> {{($ativ[$i]->titulo. '-' . $ativ[$i]->modalidade)}} </h4>
+                                                                <h5 style="color: black; font-weight: 700;" class="media-heading"> <b>Tema :</b> {{($ativ[$i]->titulo. '-' . $ativ[$i]->modalidade)}} </h5>
 
                                                                 <p class="hidden-xs text-justify">
                                                                     <b>Horario: {{$ativ[$i]->horario}}
@@ -84,7 +84,7 @@
                                                                 </p>
 
                                                                 <hr>
-                                                                @if($ativ[$i]->vagas < $ativ[$i]->check($ativ[$i]->id, $ativ[$i]->eventoId))
+                                                                @if($ativ[$i]->vagas > $ativ[$i]->check($ativ[$i]->id, $ativ[$i]->eventoId))
                                                                 <p class="text-center">
                                                                     @php( $v = $p->verifica($ativ[$i]->id))
                                                                     <a href="{{$v['link'] == '#' ? '#' : '/perfil-user/eventos-minhas-atividades/'.$ativ[$i]->id.'/'.$ativ[$i]->eventoId }}" style="text-decoration: none">
@@ -118,4 +118,35 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="img" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">Atualizar imagem de Perfil</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('perfil-user-mudar-imagem')}}" method="post" enctype="multipart/form-data">
+
+                    {{ method_field('POST')}}
+                    {{ csrf_field() }}
+                    <section>
+                        <div class="col-md-10">
+                            <div class="form-group col-md-offset-1 col-lg-12 ">
+                                <label class="col-md-6 control-label" for="img">Upload Imagem </label>
+                                <input id="img" name="img" class="input-file" type="file">
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

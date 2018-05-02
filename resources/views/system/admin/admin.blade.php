@@ -68,7 +68,48 @@
                    <p class="text-center"><button type="submit" class="btn btn-success btn-success-custom"> <b style="width: 150px; height: 20px"> Salva </b> </button> </p>
                 </div>
             </form>
+            <p class="text-left"><button type="submit" data-toggle="modal" data-target="#senha" class="btn btn-success btn-success-custom"> <b style="width: 150px; height: 20px"> Alterar Senha </b> </button> </p>
         </div>
     </div></br>
+
+    <div class="modal fade" id="senha" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">Modificar Senha</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form role="form" method="POST" action="{{ route('password.update-admin') }}">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <input type="text" name="type" style="display: none;" class="form-control" id="type" value="user">
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} input-group">
+                            <div>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Senha: Min 6 caracteres" required="">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                @endif
+                            </div>
+                            <div class="input-group-addon"><i class="fa fa-expeditedssl " aria-hidden="true"></i></div>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Senha" required="">
+                            <div class="input-group-addon"><i class="fa fa-expeditedssl " aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection

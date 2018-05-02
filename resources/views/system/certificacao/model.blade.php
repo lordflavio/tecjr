@@ -14,7 +14,7 @@
 
 </head>
 <body>
-@for($i = 0; $i < 6; $i++)
+
 <div class="certificado" style="margin-left: 75px">
     <img src="imagens/Model-Certification.png" class="img-back-cert" alt="Certificado Digital Tecjr">
 
@@ -36,6 +36,6 @@
     </div>
 
 </div><!--Certificado-->
-@endfor
+
 </body>
 </html>

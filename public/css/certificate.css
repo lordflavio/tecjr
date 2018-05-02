@@ -33,7 +33,9 @@
     font-size: 18px;
     font-weight: normal;
     margin: 8px;
+    margin-left: 150px;
     line-height: 26px;
+    text-align: justify;
 }
 .nome-aluno{
     font-size: 20px;

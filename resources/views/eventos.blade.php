@@ -78,7 +78,7 @@
 
         <div class="sobre">
             <div class="col-md-12 col-sm-12">
-                <p>{{$even[0]->sobre}}</p>
+                <p>{{$even[0]->descricao}}</p>
             </div>
         </div>
     </div>

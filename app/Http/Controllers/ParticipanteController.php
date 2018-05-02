@@ -284,10 +284,15 @@ class ParticipanteController extends Controller
             $ativIns = array();
 
             for ($j = 0; $j < count($ativ); $j++ ){
-                $ativIns =  atividade::where('id','=',$ativ[$j]->atividadeId)->get();
+                $ativIns['atv'][$j] =  atividade::where('id','=',$ativ[$j]->atividadeId)->first();
+                $ativIns['crf'][$j] = $ativ[$j];
             }
 
-            return view('user/perfil-participates-has-atividades',compact('participant','key','title','desc','templete','ativIns'));
+//           echo $ev->nome;
+//
+//            dd($ativIns);
+
+            return view('user/perfil-participates-has-atividades',compact('participant','key','title','desc','templete','ativIns','ev'));
 
         }else{
             Session::flash('info', 'Este evento não existe');
@@ -316,9 +321,9 @@ class ParticipanteController extends Controller
 
     public function eventoRemoverAtiidade ($id)
     {
-        $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('atividadeId','=',$id)->get();
+        $ativ = Participate_has_Atividade::where('participanteId','=',auth()->user()->id)->where('atividadeId','=',$id)->first();;
 
-        if(Participate_has_Atividade::destroy($id)){
+        if(Participate_has_Atividade::destroy($ativ->id)){
             Session::flash('success', 'Atividade Removida com sucesso!');
             return back();
         }else{
@@ -441,6 +446,41 @@ class ParticipanteController extends Controller
                 $title = 'Tecjr Pagamento Cartão';
                 return view('user/pagamento/evento-pag-cartao', compact('participant', 'key', 'title', 'desc', 'templete', 'evento'));
             }
+        }
+    }
+
+    public function mudarImagem(Request $request){
+
+        $participant = participante::find(Auth::user()->id);
+
+        $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($participant->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
+
+        $img = $request->file('img');
+
+        if(isset($img)){
+            $extencao = $img->getClientOriginalExtension();
+            if($extencao != 'jpg' && $extencao != 'png'){
+                Session::flash('warning','Tipo de imagem invalido!');
+                return back();
+            }
+
+            if($participant->img != '/imagens/user.jpg'){
+                unlink('.'.$participant->img);
+            }
+
+            if( $img->move('./imagens/perfil-user/',$n_nome.'-'.$participant->id.'.'.$extencao)){
+                $participant->img  = '/imagens/perfil-user/'.$n_nome.'-'.$participant->id.'.'.$extencao;
+                $participant->save();
+                Session::flash('success','Atualiado!');
+                return back();
+            }else{
+                Session::flash('warning','Problema tente novamente!');
+                return back();
+            }
+
+        }else{
+            Session::flash('info','Carregue uma imagem!');
+            return back();
         }
     }
 

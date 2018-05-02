@@ -10,9 +10,7 @@ class Noticias extends Model
     protected $fillable = [
         'id',
         'titulo',
-        'subtitulo',
         'descricao',
-        'autor',
         'data',
         'img'
     ];

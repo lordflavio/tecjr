@@ -27,7 +27,7 @@
                                     <label for="cardNumber">
                                         Cartão Número</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="cardNumber" id="cardNumber"
+                                        <input type="number" class="form-control" name="cardNumber" id="cardNumber"
                                                placeholder="Numero de Cartão Valido"
                                                required autofocus/>
                                         <span class="input-group-addon"><i class=" fa fa-credit-card"></i></span>
@@ -99,7 +99,7 @@
 
                                 <div class="form-group col-xs-6 col-md-6 ">
                                     <label class="text-center">Telefone</label>
-                                    <input type="text" name="telefonecard" class="form-control" id="telefone2"
+                                    <input type="text"  name="telefonecard" class="form-control" id="telefone2"
                                            placeholder="(99)9999-9999" required="">
                                 </div>
 

@@ -17,7 +17,7 @@
                             Foto de perfil
                         </div>
                         <div class="profile-usertitle-job" style="padding-bottom: 20px">
-                            <button type="submit" class="btn btn-success center-block"> Mudar Imgaem  </button>
+                            <button type="submit" class="btn btn-success " data-toggle="modal" data-target="#img" class="btn btn-success center-block"> Mudar Imgaem  </button>
                         </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
@@ -75,7 +75,7 @@
 
                                                     <p class="hidden-xs text-justify"> {{ $ins['curso'][$i]->descricao }} </p>
 
-                                                    <small style="margin-top: 8px;" class="pull-right"> {{date("d-m-Y", strtotime($ins['curso'][$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+                                                    <small style="margin-top: 8px;" class="pull-right"> {{date("d/m/Y", strtotime($ins['curso'][$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
 
 
                                                     <p> Situação: </p>
@@ -88,10 +88,12 @@
                                                             {{ $ins['curso'][$i]->situacao }}
 
                                                             </span>
-                                                        <a style="text-decoration: none">
-                                                            <button class="btn  {{ $ins['csf'][$i]->certificado == 2 ? 'btn-danger' : 'btn-success' }} p-buuton"  {{ $ins['curso'][$i]->situacao == 'Finalizado' ? '' : 'disabled' }}  >
-                                                                Gerar Certificado
-                                                            </button>
+                                                        <a href=" {{ $ins['csf'][$i]->certificado == 1 ? '/perfil-user/certificado-curso/'.$ins['curso'][$i]->nome : '#' }}" style="text-decoration: none" target="_blank" >
+                                                          <button class="btn  {{ $ins['csf'][$i]->certificado == 2 ? 'btn-danger' : 'btn-success' }} p-buuton"  {{ $ins['curso'][$i]->situacao == 'Finalizado' ? '' : 'disabled' }}
+                                                                  {{ $ins['csf'][$i]->certificado == 1 ? '' : 'disabled' }}>
+                                                                Gerar Certificado {{$ins['csf'][$i]->getCertificado($ins['csf'][$i]->certificado)}}
+                                                          </button>
+
                                                         </a>
                                                     </p>
 
@@ -113,6 +115,37 @@
                     </section>
 
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="img" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">Atualizar imagem de Perfil</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('perfil-user-mudar-imagem')}}" method="post" enctype="multipart/form-data">
+
+                    {{ method_field('POST')}}
+                    {{ csrf_field() }}
+                    <section>
+                        <div class="col-md-10">
+                            <div class="form-group col-md-offset-1 col-lg-12 ">
+                                <label class="col-md-6 control-label" for="img">Upload Imagem </label>
+                                <input id="img" name="img" class="input-file" type="file">
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

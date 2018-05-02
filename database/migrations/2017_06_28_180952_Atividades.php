@@ -21,6 +21,7 @@ class Atividades extends Migration
             $table->string('convidados');
             $table->string('modalidade',80);
             $table->integer('vagas');
+            $table->integer('horas');
             $table->string('titulo',150);
             $table->date('data');
             $table->string('horario',150);

@@ -62,85 +62,6 @@
                     </div>
                 </div>
             </section>
-            <hr>
-            <section>
-                <div class="row col-md-12">
-                    <h1 class="text-center"> Banes Pricipal </h1>
-                    <hr>
-                    <div class="col-md-4">
-                        <img class="img-responsive img-thumbnail" src="/imagens/baner/01.jpg"  alt="Banner 1">
-                    </div>
-                    <div class="col-md-4">
-                        <img class="img-responsive img-thumbnail" src="/imagens/baner/02.jpg" alt="Banner 2">
-                    </div>
-                    <div class="col-md-4">
-                        <img class="img-responsive img-thumbnail" src="/imagens/baner/03.jpg" alt="Banner 3">
-                    </div>
-
-                    <div class="col-md-12">
-                        <form class="form-horizontal" action="{{route('home.baner')}}" method="POST" enctype="multipart/form-data" style="margin-top: 15px">
-                        {{ method_field('POST')}}
-                        {{ csrf_field() }}
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="img">Substituir</label>
-                                <div class="col-md-4">
-                                    <select id="img" name="img" class="form-control">
-                                        <option value="0">- Escolher número da imagem -</option>
-                                        <option value="/imagens/baner/01">1</option>
-                                        <option value="/imagens/baner/02">2</option>
-                                        <option value="/imagens/baner/03">3</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- File Button -->
-                            <div class="form-group ">
-                                <label class="col-md-4 control-label" for="banner">Upload Imagem</label>
-                                <div class="col-md-4">
-                                    <input id="banner" name="banner" class="input-file" type="file">
-                                </div>
-                            </div>
-
-                            <!-- Button -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="pro"></label>
-                                <div class="col-md-4">
-                                    <button style="width: 150px" id="pro" name="pro" class="btn btn-success btn-success-custom center-block">Enviar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h1 class="text-center">Modal Rapido</h1>
-                <hr>
-                <img class="center-block" src="/imagens/folder.jpg" width="500" alt="FOLDER">
-                <br>
-                <div class="col-md-12">
-                    <form class="form-horizontal" action="{{route('home.folder')}}" method="POST" enctype="multipart/form-data" >
-                        {{ method_field('POST')}}
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="folder">Upload Imagem <small>Recomendado tipo jpg</small></label>
-                            <div class="col-md-4">
-                                <input id="folder" name="folder" class="input-file" type="file">
-                            </div>
-                        </div>
-
-                        <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="pro"></label>
-                            <div class="col-md-4">
-                                <button style="width: 150px" id="pro" name="pro" class="btn btn-success btn-success-custom center-block">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </section>
-
             <br>
         </div>
     </div>
@@ -167,18 +88,6 @@
                                     <span class="fa fa-edit form-control-feedback form-control-feedback-custom"></span>
                                 </div>
 
-                                <div class="form-group col-lg-6 has-feedback">
-                                    <label>Sub Titulo:</label>
-                                    <input type="text" name="subtitulo" class="form-control" id="titulo" value="">
-                                    <span class="fa fa-edit form-control-feedback form-control-feedback-custom"></span>
-                                </div>
-
-                                <div class="form-group col-lg-6 has-feedback">
-                                    <label>Autor:</label>
-                                    <input type="text" name="autor" class="form-control" id="titulo" value="">
-                                    <span class="fa fa-user-circle-o form-control-feedback form-control-feedback-custom"></span>
-                                </div>
-
                                 <div class="form-group col-lg-12 has-feedback ">
                                     <label >Descrição:</label>
                                     <textarea  name="discricao" class="form-control" style="height: 150px"  id="discricao" placeholder="Descrição..."></textarea>
@@ -186,7 +95,7 @@
                                 </div>
 
                                 <div class="form-group col-md-8">
-                                    <label class="col-md-12 control-label" for="img">Upload Imagem: <small> Resolução indicada : 760 X 400 pixels </small></label>
+                                    <label class="col-md-12 control-label" for="img">Upload Imagem: </label>
                                     <input id="img" name="img" class="input-file" type="file"></br>
 
                                 </div>

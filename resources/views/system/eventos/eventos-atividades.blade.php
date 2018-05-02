@@ -36,6 +36,7 @@
                                 <th class="text-center">Palestrantes</th>
                                 <th class="text-center">Local</th>
                                 <th class="text-center">Vagas</th>
+                                <th class="text-center">Lista</th>
                                 <th class="text-center">Edite</th>
                                 <th class="text-center">Delete</th>
                                 </thead>
@@ -51,6 +52,7 @@
                                         <td class="text-center">{{$atividade->palestrante}}</td>
                                         <td class="text-center">{{$atividade->local}}</td>
                                         <td class="text-center" width="50">{{$atividade->vagas}}</td>
+                                        <td class="text-center" width="50"><a href="{{route('home.lista',$atividade->id)}}" target="_blank" data-placement="top" data-toggle="tooltip" title="Lista"><button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list"></span></button></a></td>
                                         <td class="text-center" width="50"><p data-placement="top" data-toggle="tooltip" title="Editar"><button class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="{{'#atividade'.$atividade->id}}" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                                         <td class="text-center" width="50"><a href="{{'/system/evento-atividade/'.$atividade->id.'/'. $evento->id}}" data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
                                     </tr>
@@ -132,6 +134,12 @@
                                                                 <div class="form-group col-lg-5 has-feedback ">
                                                                     <label >Número de Vagas:</label>
                                                                     <input type="text" name="vagas" class="form-control" value="{{$atividade->vagas}}"  id="vagas"  required="">
+                                                                    {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                                                                 </div>
+
+                                                                <div class="form-group col-lg-5 has-feedback ">
+                                                                    <label >Carga horaria</label>
+                                                                    <input type="text" name="horas" class="form-control" value="{{$atividade->horas}}"  id="vagas"  required="">
                                                                     {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                                                                  </div>
 
@@ -425,7 +433,7 @@
                                     <button data-toggle="modal" data-target="#add" class="btn btn-success btn-success-custom" > Add Participante</button>
                                 </div><br>
                                 @if(count($participantes) > 0)
-                                    <div class="table-bordered col-lg-12">
+                                    <div class="table-responsive col-lg-11">
                                         <table id="mytable" class="table">
 
                                             <thead>
@@ -436,7 +444,7 @@
                                             <th class="text-center">Celular</th>
                                             <th class="text-center">Email</th>
                                             <th class="text-center">Certificar</th>
-                                            <th class="text-center">Remover </th>
+                                            {{--<th class="text-center">Remover </th>--}}
 
                                             </thead>
                                             <tbody>
@@ -449,7 +457,7 @@
                                                     <td>{{$participantes['part'][$i]->celular}}</td>
                                                     <td>{{$participantes['user'][$i]->email}}</td>
                                                     <td class="text-center"><a href="/system/evento-participantes-atividades/{{$participantes['part'][$i]->id}}/{{$evento->id}}" data-placement="top" data-toggle="tooltip" title="Certificar"><button class="btn btn-info btn-xs" data-title="Certificar" data-toggle="modal" data-target="#delete" >Certificar</button></a></td>
-                                                    <td class="text-center"><a href="#" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
+                                                    {{--<td class="text-center"><a href="/system/evento-participantes-atividades-remove/{{$participantes['part'][$i]->id}}/{{$evento->id}}" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>--}}
                                                 </tr>
                                             @endfor
                                             </tbody>
@@ -462,7 +470,7 @@
                         </div>
                     </div>
 
-                    </div>
+
 
                     <div id="edite" class="tab-pane fade">
                         <form style="margin-top: 30px" action="{{route('evento.update',$evento->id)}}" method="post" enctype="multipart/form-data">
@@ -524,7 +532,7 @@
 
                                     <div class="form-group col-lg-6 has-feedback ">
                                         <label >Sobre o Evento:</label>
-                                        <textarea  name="sobre" class="form-control" style="height: 100px"  id="sobre" placeholder="Descrição...">{{$evento->sobre}}</textarea>
+                                        <textarea  name="sobre" class="form-control" style="height: 100px"  id="sobre" placeholder="Descrição...">{{$evento->descricao}}</textarea>
                                         {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                                     </div>
 
@@ -568,7 +576,7 @@
                                     
                                     <div class="form-group col-lg-4 has-feedback ">
                                         <label >Valor de Inscricao:</label>
-                                        <input type="text" name="valorInscricao" class="form-control"   id="valorInscricao" >
+                                        <input type="text" name="valorInscricao" class="form-control"  value="{{$evento->valor_inscricao}}"  id="valorInscricao" >
                                         <span class="fa fa-money form-control-feedback form-control-feedback-custom"></span>
                                     </div>
 
@@ -673,8 +681,14 @@
                                 </div>
 
                                 <div class="form-group col-lg-5 has-feedback ">
+                                    <label >Carga horaria</label>
+                                    <input type="text" name="horas" class="form-control"  id="vagas"  required="">
+                                    {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
+                                </div>
+
+                                <div class="form-group col-lg-5 has-feedback ">
                                     <label >Convidados:</label>
-                                    <input type="text" name="convidados" class="form-control"   id="convidados" >
+                                    <input type="text" name="convidados" class="form-control"  id="convidados" >
                                     {{--<span class="fa fa-hourglass-start form-control-feedback form-control-feedback-custom"></span>--}}
                                 </div>
 
@@ -692,6 +706,43 @@
                         <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Modal Ativar Curso --}}
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Adicinar Participantes ao Curso de  {{$evento->titulo}} </h4>
+                </div>
+                <div class="panel-body">
+                    <p> Digite o CPF do Participante </p>
+                    <div class="row">
+                        <form action="{{route('evento-add',$evento->id)}}" method="post">
+                            {{ method_field('POST')}}
+                            {{ csrf_field() }}
+                            <section>
+                                <div class="col-md-10">
+                                    <h3 class="dark-grey">Digite o CPF</h3><br>
+
+                                    <div class="form-group col-lg-7 has-feedback ">
+                                        <label >CPF:</label>
+                                        <input type="text" name="cpf" id="cpf" class="form-control"  >
+                                        {{--<span class="fa fa-link form-control-feedback form-control-feedback-custom"></span>--}}
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <p><button type="submit" class="btn btn-success btn-success-custom "> Buscar  </button></p>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

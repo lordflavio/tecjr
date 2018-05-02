@@ -86,56 +86,56 @@
         </div>
     </section>
 
-    <section id="portfolio-realizados">
-        <div class="container">
+    {{--<section id="portfolio-realizados">--}}
+        {{--<div class="container">--}}
 
-            <div class="row texto">
-                <h1>Eventos realizados</h1>
-                <h2>Alguns eventos realizados</h2>
-            </div>
+            {{--<div class="row texto">--}}
+                {{--<h1>Eventos realizados</h1>--}}
+                {{--<h2>Alguns eventos realizados</h2>--}}
+            {{--</div>--}}
 
-            <div id="owl-demo-portfolio" class="espacamento">
+            {{--<div id="" class="espacamento">--}}
 
-                <!--- EVENTOS REALIZADOS - BLOCO DE IMAGENS E TEXTO -->
-                <div class="item center-block bordas">
-                    <a href="#" target="_blank">
-                        <img src="imagens/combinatividade.png" alt="COMBINATIVIDADE">
-                        <div class="nome-evento"><p>COMBINATIVIDADE 2016</p></div><hr>
-                        <div class="local-evento">
-                            <p class="glyphicon glyphicon-map-marker up-line"><span> UPE - Campus Garanhuns</span></p><br>
-                            <p class="glyphicon glyphicon-calendar line"><span> 20 e 21 de Outubro</span></p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item center-block bordas">
-                    <a href="#" target="_blank">
-                        <img src="imagens/curso.jpg" alt="CURSOS">
-                        <div class="nome-evento"><p>REALIZAÇÃO DE CURSOS (UPE)</p></div><hr>
-                        <div class="local-evento">
-                            <p class="glyphicon glyphicon-map-marker up-line"><span> UPE - Campus Garanhuns</span></p><br>
-                            <p class="glyphicon glyphicon-calendar line"><span> 20 e 21 de Outubro</span></p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item center-block bordas">
-                    <a href="#" target="_blank">
-                        <img src="imagens/Latdic.png" alt="LATIDIC">
-                        <div class="nome-evento"><p>LATDIC (UPE)</p></div><hr>
-                        <div class="local-evento">
-                            <p class="glyphicon glyphicon-map-marker up-line"><span> UPE - Campus Garanhuns</span></p><br>
-                            <p class="glyphicon glyphicon-calendar line"><span> 20 e 21 de Outubro</span></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                {{--<!--- EVENTOS REALIZADOS - BLOCO DE IMAGENS E TEXTO -->--}}
+                {{--<div class="thumbnail  bordas col-lg-4">--}}
+                    {{--<a href="#" target="_blank">--}}
+                        {{--<img src="imagens/combinatividade.png"  alt="COMBINATIVIDADE">--}}
+                        {{--<div class="nome-evento"><p>COMBINATIVIDADE 2016</p></div><hr>--}}
+                        {{--<div class="local-evento">--}}
+                            {{--<p class="glyphicon glyphicon-map-marker up-line"><span> UPE - Campus Garanhuns</span></p><br>--}}
+                            {{--<p class="glyphicon glyphicon-calendar line"><span> 20 e 21 de Outubro</span></p>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+                {{--<div class="thumbnail center-block bordas col-lg-4">--}}
+                    {{--<a href="#" target="_blank">--}}
+                        {{--<img src="imagens/curso.jpg" alt="CURSOS">--}}
+                        {{--<div class="nome-evento"><p>REALIZAÇÃO DE CURSOS (UPE)</p></div><hr>--}}
+                        {{--<div class="local-evento">--}}
+                            {{--<p class="glyphicon glyphicon-map-marker up-line"><span> UPE - Campus Garanhuns</span></p><br>--}}
+                            {{--<p class="glyphicon glyphicon-calendar line"><span> 20 e 21 de Outubro</span></p>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+                {{--<div class="thumbnail center-block bordas col-lg-4">--}}
+                    {{--<a href="#" target="_blank">--}}
+                        {{--<img src="imagens/Latdic.png" alt="LATIDIC">--}}
+                        {{--<div class="nome-evento"><p>LATDIC (UPE)</p></div><hr>--}}
+                        {{--<div class="local-evento">--}}
+                            {{--<p class="glyphicon glyphicon-map-marker up-line"><span> UPE - Campus Garanhuns</span></p><br>--}}
+                            {{--<p class="glyphicon glyphicon-calendar line"><span> 20 e 21 de Outubro</span></p>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
             {{--<div class="btn-port">--}}
                 {{--<button  type="button" id="b-port-left"><i class="glyphicon glyphicon-circle-arrow-left "></i></button>--}}
                 {{--<button  type="button" id="b-port-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></button>--}}
             {{--</div>--}}
 
-        </div>
-    </section>
+        {{--</div>--}}
+    {{--</section>--}}
 
     <section id="empresa-junior">
         <div class="container">

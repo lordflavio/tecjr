@@ -56,7 +56,7 @@ $(document).ready(function() {
 $(document).ready(function(){
     $('#fone').mask('(00)0000-0000');
     $('#whatsapp').mask('(00)00000-0000');
-    $('#telefonecard').mask('(00)00000-0000');
+    $('#telefone2').mask('(00)00000-0000');
     $('#telefone').mask('(00)00000-0000');
     $('#data').mask('00/00/0000');
     $('#card_expiration_month').mask('00');
@@ -95,6 +95,7 @@ $(document).ready(function(){
     // $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
 });
 
+
 function somenteNumeros(num) {
     var er = /[^0-9.]/;
     er.lastIndex = 0;
@@ -110,18 +111,6 @@ $('.float-banner-close').click(function(){
     $("#float-banner").hide();
 });
 //--------------------------------------------
-
-//  Banner Flutuante - MODAL
-jQuery(document).ready(function() {
-    $(window).scroll(function () {
-        set = $(document).scrollTop()+"px";
-        jQuery('#float-banner, #float-banner-close').animate(
-            {top:set},
-            {duration:1000, queue:false}
-        );
-    });
-
-});
 
 
 $(document).ready(function(){
@@ -276,18 +265,18 @@ function combobox() {
     var e = document.getElementById("area");
     var item = e.options[e.selectedIndex].value;
 
-   if(item != '- Selecione -'){
-       var com = document.getElementById("subarea");
-       while (com.length) {
-           com.remove(0);
-       }
+    if (item != '- Selecione -') {
+        var com = document.getElementById("subarea");
+        while (com.length) {
+            com.remove(0);
+        }
 
-   }
+    }
     var comboCidades = document.getElementById("subarea");
-   /*
-    * CIÊNCIAS EXATAS E DA TERRA
-    -----------------------------*/
-    if(item == 'CIÊNCIAS EXATAS E DA TERRA'){
+    /*
+     * CIÊNCIAS EXATAS E DA TERRA
+     -----------------------------*/
+    if (item == 'CIÊNCIAS EXATAS E DA TERRA') {
         var opt0 = document.createElement("option");
         opt0.value = "0";
         opt0.text = "- Selecione -";
@@ -324,7 +313,7 @@ function combobox() {
         opt8.value = "Geociências";
         opt8.text = "Geociências";
         comboCidades.add(opt8, comboCidades.options[8]);
-        var opt9= document.createElement("option");
+        var opt9 = document.createElement("option");
         opt9.value = "Oceanografia";
         opt9.text = "Oceanografia";
         comboCidades.add(opt9, comboCidades.options[9]);
@@ -334,7 +323,7 @@ function combobox() {
     /*
      * CIÊNCIAS BIOLÓGICAS
      -----------------------------*/
-    if(item == 'CIÊNCIAS BIOLÓGICAS') {
+    if (item == 'CIÊNCIAS BIOLÓGICAS') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -412,7 +401,7 @@ function combobox() {
      * ENGENHARIAS
      -----------------------------*/
 
-    if(item == 'ENGENHARIAS') {
+    if (item == 'ENGENHARIAS') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -500,7 +489,7 @@ function combobox() {
      * CIÊNCIAS DA SAÚDE
      -----------------------------*/
 
-    if(item == 'CIÊNCIAS DA SAÚDE') {
+    if (item == 'CIÊNCIAS DA SAÚDE') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -558,7 +547,7 @@ function combobox() {
      * CIÊNCIAS AGRÁRIAS
      -----------------------------*/
 
-    if(item == 'CIÊNCIAS AGRÁRIAS') {
+    if (item == 'CIÊNCIAS AGRÁRIAS') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -606,7 +595,7 @@ function combobox() {
      * CIÊNCIAS SOCIAIS APLICADAS
      -----------------------------*/
 
-    if(item == 'CIÊNCIAS SOCIAIS APLICADAS') {
+    if (item == 'CIÊNCIAS SOCIAIS APLICADAS') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -689,7 +678,7 @@ function combobox() {
      * CIÊNCIAS HUMANAS
      -----------------------------*/
 
-    if(item == 'CIÊNCIAS HUMANAS') {
+    if (item == 'CIÊNCIAS HUMANAS') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -752,7 +741,7 @@ function combobox() {
      * LINGÜÍSTICA, LETRAS E ARTES
      -----------------------------*/
 
-    if(item == 'LINGÜÍSTICA, LETRAS E ARTES') {
+    if (item == 'LINGÜÍSTICA, LETRAS E ARTES') {
 
         var opt0 = document.createElement("option");
         opt0.value = "0";
@@ -775,7 +764,15 @@ function combobox() {
         opt4.text = "Artes";
         comboCidades.add(opt4, comboCidades.options[4]);
     }
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+
 }
+
+
 
 
 

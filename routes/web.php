@@ -15,9 +15,9 @@ Route::get('/', 'ControllerOut@welcome')->name('welcome');
 
 Route::get('/pdf', 'System\CertificationController@test')->name('pdf');
 
-Route::get('/email', function (){
-    return view('contato-envio');
-});
+//Route::get('/email', function (){
+//    return view('teste');
+//});
 
 Route::get('/portifolio', 'ControllerOut@portifolio')->name('portifolio');
 //Route::get('/noticias', 'ControllerOut@noticias')->name('noticias');
@@ -47,11 +47,16 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::match(['get','post'],'/evento-tipo-pagamento/{busca}', 'ParticipanteController@tipoEvento')->name('evento-tipo-pg');
     Route::match(['get','post'],'/evento-pagamento/{tipo}/{busca}', 'ParticipanteController@pagamentoEvento')->name('evento-pagamento');
-  
-  
-  $this->post('pagseguro-getcode', 'PagSeguroController@getCode')->name('pagseguro.code.transparent');
-  $this->post('pagseguro-payment-billet', 'PagSeguroController@billet')->name('pagseguro.billet');
-  $this->post('pagseguro-payment-card', 'PagSeguroController@paymentCard')->name('pagseguro.card');
+
+    Route::get('/perfil-user/certificado-curso/{busca}', 'System\CertificationController@certificadoCurso')->name('perfil-user-certificado-curso');
+    Route::get('/perfil-user/certificado-atividade/{busca}/{id}', 'System\CertificationController@certificadoAtividade')->name('perfil-user-certificado-atividade');
+
+    Route::post('/perfil-user/mudar-imagem/', 'ParticipanteController@mudarImagem')->name('perfil-user-mudar-imagem');
+
+
+    $this->post('pagseguro-getcode', 'PagSeguroController@getCode')->name('pagseguro.code.transparent');
+    $this->post('pagseguro-payment-billet', 'PagSeguroController@billet')->name('pagseguro.billet');
+    $this->post('pagseguro-payment-card', 'PagSeguroController@paymentCard')->name('pagseguro.card');
   
 
 });
@@ -74,6 +79,16 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
     Route::post('/system/noticias','System\HomeController@noticias')->name('home.noticias');
     Route::post('/system/noticias-d/{id}','System\HomeController@deleteNoticia')->name('home.noticias.delete');
     Route::post('/system/folder/','System\HomeController@folder')->name('home.folder');
+
+    Route::get('/system/atividade-lista/{id}','System\CertificationController@lista')->name('home.lista');
+
+    Route::get('/system/transacoes/','System\HomeController@trasacoes')->name('home.transacoes');
+
+    Route::post('/system/transacoes-periodo/','System\HomeController@trasacoesperiodo')->name('home.transacoes-periodo');
+
+    Route::post('/system/transacoes/','System\HomeController@trasacoes2')->name('home.transacoes2');
+
+
 
 //-------------------------------------------- CURSO CONTROLLER --------------------------------------------------------------
 
@@ -117,8 +132,12 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
 
     Route::get('/system/evento-palestrante-delete/{id}/{id2}','System\EventoController@palestranteDelete')->name('evento.patrocinio-delete');
 
-    Route::get('/system/evento-certificar/{id}/{id2}','System\EventoController@certificar')->name('evento.certificar');
+    Route::post('/system/evento-certificar/{id}/{id2}','System\EventoController@certificar')->name('evento.certificar');
     Route::get('/system/evento-participantes-atividades/{id}/{id2}','System\EventoController@partAtividade')->name('evento.part-atividades');
+    Route::get('/system/evento-participantes-atividades-remove/{id}/{id2}','System\EventoController@remove')->name('evento.remove');
+
+    Route::match(['get','post'],'/system/evento-add-participante/{id}','System\EventoController@addParticipante')->name('evento-add');
+    Route::match(['get','post'],'/system/evento-add-part/{id}/{idP}','System\EventoController@adicionar')->name('evento-adicionar');
 
 
 
@@ -126,6 +145,8 @@ Route::group(['middleware' => ['role:administrator'],['auth']], function() {
 
     Route::resource('/system/admin','System\AdminController');
     Route::match(['get','post'],'/system/admin-perfil/{id}','System\AdminController@update')->name('perfil.update');
+    Route::post('atualizar-senha-admin', 'System\AdminController@passwordUpdate')->name('password.update-admin');
+
 
 //    Route::resource('/system/home','System\HomeController');
 });

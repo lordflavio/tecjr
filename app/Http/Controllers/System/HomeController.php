@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\System;
 
+use App\Model\curso;
+use App\Model\Curso_inscritos;
+use App\Model\evento;
+use App\Model\Evento_inscritos;
 use App\Model\Noticias;
+use App\Model\participante;
 use App\Model\Patrocinio;
+use App\Model\Transacoes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -174,20 +180,18 @@ class HomeController extends Controller
                 return back();
             }
 
-            if($ideal_size[0] != 760 && $ideal_size[1] != 400){
-                Session::flash('warning','Tamanho da imagem invalido!');
-                return back();
-            }
+//            if($ideal_size[0] != 760 && $ideal_size[1] != 400){
+//                Session::flash('warning','Tamanho da imagem invalido!');
+//                return back();
+//            }
 
             $n_nome =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($request->titulo)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
 
 
             $noticia = new Noticias();
             $noticia->titulo = $request->titulo;
-            $noticia->subtitulo = $request->subtitulo;
             $noticia->descricao = $request->discricao;
-            $noticia->autor = $request->autor;
-            $noticia->data = date('d/m/y');
+            $noticia->data = date('Y-m-d');
             $noticia->img = '/imagens/noticias/'.$n_nome.'.'.$extencao;
 
 
@@ -244,6 +248,157 @@ class HomeController extends Controller
             return back();
         }
     }
+
+
+    public function trasacoes (){
+
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr Admin';
+
+        $dias = 7;
+
+        $date1 = date('Y-m-d', strtotime('-7 days', strtotime(date('Y-m-d'))));
+        $date2 = date('Y-m-d');
+
+        $trans = Transacoes::where('date','>=',$date1)->where('date','<=',$date2)->get();
+
+       // dd($trans);
+      //  dd($date2);
+
+        $tr = array();
+
+        for ($i = 0; $i < count($trans); $i++){
+            $tr['part'][$i] = participante::where('id','=',$trans[$i]->user_id)->first();
+            $tr['tr'][$i] = $trans[$i];
+
+            $t = Evento_inscritos::where('transacaoId','=',$trans[$i]->id)->first();
+            $t2 = Curso_inscritos::where('transacaoId','=',$trans[$i]->id)->first();
+
+            if(isset($t)){
+                $tr['cev'][$i] = evento::where('id','=',$t->eventosId)->first();
+            }elseif (isset($t2)){
+                $tr['cev'][$i] = curso::where('id','=',$t2->cursosId)->first();
+            }
+
+            $t = null;
+            $t2 = null;
+
+
+        }
+
+        //dd($tr);
+
+        return view('system/trasacoes',compact('admin','title','tr','dias'));
+    }
+
+
+    public function trasacoes2 (Request $request){
+
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr Admin';
+
+        $dias = $request->dias;
+
+        $date1 = date('Y-m-d', strtotime('-'.$request->dias.' days', strtotime(date('Y-m-d'))));
+        $date2 = date('Y-m-d');
+
+        $trans = Transacoes::where('date','>=',$date1)->where('date','<=',$date2)->get();
+
+       // dd($trans);
+      //  dd($date2);
+
+        $tr = array();
+
+        for ($i = 0; $i < count($trans); $i++){
+            $tr['part'][$i] = participante::where('id','=',$trans[$i]->user_id)->first();
+            $tr['tr'][$i] = $trans[$i];
+
+            $t = Evento_inscritos::where('transacaoId','=',$trans[$i]->id)->first();
+            $t2 = Curso_inscritos::where('transacaoId','=',$trans[$i]->id)->first();
+
+            if(isset($t)){
+                $tr['cev'][$i] = evento::where('id','=',$t->eventosId)->first();
+            }elseif (isset($t2)){
+                $tr['cev'][$i] = curso::where('id','=',$t2->cursosId)->first();
+            }
+
+            $t = null;
+            $t2 = null;
+        }
+
+        //dd($tr);
+
+        return view('system/trasacoes',compact('admin','title','tr','dias'));
+    }
+
+
+    public function trasacoesperiodo (Request $request){
+
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr Admin';
+
+        //$dias = $request->dias;
+
+        $dias = $request->dias;
+
+        $date1 = date('Y-m-d', strtotime('-'.$request->dias.' days', strtotime(date('Y-m-d'))));
+        $date2 = date('Y-m-d');
+
+        $trans = Transacoes::whereBetween('date', [$date1, $date2])->get();
+
+       //dd($trans);
+      //  dd($date1);
+
+        $tr = array();
+
+        $total = 0;
+
+        for ($i = 0; $i < count($trans); $i++){
+            $tr['part'][$i] = participante::where('id','=',$trans[$i]->user_id)->first();
+            $tr['tr'][$i] = $trans[$i];
+
+            $t = Evento_inscritos::where('transacaoId','=',$trans[$i]->id)->first();
+            $t2 = Curso_inscritos::where('transacaoId','=',$trans[$i]->id)->first();
+
+            if(isset($t)){
+                $tr['cev'][$i] = evento::where('id','=',$t->eventosId)->first();
+
+                if($tr['tr'][$i]->payment_method < 7){
+                    $cust  =  (float) str_replace(".", "", $tr['cev'][$i]->valor_inscricao);
+                    $total += ($cust - ($cust * 0.04)) - 0.40;
+                }else{
+                    $total  +=  (float) str_replace(".", "", $tr['cev'][$i]->valor_inscricao);
+                }
+
+
+            }elseif (isset($t2)){
+                $tr['cev'][$i] = curso::where('id','=',$t2->cursosId)->first();
+                if($tr['tr'][$i]->payment_method < 7){
+                    $cust  =  (float) str_replace(".", "",  $tr['cev'][$i]->valorInscricao);
+
+                    $total += ($cust - ($cust * 0.04)) - 0.40;
+                }else{
+                    $cust  =  (float) str_replace(".", "",  $tr['cev'][$i]->valorInscricao);
+                    $total += $cust;
+                }
+            }
+
+            $t = null;
+            $t2 = null;
+
+
+        }
+
+       // dd($date1);
+
+        return \PDF::loadView('system/faturamento',compact('admin','title','tr','dias','total','date1','date2'))
+            ///Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+            ->setPaper('a4','landscape')->stream();
+
+        //return view('system/faturamento',compact('admin','title','tr','dias','total','date1','date2'));
+    }
+
+
 
 
 }

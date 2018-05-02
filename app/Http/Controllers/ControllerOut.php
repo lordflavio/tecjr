@@ -26,7 +26,7 @@ class ControllerOut extends Controller
     {
 
         $patrocinio = Patrocinio::all();
-        $noticias = Noticias::all();
+        $noticias = Noticias::paginate(4);
         $gestao = Admin::all();
 
         $cursos = curso::orderBy('id', 'desc')->get();
@@ -37,7 +37,7 @@ class ControllerOut extends Controller
         $key = " Evento, Tecjr, UPE, Universidade de Pernabuco, Eventos Gratuido, Palestras, Mesas Redondas, Minicursos, Inscrição, Empresa Jr, Consutoria, Noticias UPE, Tecjr";
         $desc ="A Tecnologia, Educação e Consultoria Júnior da Universidade de Pernambuco (UPE), é uma associação civil sem fins lucrativos e com prazo de duração indeterminado, formada pelos alunos de graduação do Curso de Licenciatura em Computação da Universidade de Pernambuco (UPE).";
         $templete = 0;
-        
+
         if (Auth::Guest()) {
             $templete = 1;
             return view('/welcome', compact('patrocinio', 'noticias', 'gestao', 'cursos', 'evento', 'title', 'key', 'desc', 'templete'));
@@ -46,9 +46,11 @@ class ControllerOut extends Controller
             if (!empty(Admin::find(Auth::user()->id))) {
                 $templete = 1;
                 return view('/welcome', compact('patrocinio', 'noticias', 'gestao', 'cursos', 'evento', 'title', 'key', 'desc', 'templete'));
+
             } else {
                 $participant = participante::find(Auth::user()->id);
                 return view('/welcome', compact('patrocinio', 'noticias', 'gestao', 'cursos', 'evento', 'title', 'key', 'desc', 'templete', 'participant'));
+
             }
         }
     }

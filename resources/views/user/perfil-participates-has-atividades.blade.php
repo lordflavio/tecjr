@@ -17,7 +17,7 @@
                                 Foto de perfil
                             </div>
                             <div class="profile-usertitle-job" style="padding-bottom: 20px">
-                                <button type="submit" class="btn btn-success center-block"> Mudar Imgaem  </button>
+                                <button type="submit" class="btn btn-success " data-toggle="modal" data-target="#img" class="btn btn-success center-block"> Mudar Imgaem  </button>
                             </div>
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
@@ -58,7 +58,7 @@
                                 <div class="container-pad" id="property-listings">
                                     <div class="row">
                                         @if(count($ativIns) > 0)
-                                            @for($i = 0; $i < count($ativIns); $i++)
+                                            @for($i = 0; $i < count($ativIns['atv']); $i++)
                                                 <div class="col-sm-6 col-lg-6" >
                                                     <!-- Begin Listing: 609 W GRAVERS LN-->
                                                     <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
@@ -71,22 +71,27 @@
                                                             <div class="media-body fnt-smaller">
                                                                 <a href="#" target="_parent"></a>
 
-                                                                <h4 style="color: black; font-weight: 700;" class="media-heading"> <b>Tema :</b> {{($ativIns[$i]->titulo. '-' . $ativIns[$i]->modalidade)}} </h4>
+                                                                <h5 style="color: black; font-weight: 700;" class="media-heading"> <b>Tema :</b> {{($ativIns['atv'][$i]->titulo. '-' . $ativIns['atv'][$i]->modalidade)}} </h5>
 
                                                                 <p class="hidden-xs text-justify">
-                                                                    <b>Horario: {{$ativIns[$i]->horario}}
-                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d/m/Y", strtotime($ativIns[$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
+                                                                    <b>Horario: {{$ativIns['atv'][$i]->horario}}
+                                                                        <small style="margin-top: 8px;" class="pull-right"> {{date("d/m/Y", strtotime($ativIns['atv'][$i]->data))}} <i class="fa fa-calendar-check-o" aria-hidden="true"></i> </small>
                                                                     </b><br>
-                                                                    <b>Area :</b> {{($ativIns[$i]->area)}} <br>
-                                                                    <b>Palestrante :</b> {{($ativIns[$i]->palestrante)}} <br>
-                                                                    <b>Coordenação :</b> {{($ativIns[$i]->cordenacao)}}  <br>
-                                                                    <b>Local:</b>{{$ativIns[$i]->local}}<br>
+                                                                    <b>Area :</b> {{($ativIns['atv'][$i]->area)}} <br>
+                                                                    <b>Palestrante :</b> {{($ativIns['atv'][$i]->palestrante)}} <br>
+                                                                    <b>Coordenação :</b> {{($ativIns['atv'][$i]->cordenacao)}}  <br>
+                                                                    <b>Local:</b>{{$ativIns['atv'][$i]->local}}<br>
                                                                 </p>
 
                                                                 <hr>
                                                                 <p class="text-center">
-                                                                    <a href="{{route('perfil-user-evento-atividade-remove',$ativIns[$i]->id)}}" style="text-decoration: none">
-                                                                        <button class="btn btn-danger p-buuton p-buuton-custom"> Remover essa Atividade </button>
+                                                                    <a href="{{route('perfil-user-evento-atividade-remove',$ativIns['atv'][$i]->id)}}" style="text-decoration: none">
+                                                                        <button class="btn btn-danger p-buuton p-buuton-custom"> Remover </button>
+                                                                    </a>
+                                                                    <a  href="{{ $ativIns['crf'][$i]->certificado == 1 ? '/perfil-user/certificado-atividade/'.$ev->nome.'/'.$ativIns['atv'][$i]->id : '#' }}" style="text-decoration: none"  target="_blank">
+                                                                      <button class="btn  {{ $ativIns['crf'][$i]->certificado == 2 ? 'btn-danger' : 'btn-success' }}  p-buuton-custom"  {{ $ativIns['crf'][$i]->certificado != 1 ? 'disabled' : '' }}  >
+                                                                         Gerar Certificado: {{$ativIns['crf'][$i]->getCertificado($ativIns['crf'][$i]->certificado)}}
+                                                                      </button>
                                                                     </a>
                                                                 </p>
 
@@ -111,4 +116,35 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="img" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">Atualizar imagem de Perfil</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('perfil-user-mudar-imagem')}}" method="post" enctype="multipart/form-data">
+
+                    {{ method_field('POST')}}
+                    {{ csrf_field() }}
+                    <section>
+                        <div class="col-md-10">
+                            <div class="form-group col-md-offset-1 col-lg-12 ">
+                                <label class="col-md-6 control-label" for="img">Upload Imagem </label>
+                                <input id="img" name="img" class="input-file" type="file">
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

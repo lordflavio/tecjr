@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container">
+    <img class="col-md-offset-4 img-responsive" src="{{'/imagens/logo1.png'}}" width="380"  alt="LOGO">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading">Redefinir Senha </div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -34,7 +35,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                    Enviar o link de redefinição de senha
                                 </button>
                             </div>
                         </div>

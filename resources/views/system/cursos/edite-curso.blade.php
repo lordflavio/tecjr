@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="form-group col-lg-4 has-feedback ">
                                         <label >Valor de Inscricao:</label>
-                                        <input type="text" name="valorInscricao" class="form-control"  value="{{$curso->valorInscricao}}"  id="valorInscricao" placeholder="R$: 00,00">
+                                        <input type="text" name="valorInscricao" class="form-control"  value="{{$curso->valorInscricao}}"  id="valorInscricao">
                                         <span class="fa fa-money form-control-feedback form-control-feedback-custom"></span>
                                     </div>
                                     <div class="form-group col-lg-2 has-feedback ">
@@ -148,72 +148,69 @@
 
                     <div id="inscritos" class="tab-pane fade">
                         <br>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6" style="margin-bottom: 20px">
-                                    <button data-toggle="modal" data-target="#add" class="btn btn-success btn-success-custom" > Add Participante</button>
-                                </div><br>
-                                @if(count($participantes) > 0)
-                                    <div class="table-bordered col-lg-12">
-                                        <table id="mytable" class="table">
 
-                                            <thead>
-                                            <th class="text-center">Img</th>
-                                            <th class="text-center">Nome</th>
-                                            <th class="text-center">CPF</th>
-                                            <th class="text-center">Sexo</th>
-                                            <th class="text-center">Celular</th>
-                                            <th class="text-center">Email</th>
-                                            <th class="text-center">Certificar Participante</th>
-                                            <th class="text-center">Remover </th>
+                        <div class="col-md-6" style="margin-bottom: 20px">
+                            <button data-toggle="modal" data-target="#add" class="btn btn-success btn-success-custom" > Add Participante</button>
+                        </div><br>
+                        @if(count($participantes) > 0)
+                            <div class="table-bordered col-lg-12">
+                                <table id="mytable" class="table">
 
-                                            </thead>
-                                            <tbody>
-                                            @for($i = 0; $i < count($participantes['part']); $i++)
-                                                <tr>
-                                                    <td><img src="{{$participantes['part'][$i]->img}}" width="50" alt="Participante"></td>
-                                                    <td>{{$participantes['part'][$i]->nome}}</td>
-                                                    <td>{{$participantes['part'][$i]->cpf}}</td>
-                                                    <td>{{$participantes['part'][$i]->sexo}}</td>
-                                                    <td>{{$participantes['part'][$i]->celular}}</td>
-                                                    <td>{{$participantes['user'][$i]->email}}</td>
+                                    <thead>
+                                    <th class="text-center">Img</th>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">CPF</th>
+                                    <th class="text-center">Sexo</th>
+                                    <th class="text-center">Celular</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Certificar Participante</th>
+                                    {{--<th class="text-center">Remover </th>--}}
 
-                                                    <td>
-                                                        @if($participantes['crf'][$i]->certificado == 0)
-                                                        <form action="/system/curso-certificar/{{$curso->id}}/{{$participantes['part'][$i]->id}}" method="post" class="col-md-offset-2">
-                                                            {{ method_field('POST')}}
-                                                            {{ csrf_field() }}
-                                                            <div class="form-group col-lg-10 has-feedback">
+                                    </thead>
+                                    <tbody>
+                                    @for($i = 0; $i < count($participantes['part']); $i++)
+                                        <tr>
+                                            <td><img src="{{$participantes['part'][$i]->img}}" width="50" alt="Participante"></td>
+                                            <td>{{$participantes['part'][$i]->nome}}</td>
+                                            <td>{{$participantes['part'][$i]->cpf}}</td>
+                                            <td>{{$participantes['part'][$i]->sexo}}</td>
+                                            <td>{{$participantes['part'][$i]->celular}}</td>
+                                            <td>{{$participantes['user'][$i]->email}}</td>
 
-                                                                <select id="crf" name="crf" class="form-control" required="">
-                                                                    <option value="0">Em espera</option>
-                                                                    <option value="1">Confirmado</option>
-                                                                    <option value="2">Negado</option>
-                                                                </select>
-                                                            </div>
-                                                            <div>
-                                                                <p style="margin-left: 20px" data-placement="top" data-toggle="tooltip" title="Certificar"><button type="submit" class="btn btn-primary btn-xs" data-title="certificar">Certificar Participante</button></p>
-                                                            </div>
-                                                        </form>
-                                                        @else
-                                                            <p class="text-center" data-placement="top" data-toggle="tooltip" title="{{$participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado)}}"><a type="button" class="btn {{$participantes['crf'][$i]->getLabel($participantes['crf'][$i]->certificado)}} btn-xs" data-title="certificar">{{$participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado)}}</a></p>
-                                                        @endif
-                                                    </td>
-                                                    <td><a href="/system/curso-excluir-participante/{{$participantes['part'][$i]->id}}/{{$curso->id}}" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>
-                                                </tr>
-                                            @endfor
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                @else
-                                    <h4 class="text-center">Não há Inscristos no momento </h4>
-                                @endif
-                                </div>
+                                            <td>
+                                                @if($participantes['crf'][$i]->certificado != 1)
+                                                    <form action="/system/curso-certificar/{{$curso->id}}/{{$participantes['part'][$i]->id}}" method="post" class="col-md-offset-2">
+                                                        {{ method_field('POST')}}
+                                                        {{ csrf_field() }}
+                                                        <div class="form-group  has-feedback">
+
+                                                            <select id="crf" name="crf" class="form-control" required="">
+                                                                <option value="0">Em espera</option>
+                                                                <option value="1">Confirmado</option>
+                                                                <option value="2">Negado</option>
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <p  data-placement="top" data-toggle="tooltip" title="Certificar"><button type="submit" class="btn btn-primary btn-xs" data-title="certificar">{{$participantes['crf'][$i]->certificado == 0 ? 'Certificar Paticipante' : 'Autorizar '. $participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado) }} </button></p>
+                                                        </div>
+                                                    </form>
+                                                @else
+                                                    <p class="text-center" data-placement="top" data-toggle="tooltip" title="{{$participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado)}}"><a type="button" class="btn {{$participantes['crf'][$i]->getLabel($participantes['crf'][$i]->certificado)}} btn-xs" data-title="certificar">{{$participantes['crf'][$i]->getCertificado($participantes['crf'][$i]->certificado)}}</a></p>
+                                                @endif
+                                            </td>
+                                            {{--<td><a href="/system/curso-excluir-participante/{{$participantes['part'][$i]->id}}/{{$curso->id}}" data-placement="top" data-toggle="tooltip" title="Remover"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span style="margin-left: 4px" class="glyphicon glyphicon-trash"></span></button></a></td>--}}
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                 </div>
+                        @else
+                            <h4 class="text-center">Não há Inscristos no momento </h4>
+                        @endif
+                    </div>
+                </div>
             </div>
-       </div>
+        </div>
     </div>
     </br>
 

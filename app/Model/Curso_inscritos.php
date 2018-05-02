@@ -22,6 +22,7 @@ class Curso_inscritos extends Model
             0 => 'Em espera',
             1 => 'Confirmado',
             2 => 'Negado',
+            3 => '2º Via',
         ];
         
         return $A[$c];

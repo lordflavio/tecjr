@@ -79,7 +79,7 @@ class CursosController extends Controller
 
                 $curso->save();
 
-                if( $img->move(public_path().'/imagens/cursos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+                if( $img->move('./imagens/cursos/',$n_nome.'-'.$n_date.'.'.$extencao)){
                     Session::flash('success','Novo curso registrado!');
                     return redirect(route('curso.index'));
                 }else{
@@ -155,7 +155,7 @@ class CursosController extends Controller
         $curso = curso::find($id);
 
         $curso->nome = $n_nome;
-        $curso->valorInscricao = "R$ ".$request->valorInscricao;
+        $curso->valorInscricao = $request->valorInscricao;
         $curso->horario = $request->horario;
         $curso->titulo = $request->titulo;
         $curso->duracao = $request->duracao;
@@ -179,7 +179,7 @@ class CursosController extends Controller
 
             unlink(public_path().$curso->img);
 
-            if( $img->move(public_path().'/imagens/cursos/',$n_nome.'-'.$n_date.'.'.$extencao)){
+            if( $img->move('./imagens/cursos/',$n_nome.'-'.$n_date.'.'.$extencao)){
                 $curso->img  = '/imagens/cursos/'.$n_nome.'-'.$n_date.'.'.$extencao;
                 $curso->save();
                 Session::flash('update','Atualiado!');
@@ -292,13 +292,13 @@ class CursosController extends Controller
 
             $object = curso::find($id);
 
-            if($tr->newTransacaoFree($object, uniqid(date('YmdHis')), uniqid(date('YmdHis')), 1, 7, 1,$idP)){
+            $tr->newTransacaoFree($object, uniqid(date('YmdHis')), uniqid(date('YmdHis')), 1, 7, 1,$idP);
                 Session::flash('success','Participante Adicionado');
                 return redirect()->route('curso.show',$id);
-            }else{
+
                 Session::flash('warning','Problema ao adcionar, Tente novamente');
                 return redirect()->route('curso.show',$id);
-            }
+
         }
 
 

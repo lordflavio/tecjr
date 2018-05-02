@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System;
 
 use App\Model\atividade;
 use App\Model\evento;
+use App\Model\Transacoes;
 use App\Model\Participate_has_Atividade;
 use App\User;
 use App\Model\participante;
@@ -175,7 +176,7 @@ class EventoController extends Controller
         $evento->cep = $request->cep;
         $evento->email = $request->email;
         $evento->fone = $request->fone;
-        $evento->sobre = $request->sobre;
+        $evento->descricao = $request->sobre;
         $evento->descIns = $request->descIns;
         $evento->map = $request->map;
 
@@ -205,7 +206,7 @@ class EventoController extends Controller
 
             $n_date =  strtolower( mb_ereg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($evento->dateInicioEx)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")));
 
-            unlink(public_path().$evento->img);
+            unlink('.'.$evento->img);
 
             $evento->img  = '/imagens/eventos/'.$n_nome.'-'.$n_date.'.'.$extencao;
 
@@ -213,7 +214,7 @@ class EventoController extends Controller
 
                 $evento->save();
 
-                Session::flash('update','Evento Atualizado');
+                Session::flash('success','Evento Atualizado');
                 return redirect(route('evento.show',$id));
             }else{
                 Session::flash('warning','Problema no cadastro!');
@@ -222,7 +223,7 @@ class EventoController extends Controller
 
         }else{
             $evento->save();
-            Session::flash('update','Evento Atualizado');
+            Session::flash('success','Evento Atualizado');
             return redirect(route('evento.show',$id));
         }
     }
@@ -469,11 +470,87 @@ class EventoController extends Controller
 
         $evento = evento::find($id2);
 
-        $atvP = Participate_has_Atividade::where('participanteId','=',$id)->where('eventosId','=',$id2)->get();
+        $atv = Participate_has_Atividade::where('participanteId','=',$id)->where('eventosId','=',$id2)->get();
+
+        $p = participante::find($id);
+
+        $atvP = array();
+
+        for($i = 0; $i < count($atv); $i++){
+            $atvP['atv'][$i] = atividade::where('id','=',$atv[$i]->atividadeId)->first();
+            $atvP['atvp'][$i] = $atv[$i];
+        }
 
         $title = 'Tecjr Eventos: ' . $evento->nome;
-        return view('system/eventos/certificar-atividade', compact('evento','title','admin','atvP'));
+        return view('system/eventos/certificar-atividade', compact('evento','title','admin','atvP','p'));
 
     }
 
+    public function certificar($id,$id2, Request $request){
+
+        $atv = Participate_has_Atividade::where('participanteId','=',$id)->where('atividadeId','=',$id2)->get()->first();;
+
+        $atv->certificado = $request->crf;
+
+        if($atv->save()){
+            Session::flash('success','Atividade  Certificada!');
+            return back();
+        }else{
+            Session::flash('warning','Problema, Tente novamente');
+            return back();
+        }
+    }
+
+    public function remove ($id, $id2){
+
+        Evento_inscritos::destroy(Evento_inscritos::where('participanteId','=',$id)->first()->id);
+
+        $p = Participate_has_Atividade::where('participanteId','=',$id)->where('eventosId','=',$id2)->get();
+
+        for ($i =0; $i , count($p); $i++){
+            Participate_has_Atividade::destroy($p[$i]->id);
+        }
+
+        Session::flash('success','Participante Removido!');
+        return back();
+    }
+
+    public function addParticipante ($id, Request $request){
+
+        $evento = evento::find($id);
+        $admin = Admin::find( Auth::user()->id);
+        $title = 'Tecjr Curso Add Participante  '.$evento->titulo;
+
+        $participante =  participante::where('cpf','=',$request->cpf)->first();
+
+        if(isset($participante->id)){
+            return view('system/eventos/even-add-participante', compact('admin', 'title', 'evento','participante'));
+        }else{
+            Session::flash('warning','Participante Não Encontrado!');
+            return redirect()->route('evento.show',$id);
+        }
+
+
+    }
+
+    public function adicionar ($id, $idP)
+    {
+
+        $evenIs = Evento_inscritos::where('participanteId', '=', $idP)->first();
+
+        if (isset($evenIs)) {
+            Session::flash('info', 'Úsuario já inscrito');
+            return redirect()->route('evento.show', $id);
+        } else {
+            $tr = new Transacoes();
+
+            $object = evento::find($id);
+
+            $tr->newTransacaoFree($object, uniqid(date('YmdHis')), uniqid(date('YmdHis')), 1, 7, 2, $idP);
+
+            Session::flash('success', 'Participante Adicionado');
+            return redirect()->route('evento.show', $id);
+        }
+
+    }
 }

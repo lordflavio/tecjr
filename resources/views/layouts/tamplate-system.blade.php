@@ -16,6 +16,7 @@
     {{--<link href="{{asset('assets/myCss/toastr.min.css')}}" rel="stylesheet">--}}
     <link href="{{asset('bootstrap-3/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -38,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('home.transacoes')}}">
                         <span class="sidebar-icon"><i class="fa fa-usd"></i></span>
                         <span class="sidebar-title">Ganhos</span>
                     </a>
@@ -49,12 +50,12 @@
                         <span class="sidebar-title">Cursos</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span class="sidebar-icon"><i class="fa fa-address-book"></i></span>
-                        <span class="sidebar-title">Inscritos</span>
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#">--}}
+                        {{--<span class="sidebar-icon"><i class="fa fa-address-book"></i></span>--}}
+                        {{--<span class="sidebar-title">Inscritos</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
 
                 <li>
                     <a href="{{route('evento.index')}}">
@@ -63,18 +64,18 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="sidebar-icon"><i class="fa fa-graduation-cap"></i></span>
-                        <span class="sidebar-title">Certificados</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="sidebar-icon"><i class="fa fa-pie-chart"></i></span>
-                        <span class="sidebar-title">Extenção</span>
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#">--}}
+                        {{--<span class="sidebar-icon"><i class="fa fa-graduation-cap"></i></span>--}}
+                        {{--<span class="sidebar-title">Certificados</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">--}}
+                        {{--<span class="sidebar-icon"><i class="fa fa-pie-chart"></i></span>--}}
+                        {{--<span class="sidebar-title">Extenção</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
             </ul>
         </aside>
     </div>
@@ -206,6 +207,8 @@
 <script src="{{asset('bootstrap-3/js/bootstrap.min.js' )}}"></script>
 <script src="{{asset('js/jquery.mask.js' )}}"></script>
 <script src="{{asset('js/myjs.js' )}}"></script>
+
+
 
 
 <script>

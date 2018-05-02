@@ -401,7 +401,7 @@
                 <div class="profile-sidebar">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img src="{{($participant->img == "") ? '/imagens/user.jpg' : $participant->img }}" class="img-responsive" alt="">
+                        <img src="{{($participant->img == "") ? '/imagens/user.jpg' : $participant->img }}" class="img-responsive"  alt="">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
@@ -410,7 +410,7 @@
                             Foto de perfil
                         </div>
                         <div class="profile-usertitle-job" style="padding-bottom: 20px">
-                            <button type="submit" class="btn btn-success center-block"> Mudar Imgaem  </button>
+                            <button type="submit" class="btn btn-success " data-toggle="modal" data-target="#img" class="btn btn-success center-block"> Mudar Imgaem  </button>
                         </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
@@ -611,50 +611,85 @@
                                 </div>
 
                             </form>
+                            </section>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-                        
-                        <div class="modal fade" id="senha" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title text-center">Modificar Senha</h3>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form role="form" method="POST" action="{{ route('password.update') }}">
-                                        {{ csrf_field() }}
-                                        <div class="modal-body">
-                                            <input type="text" name="type" style="display: none;" class="form-control" id="type" value="user">
-                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} input-group">
-                                                <div>
-                                                    <input id="password" type="password" class="form-control" name="password" placeholder="Senha: Min 6 caracteres" required="">
 
-                                                    @if ($errors->has('password'))
-                                                    <span class="help-block">
+<div class="modal fade" id="senha" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">Modificar Senha</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form role="form" method="POST" action="{{ route('password.update') }}">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <input type="text" name="type" style="display: none;" class="form-control" id="type" value="user">
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} input-group">
+                        <div>
+                            <input id="password" type="password" class="form-control" name="password" placeholder="Senha: Min 6 caracteres" required="">
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
                                                         <strong>{{ $errors->first('password') }}</strong>
                                                     </span>
-                                                    @endif
-                                                </div>
-                                                <div class="input-group-addon"><i class="fa fa-expeditedssl " aria-hidden="true"></i></div>
-                                            </div>
+                            @endif
+                        </div>
+                        <div class="input-group-addon"><i class="fa fa-expeditedssl " aria-hidden="true"></i></div>
+                    </div>
 
-                                            <div class="form-group input-group">
-                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Senha" required="">
-                                                <div class="input-group-addon"><i class="fa fa-expeditedssl " aria-hidden="true"></i></div>
-                                            </div>  
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="form-group input-group">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Senha" required="">
+                        <div class="input-group-addon"><i class="fa fa-expeditedssl " aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="img" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">Atualizar imagem de Perfil</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{route('perfil-user-mudar-imagem')}}" method="post" enctype="multipart/form-data">
+
+                {{ method_field('POST')}}
+                {{ csrf_field() }}
+                    <section>
+                        <div class="col-md-10">
+                            <div class="form-group col-md-offset-1 col-lg-12 ">
+                                <label class="col-md-6 control-label" for="img">Upload Imagem </label>
+                                <input id="img" name="img" class="input-file" type="file">
                             </div>
                         </div>
+                    </section>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 @endsection

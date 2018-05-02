@@ -161,4 +161,19 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function passwordUpdate(Request $request)
+    {
+        $this->validate($request, ['password' => 'required|string|min:6|confirmed']);
+
+        $update = auth()->user()->updatePassword($request->password);
+
+        if( $update ){
+            Session::flash('success', 'Senha: atualizada Sucesso!');
+            return back();
+        }else{
+            Session::flash('warning', 'Falha ao atualizar!');
+            return back();
+        }
+    }
 }

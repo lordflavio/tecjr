@@ -16,12 +16,9 @@ class Noticias extends Migration
         Schema::create('noticias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->string('subtitulo');
             $table->text('descricao');
-            $table->string('autor');
             $table->date('data');
             $table->string('img');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

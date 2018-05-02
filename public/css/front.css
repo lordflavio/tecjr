@@ -146,95 +146,43 @@ header #custom-bootstrap-menu{
 }
 /* Underline From Left */
 
-
-#inicial{
-    background-color: #2b669a;
-    height: auto;
+figure {
     width: 100%;
+    min-width: 320px;
+}
+
+video {
+    width: 100%;
+    height: auto;
     margin-top: -20px;
 }
 
-
-/* ------------------------------------------------------------------------------------------------------------ */
-/*                                           Parte das noticias                                                 */
-/* ------------------------------------------------------------------------------------------------------------ */
-
-#noticias{
-    background-image: url("http://slodive.com/wp-content/uploads/2011/05/white-backgrounds/canvas-texture-paper.jpg");
-    height: 750px;
-    width: 100%;
-}
-#noticias .topo_noticias{
-    height: 100px;
-    width: 100%;
-    text-align: center;
-    font-family: 'Raleway';
-    margin-top: 40px;
-}
-#noticias .bloco_noticias{
-    margin-top: 25px;
-}
-#noticias h1 p{
-    font-family: 'Raleway';
-    font-weight: bolder;
-}
-#noticias #subtitulo{
-    text-align: center;
-    font-size: 30px;
-
+#content{
+    position: absolute;
+    top:350px;
+    margin-left: 180px;
 }
 
-#noticias .espacamento{
-    margin-top: 65px;
-}
-
-
-#myCarousel .carousel-caption {
-    left:0;
-    right:0;
-    bottom:0;
-    text-align:left;
-    padding:10px;
-    background:rgba(0,0,0,0.7);
-    text-shadow:none;
-}
-
-#myCarousel .list-group {
-    position:absolute;
-    top:0;
-    right:0;
-}
-#myCarousel .list-group-item {
-    border-radius:0px;
-    cursor:pointer;
-}
-#myCarousel .list-group .active {
-    background-color:#eee;
-}
-
-@media (min-width: 992px) {
-    #myCarousel {padding-right:33.3333%;}
-    #myCarousel .carousel-controls {display:none;}
-}
-@media (max-width: 991px) {
-    .carousel-caption p,
-    #myCarousel .list-group {display:none;}
-}
-
-
-#myCarousel .list-group .active {
-    background-color: rgba(0, 94, 137, 0.7);
-    color: #000;
-}
-#myCarousel .carousel-caption h4 a{
+#content p {
     color: #fff;
-    font-weight: bold;
-}
-#myCarousel .carousel-caption p{
-    margin: 0 0 10px;
-    text-align: justify;
+    font-size: 35px;
+    font-weight: 700;
+    text-shadow: 0px 2px 3px #666;
 }
 
+@media only screen and (max-width: 600px) {
+    #content{
+        position: absolute;
+        top:150px;
+        margin-left: 30px;
+    }
+
+    #content p {
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+}
 
 /* ------------------------------------------------------------------------------------------------------------ */
 /*                                           Parte dos Cursos                                                   */
@@ -277,7 +225,7 @@ header #custom-bootstrap-menu{
 }
 #cursos .card-img-top {
     display: block;
-    width: auto;
+    width: 100%;
     height: 200px;
     margin: 3px;
 }
@@ -397,7 +345,7 @@ header #custom-bootstrap-menu{
 /* ------------------------------------------------------------------------------------------------------------ */
 
 #colaboradores{
-    background-color: #002f4c;
+    background-color: #005E89;
     height: auto;
     width: 100%;
 }
@@ -419,18 +367,6 @@ header #custom-bootstrap-menu{
     border: 1px solid #fff;
 }
 */
-
-
-
-
-
-
-
-
-
-
-
-
 
  /*------------------------------------------------------------------------------------------------------------ */
                                           /*ESTILO DO PORTFOLIO                                                 */
@@ -462,7 +398,7 @@ header #custom-bootstrap-menu{
 #portfolio .bloco-inferior{
     text-align: center;
 }
-#portfolio .bloco-inferior img{
+#portfolio.bloco-inferior img{
     max-width: 112px;
     max-height: 112px;
     margin-bottom: 5px;
@@ -490,11 +426,18 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 */
 
 
+
+
 #portfolio-realizados{
     width: 100%;
     height: 700px;
     margin-top: -20px;
     background-color: rgba(191, 191, 191, 0.38);
+}
+
+#portfolio-realizados img{
+    width: 100%;
+    height: auto;
 }
 
 @media (max-width: 720px){
@@ -519,17 +462,17 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 #portfolio-realizados .espacamento{
     margin-top: 40px;
 }
-#portfolio-realizados #owl-demo-portfolio .bordas{
+#portfolio-realizados .bordas{
     background: rgba(0,0,0, .5) repeat-x left bottom;
     box-shadow: inset 0px 0px 1px 1px rgb(0, 47, 76);
 }
 
-#portfolio-realizados #owl-demo-portfolio a{
+#portfolio-realizados  a{
     text-align: center;
     font-weight: 600;
     color: #fff;
 }
-#portfolio-realizados #owl-demo-portfolio a:link {
+#portfolio-realizados  a:link {
     text-decoration: none;
 }
 #portfolio-realizados .nome-evento{
@@ -543,19 +486,7 @@ http://bjoernmeier.com/cms/wp-content/uploads/2013/07/ophelis-docks-new-bjoern-m
 
 }
 
-/* IMAGENS DO CAROUSEL */
-#owl-demo-portfolio .item{
-    margin: 0px;
-    width: 350px;
-    height: 370px;
-}
-#owl-demo-portfolio .item img{
-    display: block;
-    width: 100%;
-    height: auto;
-    width: 350px;
-    height: 250px;
-}
+
 /* ------------------------------------- */
 
 /* BOTOES */
@@ -1209,8 +1140,6 @@ address{
     margin-top:50px;
 }
 
-@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
-
 .box > .icon { text-align: center; position: relative; }
 .box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #007bff; vertical-align: middle; }
 .box > .icon:hover > .image { background: #333; }
@@ -1285,225 +1214,6 @@ address{
 /*                                            PAGINA DE NOTICIAS                                                */
 /* ------------------------------------------------------------------------------------------------------------ */
 
-#myCarousel{
-    margin-top: 50px;
-}
-
-@media(max-width: 761px) {
-    #myCarousel{
-        margin-top: 150px;
-    }
-}
-
-#bloco-noticias{
-    height: auto;
-    background: rgba(255, 255, 255,0.7);
-    margin-top: -20px;
-}
-#bloco-noticias::after {
-    content: "";
-    background: url("https://myspotti.de/WebRoot/Store28/Shops/daf0539f-b184-46d2-a0ba-6e3c58fa9ce2/5790/7A51/5E0E/8E2A/6F05/0A48/3572/7790/mySPOTTIpop_HolzWeiss-59x41.jpg");
-    opacity: 0.2;
-    width: auto;
-    height: 2030px;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-#bloco-noticias  h1, h3 {
-    font-weight: 500;
-    /*padding: 0px 70px 0px 70px;*/
-}
-#bloco-noticias  h1{
-    font-size: 4.0rem;
-    color: #005e89;
-    text-transform: uppercase;
-}
-#bloco-noticias .linha{
-    color: #005e89;
-    border-top: 2px solid;
-    margin-top: 45px;
-}
-#bloco-noticias .publication-data{
-    color: #979797;
-    font-size: 17px;
-    margin-top: -14px;
-}
-#bloco-noticias p{
-    font-weight: 400;
-    font-size: 16px;
-}
-/*#bloco-noticias .texto-noticia{*/
-    /*margin: 0 0 0 0;*/
-/*}*/
-#bloco-noticias .texto-noticia span{
-    font-size: 1.8rem;
-    font-weight: 500;
-
-}
-
-#bloco-noticias .image{
-    text-align: center;
-    margin: 30px 0px 30px 0px;
-}
-#bloco-noticias .image img{
-    /*max-width: 550px;*/
-    /*max-height: 420px;*/
-    margin-left: 85px;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    /*border: 1px solid #0f0f0f;*/
-}
-
-@media (max-width: 600px) {
-    #bloco-noticias .image img{
-        /*max-width: 550px;*/
-        /*max-height: 420px;*/
-        margin-left: 0;
-        border-radius: 10px;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        /*border: 1px solid #0f0f0f;*/
-    }
-}
-
-#bloco-noticias .image span{
-    margin-top: 3px;
-    color: #005e89;
-}
-
-#bloco-noticias a:link, a:visited, a:active {
-    /*color: #005e89;*/
-    background-color: transparent;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#bloco-noticias h4 a {
-    color: #005e89;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#bloco-noticias a:hover {
-    color: rgba(0, 94, 137, 0.8);
-    background-color: transparent;
-    text-decoration: underline;
-    font-weight: bold;
-}
-#bloco-noticias .social:hover {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-#bloco-noticias .social {
-    -webkit-transform: scale(0.8);
-    /* Browser Variations: */
-
-    -moz-transform: scale(0.8);
-    -o-transform: scale(0.8);
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-}
-
-
-#bloco-noticias .news-noticias img{
-    margin-top: 40px;
-    margin-left: 8px;
-    /*max-height: 250px;*/
-    /*max-width: 333px;*/
-    /*border: 1px solid #0f0f0f;*/
-}
-#bloco-noticias .news-noticias p{
-    font-size: 20px;
-    font-weight: 600;
-}
-#bloco-noticias .news-noticias a{
-    text-decoration: none;
-}
-
-#bloco-noticias .ini_secao .linha2{
-    color: #005e89;
-    border-top: 2.3px solid;
-    margin-top: 60px;
-}
-#bloco-noticias #texto-news{
-    text-align: center;
-    font-size: 29px;
-    color: #005e89;
-    font-weight: 700;
-}
-
-/*
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-
-    #bloco-noticias .texto-noticia{
-        margin: 30px -40px 0px -40px;
-    }
-}
-*/
-
-
-@media (max-width: 600px) {
-    #contato-noticias .ini_secao{
-        background-color: #007DFF;
-        height: 300px;
-        width: auto;
-    }
-}
-
-#contato-noticias{
-    height: 300px;
-    background: rgba(0, 94, 137, 0.5);
-    margin-top: 60px;
-}
-#contato-noticias::after {
-    content: "";
-    background: url("../imagens/escritorio.jpg");
-    background-repeat: inherit;
-    opacity: 0.2;
-    width: auto;
-    height: 300px;
-    top: 2080px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-#contato-noticias .ini_secao h1{
-    color: #fff;
-    font-size: 3.0rem;
-    margin-top: 60px;
-}
-
-#contato-noticias section button {
-    margin: 15px auto;
-    font-size: 2.0rem;
-    padding: 1.25rem 2.5rem;
-    display: block;
-    background-color: #ffffff;
-    border: 1px solid transparent;
-    color: #005e89;
-    font-weight: 300;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-#contato-noticias section button:hover {
-    background-color: #005e89;
-    color: #ffffff;
-    border-color: #005e89;
-}
 
 
 /* ------------------------------------------------------------------------------------------------------------ */
@@ -1753,8 +1463,8 @@ address{
 .profile-userpic img {
     float: none;
     margin: 0 auto;
-    width: 50%;
-    height: 50%;
+    width: 100px;
+    height: 100px;
     -webkit-border-radius: 50% !important;
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
@@ -2125,7 +1835,7 @@ td.check
 #equipe{
     width: 100%;
     height: auto;
-    background-color: #002f4c;
+    background: url("/imagens/testura-admin.jpg");
 }
 #equipe .espacamento-equipe{
     color: #fff;
@@ -2318,6 +2028,87 @@ td.check
     }
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
+/*                                           Parte das Principal                                                */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+
+.carousel {
+    margin: 30px 0;
+    background: #ccc;
+    margin-top: -15px;
+}
+.carousel .item {
+    text-align: center;
+    overflow: hidden;
+    height: 475px;
+}
+.carousel .item img {
+    max-width: 100%;
+    margin: 0 auto; /* Align slide image horizontally center in Bootstrap v3 */
+}
+.carousel .carousel-control {
+    width: 50px;
+    height: 50px;
+    background: #000;
+    margin: auto 0;
+    opacity: 0.8;
+}
+.carousel .carousel-control:hover {
+    opacity: 0.9;
+}
+.carousel .carousel-control i {
+    font-size: 41px;
+    margin-top: 3px;
+}
+.carousel-caption h3, .carousel-caption p {
+    color: #fff;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: none;
+    margin-bottom: 20px;
+}
+.carousel-caption h3 {
+    background: rgba(0,0,0,0.9);
+    padding: 12px 24px;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.carousel-caption p {
+    background: #005E89;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 300;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.carousel-indicators li.active {
+    background: #005E89;
+    border-color: #005E89;
+}
+.carousel .nav {
+    background: #eee;
+}
+.carousel .nav a {
+    color: #333;
+    border-radius: 0;
+    font-size: 85%;
+    padding: 10px 16px;
+    background: transparent;
+}
+.carousel .nav .nav-item.active a {
+    color: #fff;
+    background: #005E89;
+}
+.carousel .nav strong {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 110%;
+    text-transform: uppercase;
+}
 
 
 

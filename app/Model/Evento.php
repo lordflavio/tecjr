@@ -31,4 +31,22 @@ class evento extends Model
         'banner',
         'img'
     ];
+
+
+    public function getValue($v, $type){
+
+        if($type < 7){
+            $cust  =  (float) str_replace(".", "", $v->valor_inscricao);
+
+            $newc = ($cust - ($cust * 0.04)) - 0.40;
+
+            return $newc;
+        }else{
+            $cust  =  (float) str_replace(".", "", $v->valor_inscricao);
+
+            return $cust;
+
+        }
+
+    }
 }

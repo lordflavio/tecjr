@@ -32,7 +32,7 @@ class Transacoes extends Model
             'code'              => $code,
             'status'            => $status,
             'payment_method'    => $paymentMethod,
-            'date'              => date('Ymd'),
+            'date'              => date('Y-m-d'),
         ]);
 
         if($type == 1){
@@ -43,7 +43,7 @@ class Transacoes extends Model
                 'certificado'            => 1,
             ));
 
-        }else if($type == 0){
+        }else if($type == 2){
             Evento_inscritos::create(array(
                 'participanteId'    => auth()->user()->id,
                 'eventosId'          => $object->id,
@@ -58,9 +58,9 @@ class Transacoes extends Model
             'user_id'           => $paticipante,
             'reference'         => $reference,
             'code'              => $code,
-            'status'            => $status,
+            'status'            => 3,
             'payment_method'    => $paymentMethod,
-            'date'              => date('Ymd'),
+            'date'              => date('Y-m-d'),
         ]);
 
         if($type == 1){
@@ -71,7 +71,7 @@ class Transacoes extends Model
                 'certificado'            => 0,
             ));
 
-        }else if($type == 0){
+        }else if($type == 2){
             Evento_inscritos::create(array(
                 'participanteId'    => $paticipante,
                 'eventosId'          => $object->id,
@@ -134,16 +134,16 @@ class Transacoes extends Model
     }
     
     
-    public function getDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
-    
-    
-    public function getDateRefreshStatusAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+//    public function getDateAttribute($value)
+//    {
+//        return Carbon::parse($value)->format('d/m/Y');
+//    }
+//
+//
+//    public function getDateRefreshStatusAttribute($value)
+//    {
+//        return Carbon::parse($value)->format('d/m/Y');
+//    }
     
       
     public function changeStatus($newStatus)
@@ -151,4 +151,29 @@ class Transacoes extends Model
         $this->status = $newStatus;
         $this->save();
     }
+
+    public function getDiaSemana(){
+        $diasemana = array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado');
+        $mes_extenso = array(
+            'Jan' => 'Janeiro',
+            'Feb' => 'Fevereiro',
+            'Mar' => 'Marco',
+            'Apr' => 'Abril',
+            'May' => 'Maio',
+            'Jun' => 'Junho',
+            'Jul' => 'Julho',
+            'Aug' => 'Agosto',
+            'Nov' => 'Novembro',
+            'Sep' => 'Setembro',
+            'Oct' => 'Outubro',
+            'Dec' => 'Dezembro'
+        );
+
+        $data = date('Y-m-d');
+
+        $diasemana_numero = date('w', strtotime($data));
+
+        return $diasemana[$diasemana_numero].', '.date('d', strtotime($data)).' de '.$mes_extenso[date('M',strtotime($data))].' de '.date('Y',strtotime($data));
+    }
+
 }

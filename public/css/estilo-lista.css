@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
+
+/*header #logo img{*/
+    /*width: 330px;*/
+    /*height: 200px;*/
+    /*!*margin-top: -10px;*!*/
+/*}*/
+header{
+    text-align: right;
+}
+
+.linha-header{
+    margin-top: 28px;
+    height: 15px;
+    width: 100%;
+    background-color: #005E89;
+}
+
+header #descricao{
+    margin-top: 35px;
+    text-align: right;
+}
+header #descricao p{
+    margin: 0;
+}
+header #descricao p {
+    color: #005E89;
+    font-size: 14px;
+
+}
+
+
+
+
+#corpo{
+    /*height: 800px;*/
+    /*width: 100%;*/
+    background-color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+}
+#corpo .espacamento{
+    color: #000;
+    margin-top: 30px;
+    text-align: center;
+}
+#corpo .espacamento b{
+    color: #005E89;
+}
+#corpo .espacamento span{
+    font-size: 1.0rem;
+}
+#corpo .espacamento-tabela{
+    margin-top: 35px;
+}
+#corpo .espacamento-tabela .span5{
+    width: 100%;
+}
+#corpo thead{
+    background-color: #005E89;
+    color: #fff;
+    font-size: 14px;
+}
+
+
+footer {
+    background-color: #005E89;
+    color: #fff;
+    width: 100%;
+}
+footer .espacamento-footer{
+    height: 80px;
+    width: 100%;
+    background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
